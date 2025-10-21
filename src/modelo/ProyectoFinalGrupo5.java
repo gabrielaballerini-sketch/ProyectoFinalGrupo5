@@ -5,17 +5,30 @@
  */
 package modelo;
 
-/**
- *
- * @author Capotes
- */
+import java.sql.Connection;
+import persistencia.LugarData;
+
 public class ProyectoFinalGrupo5 {
 
-    /**
-     * @param args the command line arguments
-     */
+
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        
+        Connection conection=null;
+       
+    
+        Conexion.buscarConexion();
+        
+        
+        Lugar lugares=new Lugar(12, 152, 11, true);
+        
+        LugarData lugar=new LugarData();
+        
+        lugar.guardarLugar(lugares);
+        
+        
+        
     }
     
 }

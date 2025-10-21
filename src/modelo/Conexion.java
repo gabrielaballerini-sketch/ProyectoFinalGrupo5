@@ -17,25 +17,28 @@ public class Conexion {
     
    
     private static String usuario="root";
-    private static String url ="jdbc:mariadb://localhost:3306/proyectocinegrupo5";
+    private static String url ="jdbc:mariadb://localhost:3306/proyectocinegrupon5";
     private static String password = "";
     private static Connection miConexion= null;
-
-    public Conexion() {
-        
-    }
+    
+    
     
 
- 
+private Conexion(){
 
-   
+}
+    
+  
     
       
-    public Connection buscarConexion () {
+    public static Connection buscarConexion () {
         if(miConexion ==null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
                 miConexion = DriverManager.getConnection(url,usuario, password);
+                System.out.println("Conectado con exito");
+                
+                
             } catch (ClassNotFoundException ex) {
                 System.out.println("No es posible establecer connection");
                 //JOptionPane.showMessageDialog(null,"No es posible establecer la conexion...");

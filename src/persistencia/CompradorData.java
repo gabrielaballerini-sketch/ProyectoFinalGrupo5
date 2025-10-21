@@ -49,6 +49,9 @@ public class CompradorData {
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexion");
         }
+    }
+    
+ 
     
     
 }

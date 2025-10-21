@@ -33,6 +33,9 @@ public class Lugar {
         this.numero = numero;
         this.estado = estado;
     }
+
+    public Lugar() {
+    }
     
     
     

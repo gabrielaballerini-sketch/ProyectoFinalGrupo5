@@ -64,6 +64,39 @@ public class LugarData {
         }
 
     }
+    
+    public Lugar buscarLugar(int codLugar) {
+        
+        String sql ="SELECT codLugar, fila, numero, estado, idFuncion FROM lugardeasiento WHERE codLugar=?";
+        Lugar lugar =new Lugar();
+        try{
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, codLugar);
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+        
+        lugar.setCodLugar(codLugar);
+        lugar.setFila(rs.getInt("fila"));
+        lugar.setNumero(rs.getInt("numero"));
+        lugar.setEstado(rs.getBoolean("estado"));
+        lugar.setIdFuncion(rs.getInt("idFuncion"));
+        
+        
+        
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "no se encotro el lugar");
+        }
+        ps.close();
+
+
+        }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, "no se pudo conectar a la BD");
+        
+        }
+        
+        return lugar;
+        }
 
 
 

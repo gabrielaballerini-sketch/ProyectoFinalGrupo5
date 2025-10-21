@@ -16,24 +16,26 @@ import java.sql.SQLException;
 public class Conexion {
     
    
-    private String usuario;
-    private String url;
-    private String password;
-    private static Connection conexion= null;
+    private static String usuario="root";
+    private static String url ="jdbc:mariadb://localhost:3306/proyectocinegrupo5";
+    private static String password = "";
+    private static Connection miConexion= null;
+
+    public Conexion() {
+        
+    }
     
 
-    public Conexion(String url, String usuario, String password) {
-        this.usuario = usuario;
-        this.url = url;
-        this.password = password;
-       
-    }
+ 
+
+   
+    
       
     public Connection buscarConexion () {
-        if(conexion ==null){
+        if(miConexion ==null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion = DriverManager.getConnection(url,usuario, password);
+                miConexion = DriverManager.getConnection(url,usuario, password);
             } catch (ClassNotFoundException ex) {
                 System.out.println("No es posible establecer connection");
                 //JOptionPane.showMessageDialog(null,"No es posible establecer la conexion...");
@@ -43,7 +45,7 @@ public class Conexion {
                 }
             
         }
-        return conexion;
+        return miConexion;
     }
 }
     

@@ -97,6 +97,35 @@ public class LugarData {
         
         return lugar;
         }
+    
+    public void actualizarLugar(Lugar lugar){
+    
+        String sql="UPDATE lugardeasiento SET fila=?,numero=?,estado=?,idFuncion=? WHERE= codLugar=?";
+    
+      
+        try{
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, lugar.getFila());
+        ps.setInt(2, lugar.getNumero());
+        ps.setBoolean(3, lugar.isEstado());
+        ps.setInt(4, lugar.getIdFuncion());
+        ps.setInt(5, lugar.getCodLugar());
+        ps.executeUpdate();
+     
+        ps.close();
+        
+         JOptionPane.showMessageDialog(null, "actualizado correctamente");
+      
+        
+        }catch(SQLException E){
+        
+          JOptionPane.showMessageDialog(null, "no se pudo conectar a la BD");
+        
+        }
+    
+    
+    
+    }
 
 
 

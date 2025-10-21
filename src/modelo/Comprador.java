@@ -29,9 +29,7 @@ public class Comprador {
         con.buscarConexion();
     }
 
-    public Comprador() {
-        con.buscarConexion();
-    }
+  
 
     public int getDni() {
         return dni;

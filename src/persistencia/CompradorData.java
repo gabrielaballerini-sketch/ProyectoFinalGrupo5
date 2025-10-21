@@ -5,10 +5,24 @@
  */
 package persistencia;
 
+import java.sql.Connection;
+import modelo.Comprador;
+
 /**
  *
  * @author Capotes
  */
 public class CompradorData {
+    
+    private Connection conn = null;
+
+    public CompradorData() {
+    }
+    
+    
+    public void guardarComprador(Comprador compr){
+    
+    }
+    
     
 }

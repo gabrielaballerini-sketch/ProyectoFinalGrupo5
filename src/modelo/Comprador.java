@@ -29,6 +29,10 @@ public class Comprador {
        
     }
 
+    public Comprador() {
+    }
+    
+
   
 
     public int getDni() {

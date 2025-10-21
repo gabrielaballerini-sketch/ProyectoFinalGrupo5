@@ -5,33 +5,19 @@
  */
 package modelo;
 
-<<<<<<< HEAD
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-
-=======
-<<<<<<< Updated upstream
-=======
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
->>>>>>> Stashed changes
->>>>>>> faty
-/**
- *
- * @author Capotes
- */
+
+
 public class Funcion {
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> faty
+
  
     
     private int idFuncion;
@@ -39,34 +25,13 @@ public class Funcion {
     private String idioma;
     private boolean es3D;
     private boolean subtitulada;
-<<<<<<< HEAD
-    private LocalDate horaDeInicio;
-    private LocalDate horaDeFin;
-=======
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
->>>>>>> faty
-    private ArrayList lugaresDisponibles;
+    private int lugaresDisponibles;
     private int salaDeProyeccion;
     private double precioLugar;
 
-<<<<<<< HEAD
-    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDate horaDeInicio, LocalDate horaDeFin, ArrayList lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
-        this.pelicula = pelicula;
-        this.idioma = idioma;
-        this.es3D = es3D;
-        this.subtitulada = subtitulada;
-        this.horaDeInicio = horaDeInicio;
-        this.horaDeFin = horaDeFin;
-        this.lugaresDisponibles = lugaresDisponibles;
-        this.salaDeProyeccion = salaDeProyeccion;
-        this.precioLugar = precioLugar;
-    }
-
-    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDate horaDeInicio, LocalDate horaDeFin, ArrayList lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
-=======
-    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int salaDeProyeccion, double precioLugar) {
->>>>>>> faty
+    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
         this.idFuncion = idFuncion;
         this.pelicula = pelicula;
         this.idioma = idioma;
@@ -74,38 +39,21 @@ public class Funcion {
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-<<<<<<< HEAD
         this.lugaresDisponibles = lugaresDisponibles;
         this.salaDeProyeccion = salaDeProyeccion;
         this.precioLugar = precioLugar;
     }
-    
 
-    
-    
-    
-=======
-        this.salaDeProyeccion = salaDeProyeccion;
-        this.precioLugar = precioLugar;
-    }
-
-    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int salaDeProyeccion, double precioLugar) {
+    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
         this.pelicula = pelicula;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-       
+        this.lugaresDisponibles = lugaresDisponibles;
         this.salaDeProyeccion = salaDeProyeccion;
         this.precioLugar = precioLugar;
-    }
-
->>>>>>> faty
-    
-    
-    public Funcion() {
-       
     }
 
     public int getIdFuncion() {
@@ -148,27 +96,6 @@ public class Funcion {
         this.subtitulada = subtitulada;
     }
 
-<<<<<<< HEAD
-    public LocalDate getHoraDeInicio() {
-        return horaDeInicio;
-    }
-
-    public void setHoraDeInicio(LocalDate horaDeInicio) {
-        this.horaDeInicio = horaDeInicio;
-    }
-
-    public LocalDate getHoraDeFin() {
-        return horaDeFin;
-    }
-
-    public void setHoraDeFin(LocalDate horaDeFin) {
-        this.horaDeFin = horaDeFin;
-    }
-
-    public ArrayList getLugaresDisponibles() {
-        return lugaresDisponibles;
-    }
-=======
     public LocalDateTime getHoraDeInicio() {
         return horaDeInicio;
     }
@@ -185,9 +112,11 @@ public class Funcion {
         this.horaDeFin = horaDeFin;
     }
 
->>>>>>> faty
+    public int getLugaresDisponibles() {
+        return lugaresDisponibles;
+    }
 
-    public void setLugaresDisponibles(ArrayList lugaresDisponibles) {
+    public void setLugaresDisponibles(int lugaresDisponibles) {
         this.lugaresDisponibles = lugaresDisponibles;
     }
 
@@ -212,15 +141,6 @@ public class Funcion {
         return "Funcion{" + "idFuncion=" + idFuncion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", salaDeProyeccion=" + salaDeProyeccion + ", precioLugar=" + precioLugar + '}';
     }
 
-    
-    
-    
-    
-    
-    
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> faty
-    
+  
+
 }

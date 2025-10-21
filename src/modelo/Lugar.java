@@ -10,22 +10,7 @@ package modelo;
  * @author Capotes
  */
 public class Lugar {
-    
-<<<<<<< HEAD
-    
-   
-    
-    private int idFuncion;
-    private int codLugar;
-      private int fila;
-        private int numero;
-        private boolean estado;
-
-    public Lugar(int idFuncion, int codLugar, int fila, int numero, boolean estado) {
-=======
-<<<<<<< Updated upstream
-=======
-    
+ 
     private int idFuncion;
     private int codLugar;
     private int fila;
@@ -34,7 +19,7 @@ public class Lugar {
 
     public Lugar(int idFuncion, int codLugar, int fila, int numero, boolean estado) {
        
->>>>>>> faty
+
         this.idFuncion = idFuncion;
         this.codLugar = codLugar;
         this.fila = fila;
@@ -100,16 +85,4 @@ public class Lugar {
     }
       
 
-    
-        
-        
-        
-        
-        
-        
-        
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> faty
 }

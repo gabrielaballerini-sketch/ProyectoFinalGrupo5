@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,25 @@ import modelo.Conexion;
 import modelo.Lugar;
 
 public class LugarData {
+=======
+<<<<<<< Updated upstream
+/**
+ *
+ * @author Capotes
+ */
+public class LugarData {
+=======
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import modelo.Conexion;
+import modelo.Lugar;
+
+public class LugarData {
+>>>>>>> faty
 
    
  private Connection con=null;
@@ -31,11 +51,16 @@ public class LugarData {
 
     public void guardarLugar(Lugar lugar) {
 
+<<<<<<< HEAD
         String sql = " INSERT INTO lugardeasiento fila, numero, estado, idFuncion VALUES (?,?,?,?)";
+=======
+        String sql = " INSERT INTO lugardeasiento ( fila, numero, estado, idFuncion) VALUES (?,?,?,?)";
+>>>>>>> faty
 
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+<<<<<<< HEAD
 
             ps.setInt(1, lugar.getFila());
             ps.setInt(2, lugar.getNumero());
@@ -55,12 +80,28 @@ public class LugarData {
             
             JOptionPane.showMessageDialog(null, "Lugar reservado con exito");
             
+=======
+            ps.setInt(1, lugar.getFila());
+            ps.setInt(2, lugar.getNumero());
+            ps.setBoolean(3, lugar.isEstado());
+            ps.setInt(4, lugar.getIdFuncion());
+            ps.executeUpdate();
+     
+            ResultSet rs=ps.getGeneratedKeys();
+            if(rs.next()) {
+            
+            lugar.setCodLugar(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Lugar reservado con exito");
+>>>>>>> faty
             ps.close();
             
             }
                 
+<<<<<<< HEAD
                 
 
+=======
+>>>>>>> faty
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo establecer conexion");
         }
@@ -69,5 +110,9 @@ public class LugarData {
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> faty
     
 }

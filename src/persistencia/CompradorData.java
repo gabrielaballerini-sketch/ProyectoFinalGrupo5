@@ -7,9 +7,10 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Conexion;
@@ -23,20 +24,18 @@ public class CompradorData {
     private Connection conn = null;
 
     
+    
+    
     public CompradorData() {
-    }
-    
-    
-    public CompradorData(Conexion conexion) {
         
-        this.conn= conexion.buscarConexion();
+        conn= Conexion.buscarConexion();
     }
     
     
     public void guardarComprador(Comprador compr){
         String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`) VALUES (?,?,?,?,?)";
         try{
-        PreparedStatement ps= conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement ps= conn.prepareStatement(query);
         LocalDate fechaUtil = compr.getFechaNac();
         java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaUtil);
         ps.setInt(1, compr.getDni());
@@ -51,7 +50,60 @@ public class CompradorData {
         }
     }
     
+   public Comprador buscarComprador(int dni){
+       String query= "SELECT * FROM `comprador` WHERE dni = ?";
+       Comprador compr= null;
+       try{
+         PreparedStatement ps= conn.prepareStatement(query);
+       
+         ps.setInt(1, dni);
+         ResultSet resultado= ps.executeQuery();
+
+             if (resultado.next()){
+
+                 compr= new Comprador();
+                 compr.setNombre(resultado.getString("nombre"));
+                 LocalDate fechautil = compr.getFechaNac();
+                 compr.setFechaNac(resultado.getDate("fechaDeNacimiento").toLocalDate());
+                 compr.setPassword(resultado.getString("estado"));
+                 compr.setMedioDePago(resultado.getString("medioDePago"));
+             }
+            ps.close();
+       
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexion");
+        }
+        return compr;
+    }
  
+    public ArrayList<Comprador> listarCompradores(){
+       String query = "SELECT * FROM `comprador` ";
+       ArrayList <Comprador> compradores = new ArrayList();
+        try {
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet resultado= ps.executeQuery();
+             
+             while (resultado.next()){
+                 
+              Comprador compr= new Comprador();
+              compr.setDni(resultado.getInt("dni"));
+              compr.setNombre(resultado.getString("nombre"));
+              compr.setFechaNac(resultado.getDate("apellido").toLocalDate());
+              compr.setPassword(resultado.getString("contraseña"));         
+              compr.setMedioDePago(resultado.getString("medioDePago"));
+              
+              
+              compradores.add(compr);
+             }   
+             ps.close();
+            
+        } catch (SQLException ex){
+         JOptionPane.showMessageDialog(null, "Error de conexion" );
+        
+        }
+        return compradores;
+ 
+  }
     
     
 }

@@ -16,6 +16,8 @@ import java.util.ArrayList;
  */
 public class Funcion {
  
+    
+    private int idFuncion;
     private String pelicula;
     private String idioma;
     private boolean es3D;
@@ -25,7 +27,6 @@ public class Funcion {
     private ArrayList lugaresDisponibles;
     private int salaDeProyeccion;
     private double precioLugar;
-    
 
     public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDate horaDeInicio, LocalDate horaDeFin, ArrayList lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
         this.pelicula = pelicula;
@@ -37,11 +38,37 @@ public class Funcion {
         this.lugaresDisponibles = lugaresDisponibles;
         this.salaDeProyeccion = salaDeProyeccion;
         this.precioLugar = precioLugar;
-        
     }
 
+    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDate horaDeInicio, LocalDate horaDeFin, ArrayList lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
+        this.idFuncion = idFuncion;
+        this.pelicula = pelicula;
+        this.idioma = idioma;
+        this.es3D = es3D;
+        this.subtitulada = subtitulada;
+        this.horaDeInicio = horaDeInicio;
+        this.horaDeFin = horaDeFin;
+        this.lugaresDisponibles = lugaresDisponibles;
+        this.salaDeProyeccion = salaDeProyeccion;
+        this.precioLugar = precioLugar;
+    }
+    
+
+    
+    
+    
+    
+    
     public Funcion() {
        
+    }
+
+    public int getIdFuncion() {
+        return idFuncion;
+    }
+
+    public void setIdFuncion(int idFuncion) {
+        this.idFuncion = idFuncion;
     }
 
     public String getPelicula() {
@@ -118,11 +145,12 @@ public class Funcion {
 
     @Override
     public String toString() {
-        return "pelicula :" + pelicula + " idioma :" + idioma + " es3D :" + es3D + " subtitulada :" +
-                subtitulada + " horaDeInicio :" + horaDeInicio + " horaDeFin :" + horaDeFin +
-                " lugaresDisponibles :" + lugaresDisponibles + ", salaDeProyeccion :" + salaDeProyeccion +
-                " precioLugar :" + precioLugar ;
+        return "Funcion{" + "idFuncion=" + idFuncion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", salaDeProyeccion=" + salaDeProyeccion + ", precioLugar=" + precioLugar + '}';
     }
+
+    
+    
+    
     
     
     

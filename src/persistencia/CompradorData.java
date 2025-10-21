@@ -6,11 +6,14 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Conexion;
@@ -104,6 +107,45 @@ public class CompradorData {
         return compradores;
  
   }
+    public void actualizarComprador(Comprador compr){
+    
+    String query= "UPDATE `comprador` SET`nombre`= ? ,`fechaDeNacimiento`= ? ,`contraseña`= ? ,`medioDePago`= ? WHERE dni= ?";
+   
+    try{
+        PreparedStatement ps= conn.prepareStatement(query);
+        ps.setString(1, compr.getNombre());
+        ps.setDate(2,Date.valueOf(compr.getFechaNac()));
+        ps.setString(3, compr.getPassword());
+        ps.setString(4,compr.getMedioDePago());
+        ps.setInt(5, compr.getDni());
+        int filas = ps.executeUpdate();
+        
+         if (filas == 1) {
+
+                JOptionPane.showMessageDialog(null, "Comprador actualizado");
+
+            }
+         ps.close();
+    
+     }catch(SQLException ex){
+         JOptionPane.showMessageDialog(null, "Error al conectar");
+     }
+    }
+    
+    public void eliminarComprador(int dni){
+        String query= "DELETE FROM `comprador` WHERE dni= ? ";
+       
+        try {
+            PreparedStatement ps= conn.prepareStatement(query);
+            ps.setInt(1, dni);
+            int exito= ps.executeUpdate();
+            if(exito ==1){
+                JOptionPane.showMessageDialog(null, "Comprador eliminado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar");
+        }
     
     
+    }
 }

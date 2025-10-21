@@ -21,6 +21,11 @@ public class Pelicula {
     private LocalDate estreno;
     private boolean enCartelera;
 
+    public Pelicula() {
+    }
+
+    
+    
     public Pelicula(String titulo, String director, String actores, String origen, String genero, LocalDate estreno, boolean enCartelera) {
         this.titulo = titulo;
         this.director = director;

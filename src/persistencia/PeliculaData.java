@@ -45,9 +45,10 @@ public class PeliculaData {
             ps.setBoolean(7, peli.isEnCartelera());
             
             ps.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null, "Se gurado la pelicula correctamente");
+            ps.close();
         }catch(SQLException ex){
-        JOptionPane.showMessageDialog(null,"ERROR AL CONECTAR BS PELICULA");
+        JOptionPane.showMessageDialog(null,"ERROR al guardar una pelicula");
         
         }
     }
@@ -57,7 +58,7 @@ public class PeliculaData {
    
     
     
-    String sql = "SELECT `id_pelicula`, `titulo`, `director`, `actores`, `origen`, `genero`, `estreno`, `enCartelera` FROM `pelicula` WHERE `titulo= ?";
+    String sql = "SELECT `titulo`, `director`, `actores`, `origen`, `genero`, `estreno`, `enCartelera` FROM `pelicula` WHERE `titulo= ?";
     Pelicula peli= null;
     try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -78,8 +79,8 @@ public class PeliculaData {
                 peli.setGenero(rs.getString("genero"));
                 
                
-                Date fechaSQL = rs.getDate("estreno");
-                peli.setEstreno(fechaSQL.toLocalDate()); 
+                Date fecha = rs.getDate("estreno");
+                peli.setEstreno(fecha.toLocalDate()); 
                 
                 peli.setEnCartelera(rs.getBoolean("enCartelera"));
             }
@@ -119,4 +120,18 @@ public class PeliculaData {
         JOptionPane.showMessageDialog(null,"ERROR AL CONECTAR BS PELICULA actual");
         }
     }
+    
+        public void borrarPelicula(String titulo){
+            String sql = " DELETE FROM `pelicula` WHERE titulo = ?";   
+            
+           try{ 
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1,titulo);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Se elimino la pelicula correctamente");
+           }catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "No se elimino la pelicula");
+           }
+        }
 }

@@ -5,22 +5,19 @@
  */
 package modelo;
 
-<<<<<<< Updated upstream
-=======
 
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
->>>>>>> Stashed changes
-/**
- *
- * @author Capotes
- */
+
+
 public class Funcion {
-<<<<<<< Updated upstream
-=======
+
  
     
     private int idFuncion;
@@ -30,11 +27,11 @@ public class Funcion {
     private boolean subtitulada;
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
-    private ArrayList lugaresDisponibles;
+    private int lugaresDisponibles;
     private int salaDeProyeccion;
     private double precioLugar;
 
-    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int salaDeProyeccion, double precioLugar) {
+    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
         this.idFuncion = idFuncion;
         this.pelicula = pelicula;
         this.idioma = idioma;
@@ -42,26 +39,21 @@ public class Funcion {
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
+        this.lugaresDisponibles = lugaresDisponibles;
         this.salaDeProyeccion = salaDeProyeccion;
         this.precioLugar = precioLugar;
     }
 
-    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int salaDeProyeccion, double precioLugar) {
+    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
         this.pelicula = pelicula;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-       
+        this.lugaresDisponibles = lugaresDisponibles;
         this.salaDeProyeccion = salaDeProyeccion;
         this.precioLugar = precioLugar;
-    }
-
-    
-    
-    public Funcion() {
-       
     }
 
     public int getIdFuncion() {
@@ -120,8 +112,11 @@ public class Funcion {
         this.horaDeFin = horaDeFin;
     }
 
+    public int getLugaresDisponibles() {
+        return lugaresDisponibles;
+    }
 
-    public void setLugaresDisponibles(ArrayList lugaresDisponibles) {
+    public void setLugaresDisponibles(int lugaresDisponibles) {
         this.lugaresDisponibles = lugaresDisponibles;
     }
 
@@ -146,12 +141,6 @@ public class Funcion {
         return "Funcion{" + "idFuncion=" + idFuncion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", salaDeProyeccion=" + salaDeProyeccion + ", precioLugar=" + precioLugar + '}';
     }
 
-    
-    
-    
-    
-    
-    
->>>>>>> Stashed changes
-    
+  
+
 }

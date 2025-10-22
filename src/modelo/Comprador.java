@@ -18,7 +18,7 @@ public class Comprador {
             private LocalDate fechaNac;
             private String password;
             private String medioDePago;
-            Conexion con  = new Conexion();
+            
 
     public Comprador(int dni, String nombre, LocalDate fechaNac, String password, String medioDePago) {
         this.dni = dni;
@@ -26,8 +26,12 @@ public class Comprador {
         this.fechaNac = fechaNac;
         this.password = password;
         this.medioDePago = medioDePago;
-        con.buscarConexion();
+       
     }
+
+    public Comprador() {
+    }
+    
 
   
 

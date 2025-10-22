@@ -10,10 +10,7 @@ package modelo;
  * @author Capotes
  */
 public class Lugar {
-    
-<<<<<<< Updated upstream
-=======
-    
+ 
     private int idFuncion;
     private int codLugar;
     private int fila;
@@ -22,6 +19,7 @@ public class Lugar {
 
     public Lugar(int idFuncion, int codLugar, int fila, int numero, boolean estado) {
        
+
         this.idFuncion = idFuncion;
         this.codLugar = codLugar;
         this.fila = fila;
@@ -34,6 +32,9 @@ public class Lugar {
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
+    }
+
+    public Lugar() {
     }
     
     
@@ -87,13 +88,4 @@ public class Lugar {
     }
       
 
-    
-        
-        
-        
-        
-        
-        
-        
->>>>>>> Stashed changes
 }

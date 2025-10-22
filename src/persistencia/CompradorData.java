@@ -12,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Conexion;
@@ -36,6 +34,7 @@ public class CompradorData {
     
     
     public void guardarComprador(Comprador compr){
+        
         String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`) VALUES (?,?,?,?,?)";
         try{
         PreparedStatement ps= conn.prepareStatement(query);
@@ -47,6 +46,8 @@ public class CompradorData {
         ps.setString(4, compr.getPassword());
         ps.setString(5, compr.getMedioDePago());
         ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Comprador agregado con exito");
+        ps.close();
         
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexion");
@@ -54,6 +55,7 @@ public class CompradorData {
     }
     
    public Comprador buscarComprador(int dni){
+       
        String query= "SELECT * FROM `comprador` WHERE dni = ?";
        Comprador compr= null;
        try{

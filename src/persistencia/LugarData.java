@@ -29,7 +29,7 @@ public class LugarData {
 
     public void guardarLugar(Lugar lugar) {
 
-        String sql = " INSERT INTO lugardeasiento fila, numero, estado, idFuncion VALUES (?,?,?,?)";
+        String sql = " INSERT INTO lugardeasiento (fila, numero, estado, idFuncion) VALUES (?,?,?,?)";
 
         try {
 
@@ -53,11 +53,11 @@ public class LugarData {
             
             JOptionPane.showMessageDialog(null, "Lugar reservado con exito");
             
-            ps.close();
+        
             
             }
                 
-                
+                ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo establecer conexion");
@@ -100,7 +100,7 @@ public class LugarData {
     
     public void actualizarLugar(Lugar lugar){
     
-        String sql="UPDATE lugardeasiento SET fila=?,numero=?,estado=?,idFuncion=? WHERE= codLugar=?";
+        String sql="UPDATE `lugardeasiento` SET `fila`=?,`numero`=?,`estado`=?,`idFuncion`=? WHERE codLugar = ?";
     
       
         try{
@@ -112,7 +112,7 @@ public class LugarData {
         ps.setInt(5, lugar.getCodLugar());
         ps.executeUpdate();
      
-        ps.close();
+       // ps.close();
         
          JOptionPane.showMessageDialog(null, "actualizado correctamente");
       

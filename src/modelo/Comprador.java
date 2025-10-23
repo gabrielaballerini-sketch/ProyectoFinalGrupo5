@@ -18,21 +18,22 @@ public class Comprador {
             private LocalDate fechaNac;
             private String password;
             private String medioDePago;
+            private boolean estado;
             
+ 
+    public Comprador() {
+    }
 
-    public Comprador(int dni, String nombre, LocalDate fechaNac, String password, String medioDePago) {
+    public Comprador(int dni, String nombre, LocalDate fechaNac, String password, String medioDePago, boolean estado) {
         this.dni = dni;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
         this.password = password;
         this.medioDePago = medioDePago;
-       
-    }
-
-    public Comprador() {
+        this.estado = estado;
     }
     
-
+    
   
 
     public int getDni() {
@@ -75,13 +76,19 @@ public class Comprador {
         this.medioDePago = medioDePago;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Comprador{" + "dni=" + dni + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", password=" + password + ", medioDePago=" + medioDePago + '}';
+        return "Comprador{" + "dni=" + dni + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", password=" + password + ", medioDePago=" + medioDePago + ", estado=" + estado + '}';
     }
     
-            
-            
-            
+    
     
 }

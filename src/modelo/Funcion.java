@@ -21,38 +21,44 @@ public class Funcion {
  
     
     private int idFuncion;
-    private String pelicula;
+    private String titulo;
     private String idioma;
     private boolean es3D;
     private boolean subtitulada;
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
     private int lugaresDisponibles;
-    private int salaDeProyeccion;
+    private int nroSala;
     private double precioLugar;
 
-    public Funcion(int idFuncion, String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
+    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int nroSala, double precioLugar) {
         this.idFuncion = idFuncion;
-        this.pelicula = pelicula;
+        this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
         this.lugaresDisponibles = lugaresDisponibles;
-        this.salaDeProyeccion = salaDeProyeccion;
+        this.nroSala = nroSala;
         this.precioLugar = precioLugar;
     }
 
-    public Funcion(String pelicula, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int salaDeProyeccion, double precioLugar) {
-        this.pelicula = pelicula;
+    public Funcion() {
+    }
+
+    
+    
+    
+    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int nroSala, double precioLugar) {
+        this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
         this.lugaresDisponibles = lugaresDisponibles;
-        this.salaDeProyeccion = salaDeProyeccion;
+        this.nroSala = nroSala;
         this.precioLugar = precioLugar;
     }
 
@@ -64,14 +70,8 @@ public class Funcion {
         this.idFuncion = idFuncion;
     }
 
-    public String getPelicula() {
-        return pelicula;
-    }
 
-    public void setPelicula(String pelicula) {
-        this.pelicula = pelicula;
-    }
-
+  
     public String getIdioma() {
         return idioma;
     }
@@ -120,13 +120,24 @@ public class Funcion {
         this.lugaresDisponibles = lugaresDisponibles;
     }
 
-    public int getSalaDeProyeccion() {
-        return salaDeProyeccion;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setSalaDeProyeccion(int salaDeProyeccion) {
-        this.salaDeProyeccion = salaDeProyeccion;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
+
+    public int getNroSala() {
+        return nroSala;
+    }
+
+    public void setNroSala(int nroSala) {
+        this.nroSala = nroSala;
+    }
+
+  
+
 
     public double getPrecioLugar() {
         return precioLugar;
@@ -138,7 +149,7 @@ public class Funcion {
 
     @Override
     public String toString() {
-        return "Funcion{" + "idFuncion=" + idFuncion + ", pelicula=" + pelicula + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", salaDeProyeccion=" + salaDeProyeccion + ", precioLugar=" + precioLugar + '}';
+        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", nroSala=" + nroSala + ", precioLugar=" + precioLugar + '}';
     }
 
   

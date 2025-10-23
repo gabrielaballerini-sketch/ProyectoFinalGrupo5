@@ -8,8 +8,10 @@ package modelo;
 
 
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import persistencia.LugarData;
+import persistencia.PeliculaData;
 
 
 public class ProyectoFinalGrupo5 {
@@ -35,7 +37,17 @@ public class ProyectoFinalGrupo5 {
 
         LugarData lugar=new LugarData();
         
-        lugar.guardarLugar(lugares);
+        //lugar.guardarLugar(lugares);
+     
+        LocalDate estreno = LocalDate.of(2025, 4, 15);
+        Pelicula peli1= new Pelicula("Jhon wick 4","Chad Stahelski"," Reeves","Ek","Accion",estreno,true);
+        PeliculaData pelidata= new PeliculaData();
+        //pelidata.guardarPelicula(peli1);
+        Pelicula peli2= new Pelicula("Jhon wick 3","Chad ","Keanu ","EE.UU","Accion",estreno,true);
+        pelidata.guardarPelicula(peli2);
+        
+        pelidata.actualizarPelicula(peli1);
+        //pelidata.borrarPelicula("Jhon wick 4");
         
  }
 }

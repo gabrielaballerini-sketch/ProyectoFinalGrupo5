@@ -30,7 +30,7 @@ public class PeliculaData {
        con= Conexion.buscarConexion();
 
     }
-    
+   
     public void guardarPelicula(Pelicula peli){
     String sql = "INSERT INTO `pelicula`(`titulo`, `director`, `actores`, `origen`, `genero`, `estreno`, `enCartelera`) VALUES (?,?,?,?,?,?,?)";
         try{
@@ -46,7 +46,7 @@ public class PeliculaData {
             
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se gurado la pelicula correctamente");
-            ps.close();
+            
         }catch(SQLException ex){
         JOptionPane.showMessageDialog(null,"ERROR al guardar una pelicula");
         
@@ -94,28 +94,32 @@ public class PeliculaData {
     return peli; 
 }
     
-    public void actualizarPelicula(String titulo) {
+    public void actualizarPelicula(Pelicula peli) {
     
-   String sql = "UPDATE `pelicula` SET  `director`=?, `actores`=?, `origen`=?,`genero`=?, `estreno`=?, `enCartelera`=? WHERE `titulo`=?";
+   String sql = "UPDATE `pelicula` SET  `director`=?, `actores`=?, `origen`=?,`genero`=?, `estreno`=?, `enCartelera`=? WHERE `titulo` = ?";
     
-    Pelicula peliActualizar = buscarPeliculaPorTitulo(titulo);
-    
+    //Pelicula peliActualizar = buscarPeliculaPorTitulo(titulo);
+   
     try {
         PreparedStatement ps = con.prepareStatement(sql);
      
         
-        ps.setString(1, peliActualizar.getTitulo());
-        ps.setString(2, peliActualizar.getDirector());
-        ps.setString(3, peliActualizar.getActores());
-        ps.setString(4, peliActualizar.getOrigen());
-        ps.setString(5, peliActualizar.getGenero());
-        ps.setDate(6, Date.valueOf(peliActualizar.getEstreno())); 
-        ps.setBoolean(7, peliActualizar.isEnCartelera());
+        ps.setString(7, peli.getTitulo());
+        ps.setString(1, peli.getDirector());
+        ps.setString(2, peli.getActores());
+        ps.setString(3, peli.getOrigen());
+        ps.setString(4, peli.getGenero());
+        
+        ps.setDate(5, Date.valueOf(peli.getEstreno())); 
+        ps.setBoolean(6, peli.isEnCartelera());
          
         
-         ps.executeUpdate();
+         int fila = ps.executeUpdate();
+         if(fila==1){
          JOptionPane.showMessageDialog(null,"Pelicula Actualizada");
-         ps.close();
+             }
+         
+         
         }catch(SQLException ex){
         JOptionPane.showMessageDialog(null,"ERROR AL CONECTAR BS PELICULA actual");
         }

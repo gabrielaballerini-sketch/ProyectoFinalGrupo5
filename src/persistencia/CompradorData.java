@@ -6,6 +6,7 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,7 @@ public class CompradorData {
     
     
     public void guardarComprador(Comprador compr){
+        
         String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`) VALUES (?,?,?,?,?)";
         try{
         PreparedStatement ps= conn.prepareStatement(query);
@@ -44,6 +46,8 @@ public class CompradorData {
         ps.setString(4, compr.getPassword());
         ps.setString(5, compr.getMedioDePago());
         ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Comprador agregado con exito");
+        ps.close();
         
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexion");
@@ -51,6 +55,7 @@ public class CompradorData {
     }
     
    public Comprador buscarComprador(int dni){
+       
        String query= "SELECT * FROM `comprador` WHERE dni = ?";
        Comprador compr= null;
        try{
@@ -104,6 +109,45 @@ public class CompradorData {
         return compradores;
  
   }
+    public void actualizarComprador(Comprador compr){
+    
+    String query= "UPDATE `comprador` SET`nombre`= ? ,`fechaDeNacimiento`= ? ,`contraseña`= ? ,`medioDePago`= ? WHERE dni= ?";
+   
+    try{
+        PreparedStatement ps= conn.prepareStatement(query);
+        ps.setString(1, compr.getNombre());
+        ps.setDate(2,Date.valueOf(compr.getFechaNac()));
+        ps.setString(3, compr.getPassword());
+        ps.setString(4,compr.getMedioDePago());
+        ps.setInt(5, compr.getDni());
+        int filas = ps.executeUpdate();
+        
+         if (filas == 1) {
+
+                JOptionPane.showMessageDialog(null, "Comprador actualizado");
+
+            }
+         ps.close();
+    
+     }catch(SQLException ex){
+         JOptionPane.showMessageDialog(null, "Error al conectar");
+     }
+    }
+    
+    public void eliminarComprador(int dni){
+        String query= "DELETE FROM `comprador` WHERE dni= ? ";
+       
+        try {
+            PreparedStatement ps= conn.prepareStatement(query);
+            ps.setInt(1, dni);
+            int exito= ps.executeUpdate();
+            if(exito ==1){
+                JOptionPane.showMessageDialog(null, "Comprador eliminado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar");
+        }
     
     
+    }
 }

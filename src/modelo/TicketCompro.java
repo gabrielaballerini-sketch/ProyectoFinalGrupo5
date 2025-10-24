@@ -18,7 +18,7 @@ public class TicketCompro {
      private int monto;
      private int dni;
      private int codLugar;
-     Comprador comprador1 =new Comprador();
+     
 
     public TicketCompro(LocalDate fechaCompra, LocalDate fechaFuncion, int monto, int dni, int codLugar) {
         this.fechaCompra = fechaCompra;
@@ -82,17 +82,11 @@ public class TicketCompro {
         this.monto = monto;
     }
 
-    public Comprador getComprador1() {
-        return comprador1;
-    }
-
-    public void setComprador1(Comprador comprador1) {
-        this.comprador1 = comprador1;
-    }
+ 
 
     @Override
     public String toString() {
-        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", fechaFuncion=" + fechaFuncion + ", monto=" + monto + ", dni=" + dni + ", codLugar=" + codLugar + ", comprador1=" + comprador1 + '}';
+        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", fechaFuncion=" + fechaFuncion + ", monto=" + monto + ", dni=" + dni + ", codLugar=" + codLugar + '}';
     }
 
    

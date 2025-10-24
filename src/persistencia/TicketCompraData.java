@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
 import modelo.TicketCompro;
@@ -30,11 +31,11 @@ public class TicketCompraData {
     
     public void guardarTicket(TicketCompro tick){
         
-        String sql = "INSERT INTO `tiketcompra`(`fechaDeCompra`, `fechaFuncion`, `monto`, `dni`) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO `tiketcompra`(`fechaDeCompra`, `horaInicio`, `monto`, `dni`) VALUES (?,?,?,?,?)";
    try{
         PreparedStatement  ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1,Date.valueOf(tick.getFechaCompra()));
-            ps.setDate(2,Date.valueOf(tick.getFechaFuncion()));
+            ps.setTimestamp(2,Timestamp.valueOf(tick.getHoraInicio()));
             ps.setInt(3, tick.getMonto());
             ps.setInt(4, tick.getDni());
             
@@ -54,8 +55,5 @@ public class TicketCompraData {
    }
     }
     
-    public void actualizarTicket(){
-        String sql = "UPDATE `tiketcompra` SET `fechaDeCompra`=?,`monto`=?,`dni`= ?, `codLugar` = ? WHERE fechaFuncion = ?";
-        
-    }
+
 }

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,15 +15,15 @@ import java.time.LocalDate;
 public class TicketCompro {
    
    private LocalDate fechaCompra;
-     private LocalDate fechaFuncion;
+     private LocalDateTime horaInicio;
      private int monto;
      private int dni;
      private int codLugar;
      
 
-    public TicketCompro(LocalDate fechaCompra, LocalDate fechaFuncion, int monto, int dni, int codLugar) {
+    public TicketCompro(LocalDate fechaCompra, LocalDateTime horaInicio, int monto, int dni, int codLugar) {
         this.fechaCompra = fechaCompra;
-        this.fechaFuncion = fechaFuncion;
+        this.horaInicio = horaInicio;
         this.monto = monto;
         this.dni = dni;
         this.codLugar = codLugar;
@@ -30,9 +31,9 @@ public class TicketCompro {
 
     
      
-     public TicketCompro(LocalDate fechaCompra, LocalDate fechaFuncion, int monto, int dni) {
+     public TicketCompro(LocalDate fechaCompra, LocalDateTime horaInicio, int monto, int dni) {
         this.fechaCompra = fechaCompra;
-        this.fechaFuncion = fechaFuncion;
+        this.horaInicio = horaInicio;
         this.monto = monto;
         this.dni = dni;
     }
@@ -66,12 +67,12 @@ public class TicketCompro {
         this.fechaCompra = fechaCompra;
     }
 
-    public LocalDate getFechaFuncion() {
-        return fechaFuncion;
+    public LocalDateTime getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setFechaFuncion(LocalDate fechaFuncion) {
-        this.fechaFuncion = fechaFuncion;
+    public void setHoraInicio(LocalDateTime horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
     public int getMonto() {
@@ -82,12 +83,14 @@ public class TicketCompro {
         this.monto = monto;
     }
 
- 
-
     @Override
     public String toString() {
-        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", fechaFuncion=" + fechaFuncion + ", monto=" + monto + ", dni=" + dni + ", codLugar=" + codLugar + '}';
+        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", horaInicio=" + horaInicio + ", monto=" + monto + ", dni=" + dni + ", codLugar=" + codLugar + '}';
     }
+
+ 
+
+    
 
    
      

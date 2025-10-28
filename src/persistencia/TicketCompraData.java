@@ -30,14 +30,7 @@ public class TicketCompraData {
     
     
     
-      
- private Connection con=null;
-
-    
-    public TicketCompraData() {
-        
-           con= Conexion.buscarConexion();
-    }
+   
     
     
     public void GuardarTicket(TicketCompra ticket){

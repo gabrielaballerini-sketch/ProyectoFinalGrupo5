@@ -113,7 +113,7 @@ public class FuncionData {
     ps.setInt(7, funcion.getLugaresDisponibles());
    ps.setInt(8, funcion.getNroSala());
     ps.setDouble(9, funcion.getPrecioLugar());
-    
+    ps.setInt(10, funcion.getIdFuncion());
     
     int fila = ps.executeUpdate();
     
@@ -154,7 +154,7 @@ public class FuncionData {
              funcion.setIdFuncion(idFuncion);
              funcion.setTitulo(rs.getString("titulo"));
              funcion.setIdioma(rs.getString("idioma"));
-             funcion.setEs3D(rs.getBoolean("es"));
+             funcion.setEs3D(rs.getBoolean("es3D"));
              funcion.setSubtitulada(rs.getBoolean("subtitulada"));
              
             
@@ -171,7 +171,7 @@ public class FuncionData {
             funcion.setHoraDeFin(horaFin);
             
             
-            funcion.setLugaresDisponibles(rs.getInt("LugaresDisp"));
+            funcion.setLugaresDisponibles(rs.getInt("lugaresDisp"));
             
             funcion.setNroSala(rs.getInt("nroSala"));
             

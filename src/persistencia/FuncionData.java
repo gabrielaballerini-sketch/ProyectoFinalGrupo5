@@ -54,7 +54,7 @@ public class FuncionData {
     ps.setTimestamp(5,Timestamp.valueOf(funcion.getHoraDeInicio()));
     ps.setTimestamp(6, Timestamp.valueOf(funcion.getHoraDeFin()));
     
-        ps.setInt(7, funcion.getLugaresDisponibles());
+   ps.setInt(7, funcion.getLugaresDisponibles());
    ps.setInt(8, funcion.getNroSala());
     ps.setDouble(9, funcion.getPrecioLugar());
     ps.executeUpdate();

@@ -6,6 +6,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,16 +15,30 @@ import java.time.LocalDate;
 public class TicketCompro {
    
    private LocalDate fechaCompra;
-     private LocalDate fechaFuncion;
+     private LocalDateTime horaInicio;
      private int monto;
-     Comprador comprador1 =new Comprador();
+     private int dni;
+     private int codLugar;
+     
 
-    public TicketCompro(LocalDate fechaCompra, LocalDate fechaFuncion, int monto) {
+    public TicketCompro(LocalDate fechaCompra, LocalDateTime horaInicio, int monto, int dni, int codLugar) {
         this.fechaCompra = fechaCompra;
-        this.fechaFuncion = fechaFuncion;
+        this.horaInicio = horaInicio;
         this.monto = monto;
+        this.dni = dni;
+        this.codLugar = codLugar;
     }
 
+    
+     
+     public TicketCompro(LocalDate fechaCompra, LocalDateTime horaInicio, int monto, int dni) {
+        this.fechaCompra = fechaCompra;
+        this.horaInicio = horaInicio;
+        this.monto = monto;
+        this.dni = dni;
+    }
+
+   
     public TicketCompro() {
     }
 
@@ -31,16 +46,33 @@ public class TicketCompro {
         return fechaCompra;
     }
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getCodLugar() {
+        return codLugar;
+    }
+
+    public void setCodLugar(int codLugar) {
+        this.codLugar = codLugar;
+    }
+
+    
     public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 
-    public LocalDate getFechaFuncion() {
-        return fechaFuncion;
+    public LocalDateTime getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setFechaFuncion(LocalDate fechaFuncion) {
-        this.fechaFuncion = fechaFuncion;
+    public void setHoraInicio(LocalDateTime horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
     public int getMonto() {
@@ -51,18 +83,16 @@ public class TicketCompro {
         this.monto = monto;
     }
 
-    public Comprador getComprador1() {
-        return comprador1;
-    }
-
-    public void setComprador1(Comprador comprador1) {
-        this.comprador1 = comprador1;
-    }
-
     @Override
     public String toString() {
-        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", fechaFuncion=" + fechaFuncion + ", monto=" + monto ;
+        return "TicketCompro{" + "fechaCompra=" + fechaCompra + ", horaInicio=" + horaInicio + ", monto=" + monto + ", dni=" + dni + ", codLugar=" + codLugar + '}';
     }
+
+ 
+
+    
+
+   
      
      
    

@@ -30,7 +30,7 @@ public class TicketCompraData {
     
     
     
-   
+
     
     
     public void GuardarTicket(TicketCompra ticket){

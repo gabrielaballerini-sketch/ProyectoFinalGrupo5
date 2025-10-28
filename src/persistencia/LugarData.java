@@ -51,7 +51,7 @@ public class LugarData {
             
             lugar.setCodLugar(rs.getInt(1));
             
-            JOptionPane.showMessageDialog(null, "Lugar reservado con exito");
+            JOptionPane.showMessageDialog(null, "Lugar guardado con exito");
             
         
             
@@ -112,9 +112,9 @@ public class LugarData {
         ps.setInt(5, lugar.getCodLugar());
         ps.executeUpdate();
      
-       // ps.close();
+        ps.close();
         
-         JOptionPane.showMessageDialog(null, "actualizado correctamente");
+         JOptionPane.showMessageDialog(null, "Lugar actualizado correctamente");
       
         
         }catch(SQLException E){
@@ -125,6 +125,42 @@ public class LugarData {
     
     
     
+    }
+    public void bajaLogica( Lugar lugar){
+        
+        String sql="UPDATE lugardeasiento SET estado=0  WHERE codLugar= ?";
+        
+        try{
+               PreparedStatement ps = con.prepareStatement(sql);
+               ps.setInt(1, lugar.getCodLugar());
+               
+               ps.executeUpdate();
+               
+               ps.close();
+               
+                JOptionPane.showMessageDialog(null, "baja del lugar exitosa");
+    
+        }catch(SQLException E ){
+        
+         JOptionPane.showMessageDialog(null, "no se pudo conectar a la BD");
+        }
+    
+    }
+     public void eliminarLugar(Lugar lugar){
+             
+       String query=" Delete from lugardeasiento where codLugar=? "; 
+    
+     try {
+        PreparedStatement ps = con.prepareStatement(query);
+   
+         ps.setInt(1, lugar.getCodLugar());
+          ps.executeUpdate();
+          JOptionPane.showMessageDialog(null, "Lugar eliminado");
+       
+        } catch (SQLException e){
+           
+               JOptionPane.showMessageDialog(null, "no se pudo conectar a la BD");
+        } 
     }
 
 

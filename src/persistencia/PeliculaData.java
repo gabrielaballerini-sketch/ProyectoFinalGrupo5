@@ -58,7 +58,7 @@ public class PeliculaData {
    
     
     
-    String sql = "SELECT `titulo`, `director`, `actores`, `origen`, `genero`, `estreno`, `enCartelera` FROM `pelicula` WHERE `titulo= ?";
+    String sql = "SELECT `titulo`, `director`, `actores`, `origen`, `genero`, `estreno`, `enCartelera` FROM `pelicula` WHERE titulo= ?";
     Pelicula peli= null;
     try {
         PreparedStatement ps = con.prepareStatement(sql);

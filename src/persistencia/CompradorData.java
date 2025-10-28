@@ -35,7 +35,7 @@ public class CompradorData {
     
     public void guardarComprador(Comprador compr){
         
-        String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`, ``estado) VALUES (?,?,?,?,?,?)";
+        String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`, `estado`) VALUES (?,?,?,?,?,?)";
         try{
         PreparedStatement ps= conn.prepareStatement(query);
         LocalDate fechaUtil = compr.getFechaNac();

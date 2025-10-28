@@ -23,6 +23,12 @@ public class Sala {
         this.estado = estado;
     }
 
+    public Sala() {
+    }
+    
+    
+    
+
     public int getNroSala() {
         return nroSala;
     }

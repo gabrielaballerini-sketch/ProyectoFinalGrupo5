@@ -17,6 +17,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     public vistaPrincipal() {
        
         initComponents();
+         setSize(800, 600);
+        
     }
 
     /**
@@ -59,7 +61,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Escritorio)
+                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

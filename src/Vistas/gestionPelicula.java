@@ -8,6 +8,7 @@ package vistas;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javax.swing.JOptionPane;
 import modelo.Pelicula;
 import persistencia.PeliculaData;
 
@@ -22,6 +23,11 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
   
     public gestionPelicula() {
         initComponents();
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+       
+        
+        
     }
 
     /**
@@ -71,6 +77,17 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         jLabel7.setText("Estreno");
 
         jLabel8.setText("En Cartelera");
+
+        jtTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtTituloFocusLost(evt);
+            }
+        });
+        jtTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtTituloActionPerformed(evt);
+            }
+        });
 
         jtDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,16 +165,14 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
                                     .addComponent(jtOrigen, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtActores, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtDirector, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jtTitulo))
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rbCartelera))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 159, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jLabel1)))
@@ -208,7 +223,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(rbCartelera))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnActualizar)
@@ -237,6 +252,10 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       if(jtTitulo.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Debe ingresar un titulo");
+           return;
+       }
        
         String titulo= jtTitulo.getText();
         pelicula= peliData.buscarPeliculaPorTitulo(titulo);
@@ -247,6 +266,9 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         jtGenero.setText(pelicula.getGenero());
         calendario.setDate(Date.valueOf(pelicula.getEstreno()));
         rbCartelera.setSelected(pelicula.isEnCartelera());
+        btnGuardar.setEnabled(false);
+        btnEliminar.setEnabled(true);
+        btnActualizar.setEnabled(true);
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -263,34 +285,78 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       String titulo= jtTitulo.getText();
+        if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
+                jtGenero.getText().isEmpty()||calendario.getDate()== null ||!rbCartelera.isSelected()){
+           JOptionPane.showMessageDialog(null, "complete todos los campos");
+           return;
+       }
+        
+        String titulo= jtTitulo.getText();
+       
+        
        String director = jtDirector.getText();
        String actores = jtActores.getText();
        String origen = jtOrigen.getText();
        String genero = jtGenero.getText();
        LocalDate estreno= calendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean cartelera= rbCartelera.isSelected();
+        
+       if(!director.matches("[a-zA-Z ]+")&& 
+               !actores.matches("[a-zA-Z ]+")&& !origen.matches("[a-zA-Z]+")&&
+                 !genero.matches("[a-zA-Z]+")&& estreno!=null && cartelera==true){
+        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        jtDirector.requestFocus();
+         }else{
+            Pelicula peli= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
+         peliData.guardarPelicula(peli);
+      
+        
+        
+        
+       }
        
-       Pelicula peli= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
        
-       peliData.guardarPelicula(peli);
+        
+        
+      
        limpiarCampos();
-       
+        
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       String titulo= jtTitulo.getText();
+       if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
+                jtGenero.getText().isEmpty()||calendario.getDate()== null ||!rbCartelera.isSelected()){
+           JOptionPane.showMessageDialog(null, "complete todos los campos");
+           return;
+       }
+       
+       
+        String titulo= jtTitulo.getText();
        String director = jtDirector.getText();
        String actores = jtActores.getText();
        String origen = jtOrigen.getText();
        String genero = jtGenero.getText();
        LocalDate estreno= calendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean cartelera= rbCartelera.isSelected();
-       Pelicula nueva= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
-       peliData.actualizarPelicula(nueva);
+         if(director.matches("[a-zA-Z ]+")&& actores.matches("[a-zA-Z ]+")&& origen.matches("[a-zA-Z ]+")&&
+                 genero.matches("[a-zA-Z ]+")&& estreno!=null ){
+        Pelicula peli2= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
+              peliData.actualizarPelicula(peli2);
+         }else{
+        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        jtDirector.requestFocus();
+        
+        
+       }
+      
+ 
         limpiarCampos();
+        btnGuardar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        
         
         
     }//GEN-LAST:event_btnActualizarActionPerformed
@@ -298,10 +364,26 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
        
         String titulo= jtTitulo.getText();
+      
         peliData.borrarPelicula(titulo);
         limpiarCampos();
+        btnGuardar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+       
         
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void jtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtTituloActionPerformed
+
+    private void jtTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtTituloFocusLost
+           
+       
+               
+        
+    }//GEN-LAST:event_jtTituloFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

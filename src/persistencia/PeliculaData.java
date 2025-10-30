@@ -11,7 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
+import modelo.Comprador;
 import modelo.Conexion;
 import modelo.Pelicula;
 
@@ -83,6 +86,9 @@ public class PeliculaData {
                 peli.setEstreno(fecha.toLocalDate()); 
                 
                 peli.setEnCartelera(rs.getBoolean("enCartelera"));
+            }else{
+                JOptionPane.showMessageDialog(null,"Esa pelicula no esta disponible");
+                
             }
         }
         
@@ -126,7 +132,7 @@ public class PeliculaData {
     }
     
         public void borrarPelicula(String titulo){
-            String sql = " DELETE FROM `pelicula` WHERE titulo = ?";   
+            String sql = " DELETE FROM pelicula WHERE titulo = ?";   
             
            try{ 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -138,4 +144,35 @@ public class PeliculaData {
            JOptionPane.showMessageDialog(null, "No se elimino la pelicula");
            }
         }
+        
+        public ArrayList<Pelicula> listarPeliculas(){
+       String query = "SELECT * FROM `pelicula` ";
+       ArrayList <Pelicula> peliculas = new ArrayList();
+        try {
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet resultado= ps.executeQuery();
+             
+             while (resultado.next()){
+                 
+              Pelicula  peli= new Pelicula();
+              peli.setTitulo(resultado.getString("titulo"));
+               peli.setDirector(resultado.getString("director"));
+                peli.setActores(resultado.getString("actores"));
+                 peli.setOrigen(resultado.getString("origen"));
+                  peli.setGenero(resultado.getString("genero"));
+                  peli.setEstreno(resultado.getDate("estreno").toLocalDate());
+                  peli.setEnCartelera(resultado.getBoolean("encartelera"));
+                  
+              
+              peliculas.add(peli);
+             }   
+             ps.close();
+            
+        } catch (SQLException ex){
+         JOptionPane.showMessageDialog(null, "Error de conexion"+ ex.getMessage() );
+        
+        }
+        return peliculas;
+ 
+  }
 }

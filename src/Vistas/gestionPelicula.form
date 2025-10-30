@@ -71,10 +71,7 @@
                                       <Component id="jtOrigen" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jtActores" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jtDirector" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jtTitulo" min="-2" pref="273" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jtTitulo" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
@@ -84,7 +81,7 @@
                                       <Component id="calendario" min="-2" pref="282" max="-2" attributes="0"/>
                                       <Component id="rbCartelera" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -151,7 +148,7 @@
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <Component id="rbCartelera" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="76" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -210,6 +207,10 @@
         <Component class="javax.swing.JRadioButton" name="rbCartelera">
         </Component>
         <Component class="javax.swing.JTextField" name="jtTitulo">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtTituloFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtTituloActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtDirector">
           <Events>

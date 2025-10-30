@@ -18,13 +18,12 @@ import persistencia.CompradorData;
  */
 public class VistaComprador extends javax.swing.JInternalFrame {
 
- CompradorData compradorData;
-    
+    CompradorData compradorData;
+
     public VistaComprador() {
         initComponents();
-       compradorData =new CompradorData();
-        setSize(600, 400);
-        
+        compradorData = new CompradorData();
+
     }
 
     /**
@@ -176,147 +175,121 @@ public class VistaComprador extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDNIFocusLost
-    
-                
-         
-        int dni=Integer.parseInt(jtDNI.getText());
-        
-        for (Comprador comprador : compradorData.listarCompradores()){
-            
-            if(comprador.getDni()==dni){
-                
-            jtNombre.setText(comprador.getNombre());
-            
-             LocalDate fechaNac=comprador.getFechaNac();
-             
-                           
-            Date fechaConvertida = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-              jDateChooser1.setDate(fechaConvertida);
-              
-              
-              jtPassword.setText(comprador.getPassword());
-              
-              jrEstado.setSelected(comprador.isEstado());
-                            
-        
+        int dni = Integer.parseInt(jtDNI.getText());
+
+        for (Comprador comprador : compradorData.listarCompradores()) {
+
+            if (comprador.getDni() == dni) {
+
+                jtNombre.setText(comprador.getNombre());
+
+                LocalDate fechaNac = comprador.getFechaNac();
+
+                Date fechaConvertida = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+                jDateChooser1.setDate(fechaConvertida);
+
+                jtPassword.setText(comprador.getPassword());
+
+                jrEstado.setSelected(comprador.isEstado());
+
             }
-        
-                
-        }  
+
+        }
     }//GEN-LAST:event_jtDNIFocusLost
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-     
-         try {
-            
-                String nombre=jtNombre.getText().trim();
-              int dni=Integer.parseInt(jtDNI.getText());
-             
-                    
-                    if (jtNombre.getText().isEmpty()) {
+
+        try {
+
+            String nombre = jtNombre.getText().trim();
+            int dni = Integer.parseInt(jtDNI.getText());
+
+            if (jtNombre.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "no se pueden dejar campos vacios");
 
-                if ( !jtNombre.getText().matches("[a-zA-Z ]+")) {
+                if (!jtNombre.getText().matches("[a-zA-Z ]+")) {
 
                     JOptionPane.showMessageDialog(null, "Solo se permiten letras en NOMBRE");
                     return;
                 }
 
             }
-         
-                            
-        java.util.Date sfecha = jDateChooser1.getDate();
-        LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
-        String password=jtPassword.getText();
-        
-        String medio=(String) jcMedio.getSelectedItem();
-        
-        Boolean estado=jrEstado.isSelected();
-        
-        Comprador comprador=new Comprador(dni,nombre,fechaNac,password,medio,estado);
-        
-        
-        compradorData.guardarComprador(comprador);
-                
-         } catch (NumberFormatException nfe) {
+
+            java.util.Date sfecha = jDateChooser1.getDate();
+            LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            String password = jtPassword.getText();
+
+            String medio = (String) jcMedio.getSelectedItem();
+
+            Boolean estado = jrEstado.isSelected();
+
+            Comprador comprador = new Comprador(dni, nombre, fechaNac, password, medio, estado);
+
+            compradorData.guardarComprador(comprador);
+
+        } catch (NumberFormatException nfe) {
 
             JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido");
-         }
-       
-                                               
-        
-        
+        }
+
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-         
-         int dni=Integer.parseInt(jtDNI.getText());
-        
-        for (Comprador comprador1 : compradorData.listarCompradores()){
-            
-            if(comprador1.getDni()==dni){
-                
-                
-                  
-        
-         try {
-            
-                String nombre=jtNombre.getText().trim();
-              
-             
-                    
+
+        int dni = Integer.parseInt(jtDNI.getText());
+
+        for (Comprador comprador1 : compradorData.listarCompradores()) {
+
+            if (comprador1.getDni() == dni) {
+
+                try {
+
+                    String nombre = jtNombre.getText().trim();
+
                     if (jtNombre.getText().isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "no se pueden dejar campos vacios");
+                        JOptionPane.showMessageDialog(null, "no se pueden dejar campos vacios");
 
-                if ( !jtNombre.getText().matches("[a-zA-Z ]+")) {
+                        if (!jtNombre.getText().matches("[a-zA-Z ]+")) {
 
-                    JOptionPane.showMessageDialog(null, "Solo se permiten letras en NOMBRE");
-                    return;
+                            JOptionPane.showMessageDialog(null, "Solo se permiten letras en NOMBRE");
+                            return;
+                        }
+
+                    }
+
+                    java.util.Date sfecha = jDateChooser1.getDate();
+                    LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                    String password = jtPassword.getText();
+
+                    String medio = (String) jcMedio.getSelectedItem();
+
+                    Boolean estado = jrEstado.isSelected();
+
+                    Comprador comprador = new Comprador(dni, nombre, fechaNac, password, medio, estado);
+
+                    compradorData.actualizarComprador(comprador);
+
+                } catch (NumberFormatException nfe) {
+
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido");
                 }
 
-            }
-         
-                            
-        java.util.Date sfecha = jDateChooser1.getDate();
-        LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
-        String password=jtPassword.getText();
-        
-        String medio=(String) jcMedio.getSelectedItem();
-        
-        Boolean estado=jrEstado.isSelected();
-        
-        Comprador comprador=new Comprador(dni,nombre,fechaNac,password,medio,estado);
-        
-        
-        compradorData.actualizarComprador(comprador);
-                
-         } catch (NumberFormatException nfe) {
+            } else {
 
-            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido");
-         }
-       
-        
-        
-            }else{
-                
-                  JOptionPane.showMessageDialog(this, "No existe su DNI en el sistema, debe Registrarse");
-                
+                JOptionPane.showMessageDialog(this, "No existe su DNI en el sistema, debe Registrarse");
+
             }
-        
+
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
 
@@ -338,11 +311,3 @@ public class VistaComprador extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtPassword;
     // End of variables declaration//GEN-END:variables
 }
-
-
-
-
-
-
-
-

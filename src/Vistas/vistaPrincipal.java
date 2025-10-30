@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package vistas;
 
 /**
  *
@@ -34,6 +34,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +59,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(VistaComprador1);
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
 
@@ -91,21 +100,33 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio.add(peli);
         peli.setVisible(true);
         Escritorio.moveToFront(peli);
-        
-        
+                     
+              
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void VistaComprador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VistaComprador1ActionPerformed
-     
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       /*
         
         Escritorio.removeAll();
         Escritorio.repaint();
+        Vistacomp comprado2=new Vistacomp();
+        //VistaComprador comprado=new VistaComprador();
+        Escritorio.add(comprado2);
+        comprado2.setVisible(true);
+        Escritorio.moveToFront(comprado2);
+*/
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void VistaComprador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VistaComprador1ActionPerformed
+
+        Escritorio.removeAll();
+        Escritorio.repaint();
         VistaComprador comprado=new VistaComprador();
+        //VistaComprador comprado=new VistaComprador();
         Escritorio.add(comprado);
         comprado.setVisible(true);
         Escritorio.moveToFront(comprado);
-        
-        
+
     }//GEN-LAST:event_VistaComprador1ActionPerformed
 
     /**
@@ -150,5 +171,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

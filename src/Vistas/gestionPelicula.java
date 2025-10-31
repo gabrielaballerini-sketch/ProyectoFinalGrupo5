@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package Vistas;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -257,18 +257,37 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
            return;
        }
        
-        String titulo= jtTitulo.getText();
-        pelicula= peliData.buscarPeliculaPorTitulo(titulo);
+        String titulo= (String) jtTitulo.getText();
+       pelicula= peliData.buscarPeliculaPorTitulo(titulo);
+       if(pelicula==null){
+      // JOptionPane.showMessageDialog(null,"Pelicula vacia");
+       limpiarCampos();
+       
+       }else{
+            
+       if(!pelicula.getTitulo().equalsIgnoreCase(titulo)){
+           
+                    JOptionPane.showMessageDialog(null,"No existe la pelicula");
+                    jtTitulo.requestFocus();
+                    limpiarCampos();
+             
+            }else{
+                    
+            jtDirector.setText(pelicula.getDirector());
+            jtActores.setText(pelicula.getActores());
+            jtOrigen.setText(pelicula.getOrigen());
+            jtGenero.setText(pelicula.getGenero());
+            calendario.setDate(Date.valueOf(pelicula.getEstreno()));
+            rbCartelera.setSelected(pelicula.isEnCartelera());
+            btnGuardar.setEnabled(false);
+            btnEliminar.setEnabled(true);
+            btnActualizar.setEnabled(true);
+           
+            }
+                
+            
+       }
         
-        jtDirector.setText(pelicula.getDirector());
-        jtActores.setText(pelicula.getActores());
-        jtOrigen.setText(pelicula.getOrigen());
-        jtGenero.setText(pelicula.getGenero());
-        calendario.setDate(Date.valueOf(pelicula.getEstreno()));
-        rbCartelera.setSelected(pelicula.isEnCartelera());
-        btnGuardar.setEnabled(false);
-        btnEliminar.setEnabled(true);
-        btnActualizar.setEnabled(true);
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -301,16 +320,17 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
        LocalDate estreno= calendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean cartelera= rbCartelera.isSelected();
         
-       if(!director.matches("[a-zA-Z ]+")&& 
-               !actores.matches("[a-zA-Z ]+")&& !origen.matches("[a-zA-Z]+")&&
-                 !genero.matches("[a-zA-Z]+")&& estreno!=null && cartelera==true){
-        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
-        jtDirector.requestFocus();
-         }else{
+       if(director.matches("[a-zA-Z ]+")&& 
+               actores.matches("[a-zA-Z ]+")&& origen.matches("[a-zA-Z]+")&&
+                 genero.matches("[a-zA-Z]+")&& estreno!=null && cartelera==true){
+        
             Pelicula peli= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
          peliData.guardarPelicula(peli);
+        jtDirector.requestFocus();
+         }else{
+           
       
-        
+        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
         
         
        }
@@ -319,7 +339,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         
         
       
-       limpiarCampos();
+    //   limpiarCampos();
         
         
         

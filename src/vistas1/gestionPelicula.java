@@ -305,7 +305,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
-                jtGenero.getText().isEmpty()||calendario.getDate()== null ||!rbCartelera.isSelected()){
+                jtGenero.getText().isEmpty()||calendario.getDate()== null){
            JOptionPane.showMessageDialog(null, "complete todos los campos");
            return;
        }
@@ -322,7 +322,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         
        if(director.matches("[a-zA-Z ]+")&& 
                actores.matches("[a-zA-Z ]+")&& origen.matches("[a-zA-Z]+")&&
-                 genero.matches("[a-zA-Z]+")&& estreno!=null && cartelera==true){
+                 genero.matches("[a-zA-Z]+")&& estreno!=null ){
         
             Pelicula peli= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
          peliData.guardarPelicula(peli);
@@ -339,7 +339,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         
         
       
-    //   limpiarCampos();
+      limpiarCampos();
         
         
         

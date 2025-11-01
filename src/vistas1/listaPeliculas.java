@@ -128,12 +128,19 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
     private void cbPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPeliculasActionPerformed
        
         String cartelera= (String)cbPeliculas.getSelectedItem();
+        boolean seleccion= true;
+        
+        if(cartelera.equalsIgnoreCase("En Cartelera")){
+            seleccion= true;
+        }else if(cartelera.equalsIgnoreCase("Fuera de Cartelera")){
+            seleccion= false;
+        }
         
         borrarFilas();
         
         for (Pelicula pelis : peliData.listarPeliculas()) {
             
-            if( cartelera== pelis.isEnCartelera()){
+            if( seleccion == pelis.isEnCartelera()){
                 
    
              modelo.addRow(new Object[]{

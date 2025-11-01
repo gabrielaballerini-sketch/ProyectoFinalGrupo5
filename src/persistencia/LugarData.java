@@ -162,6 +162,8 @@ public class LugarData {
                JOptionPane.showMessageDialog(null, "no se pudo conectar a la BD");
         } 
     }
+     
+     
 
 
 

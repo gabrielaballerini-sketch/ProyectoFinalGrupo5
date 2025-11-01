@@ -16,7 +16,7 @@ public class TicketCompra {
    
     private int id_ticket;
    private LocalDate fechaCompra;
-  private int monto;
+  private int monto= 0;
    private int dni;
    private LocalDateTime horaInicio;
    private int codLugar;

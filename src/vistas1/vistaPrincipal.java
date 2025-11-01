@@ -17,7 +17,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     public vistaPrincipal() {
        
         initComponents();
-         setSize(800, 600);
+         setSize(800, 700);
         
     }
 
@@ -30,7 +30,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -39,16 +38,15 @@ public class vistaPrincipal extends javax.swing.JFrame {
         listaPeliculas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
-        jMenuItem1.setText("jMenuItem1");
-
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Escritorio.setLayout(null);
 
         jMenu1.setText("Pelicula");
 
@@ -80,22 +78,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(VistaComprador1);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
-
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Sala");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
-            }
-        });
 
         jMenuItem3.setText("AgregarSala");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -149,19 +134,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
               
     }//GEN-LAST:event_gestionPeliculaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       /*
-        
-        Escritorio.removeAll();
-        Escritorio.repaint();
-        Vistacomp comprado2=new Vistacomp();
-        //VistaComprador comprado=new VistaComprador();
-        Escritorio.add(comprado2);
-        comprado2.setVisible(true);
-        Escritorio.moveToFront(comprado2);
-*/
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void VistaComprador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VistaComprador1ActionPerformed
 
         Escritorio.removeAll();
@@ -199,14 +171,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-    
-        
-        
-        
-        
-    }//GEN-LAST:event_jMenu4ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         
         
@@ -217,11 +181,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         sala2.setVisible(true);
         Escritorio.moveToFront(sala2);
         
-        
-        
-        
-        
-        
+       
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -269,8 +229,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem listaPeliculas;

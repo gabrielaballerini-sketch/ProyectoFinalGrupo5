@@ -33,22 +33,33 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        gestionPelicula = new javax.swing.JMenuItem();
+        listaPeliculas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Escritorio.setLayout(null);
+
         jMenu1.setText("Pelicula");
 
-        jMenuItem1.setText("gestionPelicula");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        gestionPelicula.setText("gestionPelicula");
+        gestionPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                gestionPeliculaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(gestionPelicula);
+
+        listaPeliculas.setText("Lista de Peliculas");
+        listaPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaPeliculasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(listaPeliculas);
 
         jMenuBar1.add(jMenu1);
 
@@ -94,7 +105,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void gestionPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionPeliculaActionPerformed
        
         Escritorio.removeAll();
         Escritorio.repaint();
@@ -104,7 +115,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio.moveToFront(peli);
                      
               
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_gestionPeliculaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        /*
@@ -130,6 +141,16 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio.moveToFront(comprado);
 
     }//GEN-LAST:event_VistaComprador1ActionPerformed
+
+    private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
+       
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        listaPeliculas pelis  = new listaPeliculas();
+        Escritorio.add(pelis);
+        pelis.setVisible(true);
+        Escritorio.moveToFront(pelis);
+    }//GEN-LAST:event_listaPeliculasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,10 +190,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem VistaComprador1;
+    private javax.swing.JMenuItem gestionPelicula;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem listaPeliculas;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,17 +4,27 @@
  */
 package vistas1;
 
+import javax.swing.table.DefaultTableModel;
+import modelo.Pelicula;
+import persistencia.PeliculaData;
+
 /**
  *
  * @author Brian D
  */
 public class listaPeliculas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form listaPeliculas
-     */
+    private DefaultTableModel modelo;
+    private PeliculaData peliData;
+    
+    
+    
     public listaPeliculas() {
         initComponents();
+       modelo=  new DefaultTableModel();
+       peliData= new PeliculaData();
+       armarCabecera();
+      
     }
 
     /**
@@ -30,9 +40,11 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cbPeliculas = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Peliculas disponibles");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -56,6 +68,17 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setText("Elija una opcion");
+
+        cbPeliculas.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        cbPeliculas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Cartelera", "Fuera de cartelera" }));
+        cbPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPeliculasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +93,12 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
+                        .addGap(162, 162, 162)
+                        .addComponent(jLabel2)
+                        .addGap(104, 104, 104)
+                        .addComponent(cbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -79,36 +107,104 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
+       dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void cbPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPeliculasActionPerformed
+       
+        String cartelera= (String)cbPeliculas.getSelectedItem();
+        
+        borrarFilas();
+        
+        for (Pelicula pelis : peliData.listarPeliculas()) {
+            
+            if( cartelera== pelis.isEnCartelera()){
+                
+   
+             modelo.addRow(new Object[]{
+             pelis.getTitulo(),
+             pelis.getDirector(),
+             pelis.getActores(),
+             pelis.getOrigen(),
+             pelis.getGenero(),
+             pelis.getEstreno(),
+             pelis.isEnCartelera()
+        }); 
+            
+            }
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_cbPeliculasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbPeliculas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbSalir;
     // End of variables declaration//GEN-END:variables
 
-public void llenarTabla(){
+private void armarCabecera(){
 
-
-
-
-
+    modelo.addColumn("Titulo");
+    modelo.addColumn("Director");
+    modelo.addColumn("Actores");
+    modelo.addColumn("Origen");
+    modelo.addColumn("Genero");
+    modelo.addColumn("Estreno");
+    modelo.addColumn("EnCartelera");
+     jTable1.setModel(modelo);
 
 }
+    
+    
+    
+    
+    private void cargarTabla(){
+    for (Pelicula peli : peliData.listarPeliculas()) {
+        
+         modelo.addRow(new Object[]{
+             peli.getTitulo(),
+             peli.getDirector(),
+             peli.getActores(),
+             peli.getOrigen(),
+             peli.getGenero(),
+             peli.getEstreno(),
+             peli.isEnCartelera()
+        }); 
+        
+        
+    }
+
+}
+    
+    private void borrarFilas(){
+     int numFilas= modelo.getRowCount() -1;
+     for (int i = numFilas; i >= 0; i--) {
+         modelo.removeRow( i );
+
+     }
+ }
 
 
 }

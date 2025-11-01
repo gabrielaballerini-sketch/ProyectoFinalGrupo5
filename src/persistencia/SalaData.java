@@ -55,17 +55,12 @@ public class SalaData {
  
      sala.setNroSala(rs.getInt(1));
     
-    JOptionPane.showMessageDialog(null, "Funcion guardada");
+    JOptionPane.showMessageDialog(null, "Sala guardada con exito");
     
     }
   
-  
-  
-  
-  
-
-  
-  JOptionPane.showMessageDialog(null, "Sala guardada con exito");
+       
+ 
   ps.close();
   
   
@@ -233,8 +228,51 @@ public class SalaData {
        
 
     }
+   
+   
+   
+   public void eliminarSala(int nroSala){
+   
+   String sql="UPDATE salas SET estado=0 WHERE nroSala=?";
+   
+   try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, nroSala);
+        int exito = ps.executeUpdate();
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Sala dada de baja correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe una sala con ese número");
+        }
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
+    }
+   
+      
+   
+   
+   
+   }
+           
+           
+   
+   
+   
+   
+       
+       
+       
+   
+   }
+   
+   
+   
+   
+   
+   
 
-}
+
 
 
     

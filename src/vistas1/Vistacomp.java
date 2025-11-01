@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package vistas1;
 
 /**
  *
@@ -11,9 +11,7 @@ package Vistas;
  */
 public class Vistacomp extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Vistacomp
-     */
+
     public Vistacomp() {
         initComponents();
     }

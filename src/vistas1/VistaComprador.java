@@ -22,6 +22,8 @@ public class VistaComprador extends javax.swing.JInternalFrame {
 
     public VistaComprador() {
         initComponents();
+        
+        btnActualizar.setEnabled(false);
         compradorData = new CompradorData();
 
     }
@@ -35,12 +37,10 @@ public class VistaComprador extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jcMedio = new javax.swing.JComboBox<>();
         DNI = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jrEstado = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -51,8 +51,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-
-        jcMedio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar opcion", "Efectivo", "Debito", "Credito" }));
+        jButton2 = new javax.swing.JButton();
 
         DNI.setText("DNI:");
 
@@ -62,15 +61,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Contraseña:");
 
-        jLabel4.setText("Medio de pago:");
-
         jLabel5.setText("Estado:");
-
-        jtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtDNIFocusLost(evt);
-            }
-        });
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +87,13 @@ public class VistaComprador extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,29 +104,29 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel1))
                         .addGap(113, 113, 113)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jrEstado)))
+                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
                             .addComponent(jLabel3))
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jrEstado))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(DNI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                .addGap(58, 58, 58)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -148,11 +146,12 @@ public class VistaComprador extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DNI)
-                    .addComponent(jtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(jtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,15 +163,11 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jcMedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jrEstado))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,62 +178,32 @@ public class VistaComprador extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDNIFocusLost
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
-        int dni;
         
-        try{
-            
-         //dni = Integer.parseInt(jtDNI.getText());
-        
-       
-        for (Comprador comprador : compradorData.listarCompradores()) {
-           
-            dni = Integer.parseInt(jtDNI.getText());
-            
-            if (comprador.getDni() == dni) {
+        if (jtNombre.getText().isEmpty()||jtPassword.getText().isEmpty()||jDateChooser1.getDate()==null
+                ||jrEstado.isSelected()==false) {
 
-                jtNombre.setText(comprador.getNombre());
-
-                LocalDate fechaNac = comprador.getFechaNac();
-
-                Date fechaConvertida = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-                jDateChooser1.setDate(fechaConvertida);
-
-                jtPassword.setText(comprador.getPassword());
-
-                jrEstado.setSelected(comprador.isEstado());
-                String mediopago = comprador.getMedioDePago();
-                
-                jcMedio.setSelectedItem(mediopago);
+                JOptionPane.showMessageDialog(null, "no se pueden dejar los campos vacios");
+                return;
             }
 
-         }
-         }catch(NumberFormatException ex){
-                JOptionPane.showMessageDialog(null, "Solo se permite ingresar numeros");
-        }
-    }//GEN-LAST:event_jtDNIFocusLost
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
+         
+        
         try {
 
             String nombre = jtNombre.getText().trim();
+            
             int dni = Integer.parseInt(jtDNI.getText());
+           
 
-            if (jtNombre.getText().isEmpty()) {
-
-                JOptionPane.showMessageDialog(null, "no se pueden dejar campos vacios");
-                
-            }
-
-            if (!jtNombre.getText().matches("[a-zA-Z ]+")) {
+                     if (!jtNombre.getText().matches("[a-zA-Z ]+")) {
 
                 JOptionPane.showMessageDialog(null, "Solo se permiten letras en NOMBRE");
                     return;
             }
 
+           
             
 
             java.util.Date sfecha = jDateChooser1.getDate();
@@ -246,11 +211,9 @@ public class VistaComprador extends javax.swing.JInternalFrame {
 
             String password = jtPassword.getText();
 
-            String medio = (String) jcMedio.getSelectedItem();
-
             Boolean estado = jrEstado.isSelected();
 
-            Comprador comprador = new Comprador(dni, nombre, fechaNac, password, medio, estado);
+            Comprador comprador = new Comprador(dni, nombre, fechaNac, password, estado);
 
             compradorData.guardarComprador(comprador);
             
@@ -265,7 +228,12 @@ public class VistaComprador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+            if (jtNombre.getText().isEmpty()||jtPassword.getText().isEmpty()||jDateChooser1.getDate()==null
+                ||jrEstado.isSelected()==false|| jtDNI.getText().isEmpty()) {
 
+                JOptionPane.showMessageDialog(null, "no se pueden dejar los campos vacios");
+                return;
+            }
         int dni = Integer.parseInt(jtDNI.getText());
 
         for (Comprador comprador1 : compradorData.listarCompradores()) {
@@ -293,11 +261,9 @@ public class VistaComprador extends javax.swing.JInternalFrame {
 
                     String password = jtPassword.getText();
 
-                    String medio = (String) jcMedio.getSelectedItem();
-
                     Boolean estado = jrEstado.isSelected();
 
-                    Comprador comprador = new Comprador(dni, nombre, fechaNac, password, medio, estado);
+                    Comprador comprador = new Comprador(dni, nombre, fechaNac, password, estado);
 
                     compradorData.actualizarComprador(comprador);
                     
@@ -323,20 +289,59 @@ public class VistaComprador extends javax.swing.JInternalFrame {
           dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          if(jtDNI.getText().isEmpty()){
+          
+            JOptionPane.showMessageDialog(null,"POR FAVOR INGRESE UN DNI");
+          
+          }
+          
+        try {
+            int dni = Integer.parseInt(jtDNI.getText().trim());
+        
+            
+            for (Comprador aux : compradorData.listarCompradores()){
+                
+            
+                if(aux.getDni()==dni){
+                   
+
+                jtNombre.setText(aux.getNombre());
+
+                LocalDate fechaNac = aux.getFechaNac();
+
+                Date fechaConvertida = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+                jDateChooser1.setDate(fechaConvertida);
+
+                jtPassword.setText(aux.getPassword());
+
+                jrEstado.setSelected(aux.isEstado());
+                
+                
+                }
+            }
+         }catch(NumberFormatException ex){
+                System.out.println("Datos ingresados no validos, del TXT.DNI ");
+            
+        }
+          btnActualizar.setEnabled(true);
+          btnRegistrar.setEnabled(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DNI;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JComboBox<String> jcMedio;
     private javax.swing.JRadioButton jrEstado;
     private javax.swing.JTextField jtDNI;
     private javax.swing.JTextField jtNombre;
@@ -350,7 +355,6 @@ public class VistaComprador extends javax.swing.JInternalFrame {
         jtNombre.setText("");
         jtPassword.setText("");
         jrEstado.setSelected(false);
-        jcMedio.setSelectedIndex(0);
         jDateChooser1.setDate(null);
     
     }

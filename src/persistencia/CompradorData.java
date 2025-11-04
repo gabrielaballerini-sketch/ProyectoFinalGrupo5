@@ -35,7 +35,7 @@ public class CompradorData {
     
     public void guardarComprador(Comprador compr){
         
-        String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `medioDePago`, `estado`) VALUES (?,?,?,?,?,?)";
+        String query= "INSERT INTO `comprador`(`dni`, `nombre`, `fechaDeNacimiento`, `contraseña`, `estado`) VALUES (?,?,?,?,?)";
         try{
         PreparedStatement ps= conn.prepareStatement(query);
         LocalDate fechaUtil = compr.getFechaNac();
@@ -44,8 +44,7 @@ public class CompradorData {
         ps.setString(2, compr.getNombre());
         ps.setDate(3, fechaSQL);
         ps.setString(4, compr.getPassword());
-        ps.setString(5, compr.getMedioDePago());
-        ps.setBoolean(6, compr.isEstado());
+        ps.setBoolean(5, compr.isEstado());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Comprador agregado con exito");
         ps.close();
@@ -71,7 +70,6 @@ public class CompradorData {
                  compr.setNombre(resultado.getString("nombre"));
                  compr.setFechaNac(resultado.getDate("fechaDeNacimiento").toLocalDate());
                  compr.setPassword(resultado.getString("contraseña"));
-                 compr.setMedioDePago(resultado.getString("medioDePago"));
                  compr.setEstado(resultado.getBoolean("estado"));
              }
             ps.close();
@@ -96,7 +94,6 @@ public class CompradorData {
               compr.setNombre(resultado.getString("nombre"));
               compr.setFechaNac(resultado.getDate("fechaDeNacimiento").toLocalDate());
               compr.setPassword(resultado.getString("contraseña"));         
-              compr.setMedioDePago(resultado.getString("medioDePago"));
               compr.setEstado(resultado.getBoolean("estado"));
               
               
@@ -113,15 +110,14 @@ public class CompradorData {
   }
     public void actualizarComprador(Comprador compr){
     
-    String query= "UPDATE `comprador` SET`nombre`= ? ,`fechaDeNacimiento`= ? ,`contraseña`= ? ,`medioDePago`= ? WHERE dni= ? ";
+    String query= "UPDATE `comprador` SET`nombre`= ? ,`fechaDeNacimiento`= ? ,`contraseña`= ? WHERE dni= ? ";
    
     try{
         PreparedStatement ps= conn.prepareStatement(query);
         ps.setString(1, compr.getNombre());
         ps.setDate(2,Date.valueOf(compr.getFechaNac()));
         ps.setString(3, compr.getPassword());
-        ps.setString(4,compr.getMedioDePago());
-        ps.setInt(5, compr.getDni());
+        ps.setInt(4, compr.getDni());
         int filas = ps.executeUpdate();
         
          if (filas == 1) {

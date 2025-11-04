@@ -34,29 +34,21 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        gestionPelicula = new javax.swing.JMenuItem();
         listaPeliculas = new javax.swing.JMenuItem();
+        gestionPelicula = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        ticket = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Escritorio.setLayout(null);
-
         jMenu1.setText("Pelicula");
-
-        gestionPelicula.setText("gestionPelicula");
-        gestionPelicula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionPeliculaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(gestionPelicula);
 
         listaPeliculas.setText("Lista de Peliculas");
         listaPeliculas.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +57,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(listaPeliculas);
+
+        gestionPelicula.setText("gestionPelicula");
+        gestionPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionPeliculaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(gestionPelicula);
 
         jMenuBar1.add(jMenu1);
 
@@ -99,6 +99,13 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu4.add(jMenuItem4);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Ticket");
+
+        ticket.setText("Gestion De Ticket");
+        jMenu5.add(ticket);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -228,9 +235,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem listaPeliculas;
+    private javax.swing.JMenuItem ticket;
     // End of variables declaration//GEN-END:variables
 }

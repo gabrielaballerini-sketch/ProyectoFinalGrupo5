@@ -24,7 +24,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     public gestionPelicula() {
         initComponents();
         btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
+        
        
         
         
@@ -58,7 +58,6 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -122,13 +121,6 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,48 +137,49 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel6))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel5)))))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtGenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtOrigen, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtActores, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtDirector, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtTitulo))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscar))
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel5)))))
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jtGenero, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtOrigen, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtActores, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtDirector, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtTitulo))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnBuscar))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rbCartelera))
+                                        .addGap(0, 159, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbCartelera))
-                                .addGap(0, 159, Short.MAX_VALUE))))
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(222, 222, 222)
+                                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jLabel1)))
                 .addGap(34, 34, 34))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnGuardar)
-                .addGap(75, 75, 75)
-                .addComponent(btnActualizar)
-                .addGap(74, 74, 74)
-                .addComponent(btnEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,11 +216,10 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(rbCartelera))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnActualizar)
-                    .addComponent(btnEliminar)
                     .addComponent(btnSalir))
                 .addGap(16, 16, 16))
         );
@@ -280,7 +272,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
             calendario.setDate(Date.valueOf(pelicula.getEstreno()));
             rbCartelera.setSelected(pelicula.isEnCartelera());
             btnGuardar.setEnabled(false);
-            btnEliminar.setEnabled(true);
+            
             btnActualizar.setEnabled(true);
            
             }
@@ -375,24 +367,10 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         limpiarCampos();
         btnGuardar.setEnabled(true);
         btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
         
         
         
     }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       
-        String titulo= jtTitulo.getText();
-      
-        peliData.borrarPelicula(titulo);
-        limpiarCampos();
-        btnGuardar.setEnabled(true);
-        btnActualizar.setEnabled(false);
-        btnEliminar.setEnabled(false);
-       
-        
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTituloActionPerformed
         // TODO add your handling code here:
@@ -409,7 +387,6 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private com.toedter.calendar.JDateChooser calendario;

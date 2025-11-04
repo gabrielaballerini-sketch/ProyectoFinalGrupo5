@@ -46,20 +46,22 @@ public class ProyectoFinalGrupo5 {
         //System.out.println(aux.toString());
         //funData.EliminarFuncion(5);
         
-        /*
+        
         LocalDate fechaNac = LocalDate.of(2001, 4, 15);
         LocalDate fechaNac1 = LocalDate.of(1999, 3, 12);
         CompradorData comdata = new CompradorData();
+                /*
         Comprador com= new Comprador(23541841,"Ramon",fechaNac1,"root","Debito",true);
         Comprador com1= new Comprador(13321841,"Franco",fechaNac,"42cj","Debito",false);
         Comprador com2= new Comprador(22321841,"Ezequiel",fechaNac,"4332cj","Debito",true);
         Comprador com3= new Comprador(51321841,"Rob",fechaNac1,"432cj","Debito",true);
+      */
+        
+        for (Comprador lis : comdata.listarCompradores()) {
+                System.out.println(lis);
+        }
       
-        comdata.guardarComprador(com);
-        comdata.guardarComprador(com1);
-        comdata.guardarComprador(com2);
-        comdata.guardarComprador(com3);
-                                        */
+                                        
         //comdata.actualizarComprador(com);
         //comdata.bajaLogica(43321841);
         //comdata.eliminarComprador(43321841);
@@ -102,7 +104,7 @@ public class ProyectoFinalGrupo5 {
         Sala sal4 = new Sala(8,false,45,false);
         SalaData sadata= new SalaData();
         //sadata.guardarSala(sal);
-        sadata.modificarSala(sal4);
+        //sadata.modificarSala(sal4);
         
         
         

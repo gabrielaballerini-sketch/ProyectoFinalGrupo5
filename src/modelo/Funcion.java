@@ -28,10 +28,10 @@ public class Funcion {
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
     private int lugaresDisponibles;
-    private int nroSala;
+    private Sala nroSala;
     private double precioLugar;
 
-    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int nroSala, double precioLugar) {
+    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala nroSala, double precioLugar) {
         this.idFuncion = idFuncion;
         this.titulo = titulo;
         this.idioma = idioma;
@@ -50,7 +50,7 @@ public class Funcion {
     
     
     
-    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, int nroSala, double precioLugar) {
+    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala nroSala, double precioLugar) {
         this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
@@ -128,11 +128,11 @@ public class Funcion {
         this.titulo = titulo;
     }
 
-    public int getNroSala() {
+    public Sala getNroSala() {
         return nroSala;
     }
 
-    public void setNroSala(int nroSala) {
+    public void setNroSala(Sala nroSala) {
         this.nroSala = nroSala;
     }
 

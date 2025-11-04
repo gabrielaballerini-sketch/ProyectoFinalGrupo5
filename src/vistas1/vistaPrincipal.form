@@ -18,20 +18,20 @@
             <Property name="text" type="java.lang.String" value="Pelicula"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="gestionPelicula">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="gestionPelicula"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionPeliculaActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="listaPeliculas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lista de Peliculas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaPeliculasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="gestionPelicula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="gestionPelicula"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionPeliculaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -71,6 +71,18 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
               </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ticket"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="ticket">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gestion De Ticket"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

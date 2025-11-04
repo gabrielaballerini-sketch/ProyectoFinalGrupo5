@@ -175,4 +175,28 @@ public class PeliculaData {
         return peliculas;
  
   }
+        
+        public void bajaLogicaPelicula (Pelicula peli) {
+    
+   String sql = "UPDATE `pelicula` SET   `enCartelera`= 0 WHERE `enCartelera` = 1 AND  `titulo` = ? ";
+    
+    
+   
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+     
+        
+        ps.setString(1, peli.getTitulo());
+                 
+        
+         int fila = ps.executeUpdate();
+         if(fila==1){
+                JOptionPane.showMessageDialog(null,"Pelicula fuera de cartelera");
+             }
+         
+         
+        }catch(SQLException ex){
+        JOptionPane.showMessageDialog(null,"ERROR AL CONECTAR BS PELICULA actual");
+        }
+    }
 }

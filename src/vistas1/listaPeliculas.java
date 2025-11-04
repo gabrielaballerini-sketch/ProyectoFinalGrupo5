@@ -4,6 +4,8 @@
  */
 package vistas1;
 
+import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pelicula;
 import persistencia.PeliculaData;
@@ -42,6 +44,7 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbPeliculas = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,6 +82,13 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("Baja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +108,9 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
                         .addGap(104, 104, 104)
                         .addComponent(cbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
+                        .addGap(208, 208, 208)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -113,9 +125,11 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
                     .addComponent(cbPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,9 +175,29 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_cbPeliculasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            
+        int fila = jTable1.getSelectedRow();
+            if(fila!=-1){
+             String titulo = (String) jTable1.getValueAt(fila,0);
+             String director = (String) jTable1.getValueAt(fila, 1);
+             String actores = (String) jTable1.getValueAt(fila, 2);
+             String origen = (String) jTable1.getValueAt(fila, 3);
+             String genero = (String) jTable1.getValueAt(fila, 4);
+             LocalDate estreno = (LocalDate) jTable1.getValueAt(fila, 5);
+             Boolean enCartelera = (boolean) jTable1.getValueAt(fila, 6);
+             
+             Pelicula peli = new Pelicula(titulo,director,actores,origen,genero,estreno,enCartelera);
+             peliData.bajaLogicaPelicula(peli);
+             
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbPeliculas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

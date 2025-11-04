@@ -16,17 +16,19 @@ public class TicketCompra {
    
     private int id_ticket;
    private LocalDate fechaCompra;
-  private int monto= 0;
+    private int monto= 0;
    private int dni;
    private LocalDateTime horaInicio;
    private int codLugar;
+    private String medioDePago;
 
-    public TicketCompra(LocalDate fechaCompra, int monto, int dni, LocalDateTime horaInicio, int codLugar) {
+    public TicketCompra(LocalDate fechaCompra, int monto, int dni, LocalDateTime horaInicio, int codLugar,String medioPago) {
         this.fechaCompra = fechaCompra;
         this.monto = monto;
         this.dni = dni;
         this.horaInicio = horaInicio;
         this.codLugar = codLugar;
+        this.medioDePago= medioDePago;
     }
 
     public TicketCompra(int id_ticket, LocalDate fechaCompra, int monto, int dni, LocalDateTime horaInicio, int codLugar) {
@@ -94,12 +96,20 @@ public class TicketCompra {
         this.codLugar = codLugar;
     }
 
-    @Override
-    public String toString() {
-        return "TicketCompro{" + "id_ticket=" + id_ticket + ", fechaCompra=" + fechaCompra + ", monto=" + monto + ", dni=" + dni + ", horaInicio=" + horaInicio + ", codLugar=" + codLugar + '}';
+    public String getMedioDePago() {
+        return medioDePago;
     }
 
+    public void setMedioDePago(String medioDePago) {
+        this.medioDePago = medioDePago;
+    }
 
+    @Override
+    public String toString() {
+        return "TicketCompra{" + "id_ticket=" + id_ticket + ", fechaCompra=" + fechaCompra + ", monto=" + monto + ", dni=" + dni + ", horaInicio=" + horaInicio + ", codLugar=" + codLugar + ", medioDePago=" + medioDePago + '}';
+    }
+
+   
    
 
 

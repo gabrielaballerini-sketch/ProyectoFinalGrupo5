@@ -52,7 +52,7 @@ public class FuncionData {
     ps.setTimestamp(6, Timestamp.valueOf(funcion.getHoraDeFin()));
     
    ps.setInt(7, funcion.getLugaresDisponibles());
-   ps.setInt(8, funcion.getNroSala());
+   //ps.setInt(8, funcion.getNroSala());
     ps.setDouble(9, funcion.getPrecioLugar());
     ps.executeUpdate();
    
@@ -108,7 +108,7 @@ public class FuncionData {
     
     
     ps.setInt(7, funcion.getLugaresDisponibles());
-   ps.setInt(8, funcion.getNroSala());
+   //ps.setInt(8, funcion.getNroSala());
     ps.setDouble(9, funcion.getPrecioLugar());
     ps.setInt(10, funcion.getIdFuncion());
     
@@ -170,7 +170,7 @@ public class FuncionData {
             
             funcion.setLugaresDisponibles(rs.getInt("lugaresDisp"));
             
-            funcion.setNroSala(rs.getInt("nroSala"));
+            //funcion.setNroSala(rs.geSala("nroSala"));
             
             funcion.setPrecioLugar(rs.getDouble("precioDelLugar"));
             
@@ -240,7 +240,7 @@ public class FuncionData {
             
             funcion.setLugaresDisponibles(rs.getInt("LugaresDisp"));
             
-            funcion.setNroSala(rs.getInt("nroSala"));
+            //funcion.setNroSala(rs.getInt("nroSala"));
             
             funcion.setPrecioLugar(rs.getDouble("precioDelLugar"));
             

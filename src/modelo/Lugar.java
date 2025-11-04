@@ -11,44 +11,46 @@ package modelo;
  */
 public class Lugar {
  
-    private int idFuncion;
+    private Funcion funcion;
     private int codLugar;
     private int fila;
     private int numero;
     private boolean estado;
 
-    public Lugar(int idFuncion, int codLugar, int fila, int numero, boolean estado) {
-       
-
-        this.idFuncion = idFuncion;
+    public Lugar(Funcion funcion, int codLugar, int fila, int numero, boolean estado) {
+        this.funcion = funcion;
         this.codLugar = codLugar;
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
     }
 
-    public Lugar(int idFuncion, int fila, int numero, boolean estado) {
-        this.idFuncion = idFuncion;
+    public Lugar(int codLugar, int fila, int numero, boolean estado) {
+        this.codLugar = codLugar;
         this.fila = fila;
         this.numero = numero;
         this.estado = estado;
     }
+    
+    
+    
+    
+   
 
     public Lugar() {
     }
-    
-    
-    
-    
-    
 
-    public int getIdFuncion() {
-        return idFuncion;
+    public Funcion getFuncion() {
+        return funcion;
     }
 
-    public void setIdFuncion(int idFuncion) {
-        this.idFuncion = idFuncion;
+    public void setFuncion(Funcion funcion) {
+        this.funcion = funcion;
     }
+    
+    
+       
+    
 
     public int getCodLugar() {
         return codLugar;
@@ -84,8 +86,10 @@ public class Lugar {
 
     @Override
     public String toString() {
-        return "Lugar{" + "idFuncion=" + idFuncion + ", codLugar=" + codLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + '}';
+        return "Lugar{" + "funcion=" + funcion + ", codLugar=" + codLugar + ", fila=" + fila + ", numero=" + numero + ", estado=" + estado + '}';
     }
-      
 
+    
+    
+    
 }

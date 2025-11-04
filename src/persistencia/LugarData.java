@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
+import modelo.Funcion;
 import modelo.Lugar;
 
 public class LugarData {
@@ -19,8 +20,7 @@ public class LugarData {
    
  private Connection con=null;
 
-    // Conexion con=null;
-// private Connection con =null;
+
     public LugarData() {
 
        con= Conexion.buscarConexion();
@@ -39,7 +39,7 @@ public class LugarData {
             ps.setInt(2, lugar.getNumero());
 
             ps.setBoolean(3, lugar.isEstado());
-            ps.setInt(4, lugar.getIdFuncion());
+            ps.setInt(4, lugar.getFuncion().getIdFuncion());
             
             
             
@@ -79,7 +79,17 @@ public class LugarData {
         lugar.setFila(rs.getInt("fila"));
         lugar.setNumero(rs.getInt("numero"));
         lugar.setEstado(rs.getBoolean("estado"));
-        lugar.setIdFuncion(rs.getInt("idFuncion"));
+      
+         
+         Funcion funcion=new Funcion();
+        
+        funcion.setIdFuncion((rs.getInt("idFuncion")));
+        
+        //lugar.setFuncion(funcion);
+        
+         // lugar.getFuncion.(rs.getInt("idFuncion"));
+         
+       //  lugar.setFuncion(rs.getInt("idFuncion"));
         
         
         
@@ -108,7 +118,11 @@ public class LugarData {
         ps.setInt(1, lugar.getFila());
         ps.setInt(2, lugar.getNumero());
         ps.setBoolean(3, lugar.isEstado());
-        ps.setInt(4, lugar.getIdFuncion());
+        
+        
+        
+        
+        ps.setInt(4, lugar.getFuncion().getIdFuncion());
         ps.setInt(5, lugar.getCodLugar());
         ps.executeUpdate();
      

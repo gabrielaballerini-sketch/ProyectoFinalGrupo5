@@ -39,9 +39,9 @@ public class TicketCompraData {
 
             ps.setDate(1, Date.valueOf(ticket.getFechaCompra()));
             ps.setInt(2, ticket.getMonto());
-            ps.setInt(3, ticket.getDni());
-            ps.setTimestamp(4, Timestamp.valueOf(ticket.getHoraInicio()));
-            ps.setInt(5, ticket.getCodLugar());
+            ps.setInt(3, ticket.getComprador1().getDni());
+            ps.setTimestamp(4, Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio()));
+            ps.setInt(5, ticket.getLugar1().getCodLugar());
 
             ps.executeUpdate();
 
@@ -71,7 +71,7 @@ public class TicketCompraData {
 
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setTimestamp(1, Timestamp.valueOf(ticket.getHoraInicio()));
+            ps.setTimestamp(1, Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio()));
             ps.setInt(2, ticket.getId_ticket());
 
             int exito = ps.executeUpdate();
@@ -110,9 +110,9 @@ public class TicketCompraData {
                 ticketCompra.setId_ticket(id_ticket);
                 ticketCompra.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
                 ticketCompra.setMonto(rs.getInt("monto"));
-                ticketCompra.setDni(rs.getInt("dni"));
-                ticketCompra.setHoraInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
-                ticketCompra.setCodLugar(rs.getInt("codLugar"));
+                ticketCompra.getComprador1().setDni(rs.getInt("dni"));
+                ticketCompra.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
+                ticketCompra.getLugar1().setCodLugar(rs.getInt("codLugar"));
 
             } else {
 

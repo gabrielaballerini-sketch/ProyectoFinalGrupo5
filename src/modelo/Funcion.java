@@ -7,11 +7,7 @@ package modelo;
 
 
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 
 
@@ -27,11 +23,11 @@ public class Funcion {
     private boolean subtitulada;
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
-    private int lugaresDisponibles;
+    private Lugar [] lugaresDisponibles;
     private Sala sala;
-    private double precioLugar;
+   
 
-    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala, double precioLugar) {
+    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala) {
         this.idFuncion = idFuncion;
         this.titulo = titulo;
         this.idioma = idioma;
@@ -39,27 +35,28 @@ public class Funcion {
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-        this.lugaresDisponibles = lugaresDisponibles;
+        this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
         this.sala = sala;
-        this.precioLugar = precioLugar;
+    
     }
 
     public Funcion() {
+          this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
     }
 
     
     
     
-    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala, double precioLugar) {
+    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala) {
         this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-        this.lugaresDisponibles = lugaresDisponibles;
+       this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
         this.sala = sala;
-        this.precioLugar = precioLugar;
+        
     }
 
     public int getIdFuncion() {
@@ -112,13 +109,15 @@ public class Funcion {
         this.horaDeFin = horaDeFin;
     }
 
-    public int getLugaresDisponibles() {
+    public Lugar[] getLugaresDisponibles() {
         return lugaresDisponibles;
     }
 
-    public void setLugaresDisponibles(int lugaresDisponibles) {
+    public void setLugaresDisponibles(Lugar[] lugaresDisponibles) {
         this.lugaresDisponibles = lugaresDisponibles;
     }
+
+   
 
     public String getTitulo() {
         return titulo;
@@ -136,24 +135,10 @@ public class Funcion {
         this.sala = nroSala;
     }
 
-  
-
-
-    public double getPrecioLugar() {
-        return precioLugar;
-    }
-
-    public void setPrecioLugar(double precioLugar) {
-        this.precioLugar = precioLugar;
-    }
-
     @Override
     public String toString() {
-        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", sala=" + sala + ", precioLugar=" + precioLugar + '}';
+        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", sala=" + sala + '}';
     }
-
-    
-
   
 
 }

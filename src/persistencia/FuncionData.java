@@ -37,8 +37,8 @@ public class FuncionData {
     
     public void GuardarProyeccion(Funcion funcion){
     
-    String sql="insert into funcion (titulo, idioma , es3D, subtitulada, horaInicio, horaFin,LugaresDisp, nroSala, precioDelLugar ) "
-            + " VALUES (?,?,?,?,?,?,?,?,?)";
+    String sql="insert into funcion (titulo, idioma , es3D, subtitulada, horaInicio, horaFin,LugaresDisp, nroSala) "
+            + " VALUES (?,?,?,?,?,?,?,?)";
     
     
     try{
@@ -54,7 +54,6 @@ public class FuncionData {
     
    ps.setInt(7, funcion.getLugaresDisponibles());
    ps.setInt(8, funcion.getSala().getNroSala());
-    ps.setDouble(9, funcion.getPrecioLugar());
     ps.executeUpdate();
    
     ResultSet rs=ps.getGeneratedKeys(); 
@@ -85,8 +84,7 @@ public class FuncionData {
     public void modificarFuncion(Funcion funcion){
 
         
-        String sql="UPDATE funcion SET titulo=? ,idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,LugaresDisp=?,nroSala=?,"
-                + "precioDelLugar=? WHERE idFuncion=?";
+        String sql="UPDATE funcion SET titulo=? ,idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,LugaresDisp=?,nroSala=? WHERE idFuncion=?";
                 
                      
         
@@ -110,8 +108,7 @@ public class FuncionData {
     
     ps.setInt(7, funcion.getLugaresDisponibles());
    ps.setInt(8, funcion.getSala().getNroSala());
-    ps.setDouble(9, funcion.getPrecioLugar());
-    ps.setInt(10, funcion.getIdFuncion());
+    ps.setInt(9, funcion.getIdFuncion());
     
     int fila = ps.executeUpdate();
     
@@ -136,7 +133,7 @@ public class FuncionData {
       Funcion funcion = null;
       
         String sql="SELECT idFuncion, titulo, idioma, es3D, subtitulada, horaInicio, horaFin,"
-                + " LugaresDisp,nroSala, precioDelLugar FROM `funcion` WHERE idFuncion=?";
+                + " LugaresDisp,nroSala FROM `funcion` WHERE idFuncion=?";
         
         try{
         
@@ -173,7 +170,7 @@ public class FuncionData {
              
              funcion.getSala().setNroSala(rs.getInt("nroSala"));
             
-            funcion.setPrecioLugar(rs.getDouble("precioDelLugar"));
+   
             
                          }else{
         JOptionPane.showMessageDialog(null, "No existe una funcion con ese ID");
@@ -200,7 +197,7 @@ public class FuncionData {
     
     public List<Funcion> listarFunciones() {
         
-        String sql=" SELECT `idFuncion`, `titulo`, `idioma`, `es3D`, `subtitulada`, `horaInicio`, `horaFin`, `LugaresDisp`, `nroSala`, `precioDelLugar` FROM funcion";
+        String sql=" SELECT `idFuncion`, `titulo`, `idioma`, `es3D`, `subtitulada`, `horaInicio`, `horaFin`, `LugaresDisp`, `nroSala` FROM funcion";
         
         
         ArrayList<Funcion>funciones=new ArrayList<>();
@@ -243,7 +240,6 @@ public class FuncionData {
             
             funcion.getSala().setNroSala(rs.getInt("nroSala"));
             
-            funcion.setPrecioLugar(rs.getDouble("precioDelLugar"));
             
         
             funciones.add(funcion);

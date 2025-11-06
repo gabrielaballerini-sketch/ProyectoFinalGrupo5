@@ -24,8 +24,8 @@ public class ProyectoFinalGrupo5 {
     public static void main(String[] args) {
 
         
-        LocalDateTime horaInicio= LocalDateTime.of(2025, 10, 21, 20, 30,0);
-        LocalDateTime horaFin= LocalDateTime.of(2025, 10, 21, 22, 30,0);
+        //LocalDateTime horaInicio= LocalDateTime.of(2025, 10, 21, 20, 30,0);
+        //LocalDateTime horaFin= LocalDateTime.of(2025, 10, 21, 22, 30,0);
        
         /*        
         Funcion nueva= new Funcion(7,"Tron", "Esp", true, true, horaInicio,horaFin,20,5, 9000.00 );
@@ -47,9 +47,9 @@ public class ProyectoFinalGrupo5 {
         //funData.EliminarFuncion(5);
         
         
-        LocalDate fechaNac = LocalDate.of(2001, 4, 15);
-        LocalDate fechaNac1 = LocalDate.of(1999, 3, 12);
-        CompradorData comdata = new CompradorData();
+        //LocalDate fechaNac = LocalDate.of(2001, 4, 15);
+        //LocalDate fechaNac1 = LocalDate.of(1999, 3, 12);
+       // CompradorData comdata = new CompradorData();
                 /*
         Comprador com= new Comprador(23541841,"Ramon",fechaNac1,"root","Debito",true);
         Comprador com1= new Comprador(13321841,"Franco",fechaNac,"42cj","Debito",false);
@@ -57,9 +57,9 @@ public class ProyectoFinalGrupo5 {
         Comprador com3= new Comprador(51321841,"Rob",fechaNac1,"432cj","Debito",true);
       */
         
-        for (Comprador lis : comdata.listarCompradores()) {
-                System.out.println(lis);
-        }
+        //for (Comprador lis : comdata.listarCompradores()) {
+                //System.out.println(lis);
+       // }
       
                                         
         //comdata.actualizarComprador(com);
@@ -70,7 +70,7 @@ public class ProyectoFinalGrupo5 {
         Conexion.buscarConexion();
  
 
-        Lugar lugar=new Lugar(7,6, 45, 21, true);
+        Lugar lugar=new Lugar(6, 45, 21, true);
         LugarData lugardata=new LugarData();
         //lugardata.guardarLugar(lugar);
         //lugardata.actualizarLugar(lugar);

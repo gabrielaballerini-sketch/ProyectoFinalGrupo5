@@ -28,9 +28,9 @@ public class TicketCompraData {
         con = Conexion.buscarConexion();
     }
 
-    public void GuardarTicket(TicketCompra ticket) {
+    public void comprarTicket(TicketCompra ticket) {
 
-        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `monto`, `dni`, `horaDeInicio`, `codLugar`) VALUES "
+        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`, `idFuncion`, `codLugar`) VALUES "
                 + "(?,?,?,?,?)";
 
         try {
@@ -38,9 +38,9 @@ public class TicketCompraData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setDate(1, Date.valueOf(ticket.getFechaCompra()));
-            ps.setInt(2, ticket.getMonto());
+            ps.setInt(2, ticket.getPrecio());
             ps.setInt(3, ticket.getComprador1().getDni());
-            ps.setTimestamp(4, Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio()));
+            ps.setInt(4, ticket.getFuncion1().getIdFuncion());
             ps.setInt(5, ticket.getLugar1().getCodLugar());
 
             ps.executeUpdate();
@@ -93,7 +93,7 @@ public class TicketCompraData {
 
         TicketCompra ticketCompra = null;
 
-        String sql = "SELECT `id_ticket`, `fechaCompra`, `monto`, `dni`, `horaDeInicio`, `codLugar` FROM `ticketcompra` WHERE id_ticket=?";
+        String sql = "SELECT `id_ticket`, `fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar` FROM `ticketcompra` WHERE id_ticket=?";
 
         try {
 
@@ -109,7 +109,7 @@ public class TicketCompraData {
 
                 ticketCompra.setId_ticket(id_ticket);
                 ticketCompra.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
-                ticketCompra.setMonto(rs.getInt("monto"));
+                ticketCompra.setPrecio(rs.getInt("monto"));
                 ticketCompra.getComprador1().setDni(rs.getInt("dni"));
                 ticketCompra.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
                 ticketCompra.getLugar1().setCodLugar(rs.getInt("codLugar"));
@@ -130,5 +130,8 @@ public class TicketCompraData {
         return ticketCompra;
 
     }
+    
+   
+         
 
 }

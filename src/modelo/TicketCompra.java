@@ -16,28 +16,37 @@ public class TicketCompra {
    
     private int id_ticket;
    private LocalDate fechaCompra;
-    private int monto= 0;
+   private int cantidad;
+    private int precio;
    private Comprador comprador1;
    private Funcion funcion1;
    private Lugar lugar1  ;
     private String medioDePago;
 
-    public TicketCompra(LocalDate fechaCompra, int monto, Comprador comprador1, Funcion funcion1,Lugar lugar1,String medioPago) {
-        this.fechaCompra = fechaCompra;
-        this.monto = monto;
-        this.comprador1=comprador1;
-        this.funcion1=funcion1;
-        this.lugar1= lugar1;
-        this.medioDePago= medioDePago;
-    }
-
-    public TicketCompra(int id_ticket, LocalDate fechaCompra, int monto, Comprador comprador1, Funcion funcion1, Lugar lugar1) {
+    public TicketCompra(int id_ticket, LocalDate fechaCompra, int cantidad, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
         this.id_ticket = id_ticket;
         this.fechaCompra = fechaCompra;
-        this.monto = monto;
-        this.comprador1=comprador1;
-        this.funcion1=funcion1;
-         this.lugar1= lugar1;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.comprador1 = comprador1;
+        this.funcion1 = funcion1;
+        this.lugar1 = lugar1;
+        this.medioDePago = medioDePago;
+    }
+
+    public TicketCompra(LocalDate fechaCompra, int cantidad, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
+        this.fechaCompra = fechaCompra;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.comprador1 = comprador1;
+        this.funcion1 = funcion1;
+        this.lugar1 = lugar1;
+        this.medioDePago = medioDePago;
+    }
+
+  
+    public TicketCompra() {
+        
     }
 
     public int getId_ticket() {
@@ -46,14 +55,6 @@ public class TicketCompra {
 
     public void setId_ticket(int id_ticket) {
         this.id_ticket = id_ticket;
-    }
-    
-    
-    
-    
-    
-
-    public TicketCompra() {
     }
 
     public LocalDate getFechaCompra() {
@@ -64,12 +65,20 @@ public class TicketCompra {
         this.fechaCompra = fechaCompra;
     }
 
-    public int getMonto() {
-        return monto;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setMonto(int monto) {
-        this.monto = monto;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public Comprador getComprador1() {
@@ -88,9 +97,6 @@ public class TicketCompra {
         this.funcion1 = funcion1;
     }
 
-   
-
-
     public Lugar getLugar1() {
         return lugar1;
     }
@@ -98,9 +104,6 @@ public class TicketCompra {
     public void setLugar1(Lugar lugar1) {
         this.lugar1 = lugar1;
     }
-
-   
-    
 
     public String getMedioDePago() {
         return medioDePago;
@@ -110,19 +113,13 @@ public class TicketCompra {
         this.medioDePago = medioDePago;
     }
 
-    public TicketCompra(int id_ticket, LocalDate fechaCompra, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
-        this.id_ticket = id_ticket;
-        this.fechaCompra = fechaCompra;
-        this.comprador1 = comprador1;
-        this.funcion1 = funcion1;
-        this.lugar1 = lugar1;
-        this.medioDePago = medioDePago;
+    @Override
+    public String toString() {
+        return "TicketCompra{" + "id_ticket=" + id_ticket + ", fechaCompra=" + fechaCompra + ", cantidad=" + cantidad + ", precio=" + precio + ", comprador1=" + comprador1 + ", funcion1=" + funcion1 + ", lugar1=" + lugar1 + ", medioDePago=" + medioDePago + '}';
     }
-
     
+    
+    
+ }
+
    
-   
-
-
-
-}

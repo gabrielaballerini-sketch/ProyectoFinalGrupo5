@@ -50,8 +50,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Escritorio.setLayout(null);
-
         jMenu1.setText("Pelicula");
 
         listaPeliculas.setText("Lista de Peliculas");

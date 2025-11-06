@@ -23,7 +23,9 @@ public class Funcion {
     private boolean subtitulada;
     private LocalDateTime horaDeInicio;
     private LocalDateTime horaDeFin;
-    private Lugar [] lugaresDisponibles;
+    private int lugaresDisponibles;
+    private int[][] butaca;
+    private Lugar lugar;
     private Sala sala;
    
 
@@ -35,13 +37,17 @@ public class Funcion {
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-        this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
+        this.lugaresDisponibles =  lugaresDisponibles;
+         lugar = new Lugar();
+        this.butaca= new int[lugar.getFila()][lugar.getNumero()];
+       
         this.sala = sala;
     
     }
 
     public Funcion() {
-          this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
+      
+          
     }
 
     
@@ -54,7 +60,8 @@ public class Funcion {
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-       this.lugaresDisponibles = new Lugar[sala.getCapacidad()];
+       this.lugaresDisponibles =  lugaresDisponibles;
+        this.butaca= new int[lugar.getFila()][lugar.getNumero()];
         this.sala = sala;
         
     }
@@ -109,13 +116,31 @@ public class Funcion {
         this.horaDeFin = horaDeFin;
     }
 
-    public Lugar[] getLugaresDisponibles() {
+    public int getLugaresDisponibles() {
         return lugaresDisponibles;
     }
 
-    public void setLugaresDisponibles(Lugar[] lugaresDisponibles) {
+    public void setLugaresDisponibles(int lugaresDisponibles) {
         this.lugaresDisponibles = lugaresDisponibles;
     }
+
+    public int[][] getButaca() {
+        return butaca;
+    }
+
+    public void setButaca(int[][] butaca) {
+        this.butaca = butaca;
+    }
+
+    public Lugar getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Lugar lugar) {
+        this.lugar = lugar;
+    }
+
+   
 
    
 
@@ -137,8 +162,13 @@ public class Funcion {
 
     @Override
     public String toString() {
-        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", sala=" + sala + '}';
+        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", butaca=" + butaca + ", lugar=" + lugar + ", sala=" + sala + '}';
     }
+
+   
+   
+
+    
   
 
 }

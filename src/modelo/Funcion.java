@@ -8,6 +8,7 @@ package modelo;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 
@@ -127,8 +128,13 @@ public class Funcion {
 
     @Override
     public String toString() {
-        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", sala=" + sala + '}';
-    }
+        
+        DateTimeFormatter f=DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        
+        
+        
+        return  titulo + " - " +horaDeInicio.format(f) + " - Sala " + sala.getNroSala();
+     }
 
    
 

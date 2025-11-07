@@ -77,7 +77,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Numero de Sala");
 
-        cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16:30", "18:50", "20:10", "22.40", "00.20" }));
+        cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +89,11 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         btnActualizar.setText("Actualizar");
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,13 +183,18 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         String idioma= (String) cbIdioma.getSelectedItem();
         boolean es3D= rb3D.isSelected();
         boolean subtitulada= rbSubtitilo.isSelected();
-        String horaString= (String)cbHorario.getSelectedItem();
-        DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/mm/yyyy h:mm a");
+               
+       String horaString= (String)cbHorario.getSelectedItem();
+       
+       
+        DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+       
         LocalDateTime horaInicio= LocalDateTime.parse(horaString, formato);
         
-        
-        
+              
         LocalDateTime horaFin = horaInicio.plusMinutes(105);
+        
+        
         Sala sala= (Sala) cbSala.getSelectedItem();
         
         Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin,sala);
@@ -192,6 +202,10 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+          dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

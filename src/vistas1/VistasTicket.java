@@ -24,6 +24,7 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         initComponents();
         fundata = new FuncionData();
         ticketData = new TicketCompraData();
+        llenarCombo();
     }
 
     /**
@@ -49,7 +50,11 @@ public class VistasTicket extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Funcion: ");
 
-        jcFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcFuncionActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Precio: ");
 
@@ -129,6 +134,18 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jcFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcFuncionActionPerformed
+      
+        
+        
+                
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jcFuncionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -138,10 +155,20 @@ public class VistasTicket extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JComboBox<String> jcFuncion;
+    private javax.swing.JComboBox<Funcion> jcFuncion;
     // End of variables declaration//GEN-END:variables
 
     public void llenarCombo(){
+        
+               
+        
+    
+    for (Funcion funcion1: fundata.listarFunciones()){
+    
+    jcFuncion.addItem(funcion1);
+    }
+        
+        
        
     
     

@@ -105,6 +105,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu5.setText("Ticket");
 
         ticket.setText("Gestion De Ticket");
+        ticket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticketActionPerformed(evt);
+            }
+        });
         jMenu5.add(ticket);
 
         jMenuBar1.add(jMenu5);
@@ -217,6 +222,23 @@ public class vistaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void ticketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticketActionPerformed
+        
+        
+        
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        VistasTicket ticket= new VistasTicket();
+        Escritorio.add(ticket);
+        ticket.setVisible(true);
+        Escritorio.moveToFront(ticket);
+        
+                      
+        
+        
+        
+    }//GEN-LAST:event_ticketActionPerformed
 
     /**
      * @param args the command line arguments

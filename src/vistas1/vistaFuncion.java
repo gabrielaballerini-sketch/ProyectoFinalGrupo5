@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas1;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import modelo.Funcion;
 import modelo.Pelicula;
 import modelo.Sala;
@@ -19,7 +16,7 @@ import persistencia.SalaData;
  */
 public class vistaFuncion extends javax.swing.JInternalFrame {
 
-  private Funcion funcion;
+  
   private FuncionData funData;
   private Pelicula peli;
   private PeliculaData peliData;
@@ -28,7 +25,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
     public vistaFuncion() {
         initComponents();
         funData= new FuncionData();
-        funcion= new Funcion();
+        
         peli= new Pelicula();
         peliData= new PeliculaData();
         salaData= new SalaData();
@@ -61,8 +58,6 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         comboPelicula = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jtLugares = new javax.swing.JTextField();
 
         jLabel1.setText("Titulo");
 
@@ -95,15 +90,6 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
 
         btnSalir.setText("Salir");
 
-        jLabel7.setText("lugares Disponibles");
-
-        jtLugares.setText("20");
-        jtLugares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtLugaresActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,7 +103,6 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel7)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -129,13 +114,11 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
                                 .addComponent(cbHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(83, 83, 83))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbIdioma, 0, 169, Short.MAX_VALUE)
-                                .addComponent(rb3D)
-                                .addComponent(rbSubtitilo)
-                                .addComponent(comboPelicula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jtLugares, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbIdioma, 0, 169, Short.MAX_VALUE)
+                            .addComponent(rb3D)
+                            .addComponent(rbSubtitilo)
+                            .addComponent(comboPelicula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(75, 75, 75))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +146,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
                     .addComponent(cbIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(rb3D))
                 .addGap(18, 18, 18)
@@ -178,11 +161,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cbSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jtLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnActualizar)
@@ -199,19 +178,20 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         String idioma= (String) cbIdioma.getSelectedItem();
         boolean es3D= rb3D.isSelected();
         boolean subtitulada= rbSubtitilo.isSelected();
-        LocalDateTime horaInicio = (LocalDateTime) cbHorario.getSelectedItem();
+        String horaString= (String)cbHorario.getSelectedItem();
+        DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/mm/yyyy h:mm a");
+        LocalDateTime horaInicio= LocalDateTime.parse(horaString, formato);
+        
+        
+        
         LocalDateTime horaFin = horaInicio.plusMinutes(105);
         Sala sala= (Sala) cbSala.getSelectedItem();
-        int lugares = 20;
-        Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin, lugares,sala);
+        
+        Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin,sala);
        funData.GuardarProyeccion(funcion);
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void jtLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtLugaresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtLugaresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,9 +208,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jtLugares;
     private javax.swing.JRadioButton rb3D;
     private javax.swing.JRadioButton rbSubtitilo;
     // End of variables declaration//GEN-END:variables

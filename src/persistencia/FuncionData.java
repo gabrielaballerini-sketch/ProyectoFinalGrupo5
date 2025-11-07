@@ -38,7 +38,7 @@ public class FuncionData {
     public void GuardarProyeccion(Funcion funcion){
     
     String sql="insert into funcion (titulo, idioma , es3D, subtitulada, horaInicio, horaFin,LugaresDisp, nroSala) "
-            + " VALUES (?,?,?,?,?,?,?,?)";
+            + " VALUES (?,?,?,?,?,?,?)";
     
     
     try{
@@ -52,8 +52,8 @@ public class FuncionData {
     ps.setTimestamp(5,Timestamp.valueOf(funcion.getHoraDeInicio()));
     ps.setTimestamp(6, Timestamp.valueOf(funcion.getHoraDeFin()));
     
-   ps.setInt(7, funcion.getLugaresDisponibles());
-   ps.setInt(8, funcion.getSala().getNroSala());
+
+   ps.setInt(7, funcion.getSala().getNroSala());
     ps.executeUpdate();
    
     ResultSet rs=ps.getGeneratedKeys(); 
@@ -84,7 +84,7 @@ public class FuncionData {
     public void modificarFuncion(Funcion funcion){
 
         
-        String sql="UPDATE funcion SET titulo=? ,idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,LugaresDisp=?,nroSala=? WHERE idFuncion=?";
+        String sql="UPDATE funcion SET titulo=? ,idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,nroSala=? WHERE idFuncion=?";
                 
                      
         
@@ -106,9 +106,8 @@ public class FuncionData {
     ps.setTimestamp(6, Timestamp.valueOf(funcion.getHoraDeFin()));
     
     
-    ps.setInt(7, funcion.getLugaresDisponibles());
-   ps.setInt(8, funcion.getSala().getNroSala());
-    ps.setInt(9, funcion.getIdFuncion());
+   ps.setInt(7, funcion.getSala().getNroSala());
+    ps.setInt(8, funcion.getIdFuncion());
     
     int fila = ps.executeUpdate();
     
@@ -133,7 +132,7 @@ public class FuncionData {
       Funcion funcion = null;
       
         String sql="SELECT idFuncion, titulo, idioma, es3D, subtitulada, horaInicio, horaFin,"
-                + " LugaresDisp,nroSala FROM `funcion` WHERE idFuncion=?";
+                + " nroSala FROM `funcion` WHERE idFuncion=?";
         
         try{
         
@@ -164,9 +163,6 @@ public class FuncionData {
             funcion.setHoraDeInicio(horaInicio);
             
             funcion.setHoraDeFin(horaFin);
-            
-            
-            funcion.setLugaresDisponibles(rs.getInt("lugaresDisp"));
              
              funcion.getSala().setNroSala(rs.getInt("nroSala"));
             
@@ -197,7 +193,7 @@ public class FuncionData {
     
     public List<Funcion> listarFunciones() {
         
-        String sql=" SELECT `idFuncion`, `titulo`, `idioma`, `es3D`, `subtitulada`, `horaInicio`, `horaFin`, `LugaresDisp`, `nroSala` FROM funcion";
+        String sql=" SELECT `idFuncion`, `titulo`, `idioma`, `es3D`, `subtitulada`, `horaInicio`, `horaFin`, `nroSala` FROM funcion";
         
         
         ArrayList<Funcion>funciones=new ArrayList<>();
@@ -233,10 +229,6 @@ public class FuncionData {
             funcion.setHoraDeInicio(horaInicio);
             
             funcion.setHoraDeFin(horaFin);
-            
-            
-            
-            funcion.setLugaresDisponibles(rs.getInt("LugaresDisp"));
             
             funcion.getSala().setNroSala(rs.getInt("nroSala"));
             

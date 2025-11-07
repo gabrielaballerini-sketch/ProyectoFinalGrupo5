@@ -22,27 +22,19 @@ public class Funcion {
     private boolean es3D;
     private boolean subtitulada;
     private LocalDateTime horaDeInicio;
-    private LocalDateTime horaDeFin;
-    private int lugaresDisponibles;
-    private int[][] butaca;
-    private Lugar lugar;
+    private LocalDateTime horaDeFin;  
     private Sala sala;
    
 
-    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala) {
+    public Funcion(int idFuncion, String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, Sala sala) {
         this.idFuncion = idFuncion;
         this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
-        this.horaDeFin = horaDeFin;
-        this.lugaresDisponibles =  lugaresDisponibles;
-         lugar = new Lugar();
-        this.butaca= new int[lugar.getFila()][lugar.getNumero()];
-       
+        this.horaDeFin = horaDeFin; 
         this.sala = sala;
-    
     }
 
     public Funcion() {
@@ -53,15 +45,14 @@ public class Funcion {
     
     
     
-    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, int lugaresDisponibles, Sala sala) {
+    public Funcion(String titulo, String idioma, boolean es3D, boolean subtitulada, LocalDateTime horaDeInicio, LocalDateTime horaDeFin, Sala sala) {
         this.titulo = titulo;
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFin = horaDeFin;
-       this.lugaresDisponibles =  lugaresDisponibles;
-        this.butaca= new int[lugar.getFila()][lugar.getNumero()];
+       
         this.sala = sala;
         
     }
@@ -116,33 +107,7 @@ public class Funcion {
         this.horaDeFin = horaDeFin;
     }
 
-    public int getLugaresDisponibles() {
-        return lugaresDisponibles;
-    }
-
-    public void setLugaresDisponibles(int lugaresDisponibles) {
-        this.lugaresDisponibles = lugaresDisponibles;
-    }
-
-    public int[][] getButaca() {
-        return butaca;
-    }
-
-    public void setButaca(int[][] butaca) {
-        this.butaca = butaca;
-    }
-
-    public Lugar getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(Lugar lugar) {
-        this.lugar = lugar;
-    }
-
-   
-
-   
+  
 
     public String getTitulo() {
         return titulo;
@@ -162,8 +127,10 @@ public class Funcion {
 
     @Override
     public String toString() {
-        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", lugaresDisponibles=" + lugaresDisponibles + ", butaca=" + butaca + ", lugar=" + lugar + ", sala=" + sala + '}';
+        return "Funcion{" + "idFuncion=" + idFuncion + ", titulo=" + titulo + ", idioma=" + idioma + ", es3D=" + es3D + ", subtitulada=" + subtitulada + ", horaDeInicio=" + horaDeInicio + ", horaDeFin=" + horaDeFin + ", sala=" + sala + '}';
     }
+
+   
 
    
    

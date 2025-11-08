@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
 import modelo.Funcion;
@@ -177,9 +181,66 @@ public class LugarData {
         } 
     }
      
+     public List<Lugar> lugaresXfuncion(int idFuncion){
+     List<Lugar> lista = new ArrayList();
+            String sql = "SELECT * FROM lugardeasiento WHERE idFuncion = ?";
+     try {
+         PreparedStatement ps = con.prepareStatement(sql);
+         
+               ps.setInt(1, idFuncion);
+               
+           ResultSet rs = ps.executeQuery();
+           Lugar lugar = new Lugar();
+           
+           while(rs.next()){
+               
+           lugar.setCodLugar(rs.getInt("codLugar")); 
+           lugar.setFila(rs.getInt("fila"));
+           lugar.setNumero(rs.getInt("numero"));
+           lugar.setEstado(rs.getBoolean("estado"));
+            
+           Funcion f = new Funcion();
+           f.setIdFuncion(idFuncion);
+           
+           lugar.setFuncion(f);
+           
+           
+           };
+           
+            lista.add(lugar); 
+           
+           
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "ERROR AL OBTENER LUGARES");
+     }
+            
+            
+
+     return lista;
+     }
+
+    public void actualizarEstado(int codLugar, boolean estado){
      
+        String sql = "UPDATE lugardeasiento SET estado=?  WHERE codLugar =? ";
+        
+     try {
+         PreparedStatement ps = con.prepareStatement(sql);
+         
+         ps.setBoolean(1, estado);
+         ps.setInt(2, codLugar);
+        
+         
+         ps.executeUpdate();
+         
+     } catch (SQLException ex) {
+         
+      JOptionPane.showMessageDialog(null, "ERROR EN LA ACTUALIZACION");
+      
+     }
+     
+     
+     }
 
-
-
+    
     
 }

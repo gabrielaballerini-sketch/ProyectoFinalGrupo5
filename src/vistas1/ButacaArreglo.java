@@ -4,11 +4,14 @@ package vistas1;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelo.Funcion;
 import modelo.Lugar;
+import persistencia.LugarData;
 
 /**
  *
@@ -19,17 +22,20 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
     private static final int FILAS=5;
     private static final int COLUMNAS=8;
-    
+    private Funcion funcion;
     private JButton[][] botones;
     private Lugar[][] lugares;
+    private LugarData lugardata;
     
-    
-    public ButacaArreglo(){
+    public ButacaArreglo(Funcion funcion,LugarData lugardata){
         
      
     super("Seleccion de Butacas ", false,true,false,false);
     
      initComponents();
+     
+    this.funcion = funcion;
+    this.lugardata = lugardata;
     
     setSize(700,500);
     
@@ -39,7 +45,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
     setVisible(true);
     
-    
+   
     
     }
     
@@ -54,56 +60,49 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
     lugares=new Lugar[FILAS][COLUMNAS];
     
+    List <Lugar> listaLugares = lugardata.lugaresXfuncion(funcion.getIdFuncion());
     
-        for (int fila = 0; fila < FILAS; fila++) {
+    
+         for (Lugar aux: listaLugares) {
+             
+             int fila =aux.getFila()-1;
+             int columna= aux.getNumero()-1;
+             
+             lugares[fila][columna] = aux;
+             
+            JButton btn=new JButton("F" + aux.getFila() + "C" + aux.getNumero());
             
-            for(int col=0;col<COLUMNAS; col++){
-                
-                
-                
-                  // DAMOS 0 PARA GENERAR SOLO EL LUGAR PROVISORIO
-            
-            lugares[fila][col]=new Lugar(0,fila + 1,col + 1,true);
-            
-            
-            JButton btn=new JButton("F" + (fila + 1) + "N" + (col + 1));
-            
-            
+            if(aux.isEstado()){
             btn.setBackground(Color.GREEN);
+            
+            
+            }else {
+                
+            btn.setBackground(Color.RED);
+            btn.setEnabled(aux.isEstado());
             btn.setFocusPainted(false);
+            }
+            int f = fila;
+            int c = columna;
             
-            final int f =fila;
-            final int c=col;
-            
-            btn.addActionListener(e -> seleccionarButaca(f,c));
-                   
-            
-            botones[fila][col]=btn;
+            btn.addActionListener(e -> seleccionarButaca(f,c)); 
+            botones[fila][columna]=btn;
             
             panel.add(btn);
+         }
             
-            
-            add(panel,BorderLayout.CENTER);
+           add(panel,BorderLayout.CENTER);
             
             repaint();
             
             }
-            
-        }
-    
-        
-  
-    
            
-    
-    }
-    
-    
+                   
     
     
     private void seleccionarButaca(int fila,int col){
-    
-    
+   
+     
     Lugar lugar=lugares[fila][col];
     
     JButton boton=botones[fila][col];
@@ -113,18 +112,18 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
    
     
-    boton.setBackground(Color.RED);
-    
-    boton.setEnabled(false);
-    
-    
-    
+        boton.setBackground(Color.RED);
+
+        boton.setEnabled(false);
+
+        lugar.setEstado(false);
+        lugardata.actualizarEstado(lugar.getCodLugar(),false);
     
     
     } else{
     
-    JOptionPane.showMessageDialog(this,"Butaca no disponible");
-    }
+        JOptionPane.showMessageDialog(this,"Butaca no disponible");
+        }
     
     
     }

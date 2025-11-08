@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import javax.swing.JButton;
+import modelo.Comprador;
 import modelo.Funcion;
 import modelo.TicketCompra;
 import persistencia.FuncionData;
@@ -26,13 +27,14 @@ public class VistasTicket extends javax.swing.JInternalFrame {
     private FuncionData fundata;
     private TicketCompra ticket;
     private TicketCompraData ticketData;
-    
+    private Comprador comprador;
     
     public VistasTicket() {
         initComponents();
         
         
         fundata = new FuncionData();
+        comprador = comprador;
         ticketData = new TicketCompraData();
         llenarCombo();
     }
@@ -117,6 +119,8 @@ public class VistasTicket extends javax.swing.JInternalFrame {
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
         
+    
+        
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void jcFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcFuncionActionPerformed
@@ -156,8 +160,18 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         
         
         
-        
+         double precio;
+         if( fun.isEs3D()){
+             
+          precio = 12000;
+         
+         }else{
+         precio = 9500;
+         }
+         
+        // double total = precio * seleccionadas.size();
       }
+    
         
     }//GEN-LAST:event_jcFuncionActionPerformed
 

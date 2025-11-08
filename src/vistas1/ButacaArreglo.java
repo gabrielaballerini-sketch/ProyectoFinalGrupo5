@@ -4,6 +4,7 @@ package vistas1;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -97,7 +98,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
             
             }
            
-                   
+    private List<Lugar> seleccionadas = new ArrayList();               
     
     
     private void seleccionarButaca(int fila,int col){
@@ -109,11 +110,12 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
     
     if(lugar.isEstado()){
-    
+        
    
     
         boton.setBackground(Color.RED);
-
+        seleccionadas.add(lugar);
+        
         boton.setEnabled(false);
 
         lugar.setEstado(false);
@@ -126,6 +128,10 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
         }
     
     
+    }
+
+    public List<Lugar> getSeleccionadas() {
+        return seleccionadas;
     }
     
   

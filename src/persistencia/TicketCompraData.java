@@ -12,8 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
+import modelo.Lugar;
 import modelo.TicketCompra;
 
 /**
@@ -21,6 +23,10 @@ import modelo.TicketCompra;
  * @author Capotes
  */
 public class TicketCompraData {
+    
+ 
+    
+    
 
     private Connection con = null;
 

@@ -16,17 +16,17 @@ public class TicketCompra {
    
     private int id_ticket;
    private LocalDate fechaCompra;
-   private int cantidad;
+ 
     private int precio;
    private Comprador comprador1;
    private Funcion funcion1;
    private Lugar lugar1  ;
     private String medioDePago;
 
-    public TicketCompra(int id_ticket, LocalDate fechaCompra, int cantidad, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
+    public TicketCompra(int id_ticket, LocalDate fechaCompra, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
         this.id_ticket = id_ticket;
         this.fechaCompra = fechaCompra;
-        this.cantidad = cantidad;
+      
         this.precio = precio;
         this.comprador1 = comprador1;
         this.funcion1 = funcion1;
@@ -34,9 +34,9 @@ public class TicketCompra {
         this.medioDePago = medioDePago;
     }
 
-    public TicketCompra(LocalDate fechaCompra, int cantidad, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
+    public TicketCompra(LocalDate fechaCompra, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
         this.fechaCompra = fechaCompra;
-        this.cantidad = cantidad;
+ 
         this.precio = precio;
         this.comprador1 = comprador1;
         this.funcion1 = funcion1;
@@ -65,13 +65,7 @@ public class TicketCompra {
         this.fechaCompra = fechaCompra;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+   
 
     public int getPrecio() {
         return precio;
@@ -115,7 +109,7 @@ public class TicketCompra {
 
     @Override
     public String toString() {
-        return "TicketCompra{" + "id_ticket=" + id_ticket + ", fechaCompra=" + fechaCompra + ", cantidad=" + cantidad + ", precio=" + precio + ", comprador1=" + comprador1 + ", funcion1=" + funcion1 + ", lugar1=" + lugar1 + ", medioDePago=" + medioDePago + '}';
+        return "TicketCompra{" + "id_ticket=" + id_ticket + ", fechaCompra=" + fechaCompra +   ", precio=" + precio + ", comprador1=" + comprador1 + ", funcion1=" + funcion1 + ", lugar1=" + lugar1 + ", medioDePago=" + medioDePago + '}';
     }
     
     

@@ -8,11 +8,16 @@ package vistas1;
 import com.sun.istack.internal.logging.Logger;
 import java.awt.GridLayout;
 import java.beans.PropertyVetoException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Funcion;
+import modelo.Lugar;
 import modelo.TicketCompra;
+import persistencia.CompradorData;
 import persistencia.FuncionData;
 import persistencia.LugarData;
 
@@ -27,15 +32,23 @@ public class VistasTicket extends javax.swing.JInternalFrame {
     private FuncionData fundata;
     private TicketCompra ticket;
     private TicketCompraData ticketData;
-    private Comprador comprador;
+    private CompradorData compradordata;
+    private ButacaArreglo butacaarreglo;
+    private LugarData lugardata;
+    
     
     public VistasTicket() {
         initComponents();
         
         
         fundata = new FuncionData();
-        comprador = comprador;
+        compradordata = new CompradorData();
         ticketData = new TicketCompraData();
+        
+        lugardata=new LugarData();
+        butacaarreglo=null;
+        
+        
         llenarCombo();
     }
 
@@ -54,6 +67,10 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         btnComprar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jtDni = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jcMedioPago = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Ticket De Compra");
@@ -77,6 +94,14 @@ public class VistasTicket extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("DNI");
+
+        jtDni.setEnabled(false);
+
+        jLabel5.setText("Medio de pago");
+
+        jcMedioPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Debito", "Credito" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,12 +113,16 @@ public class VistasTicket extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(jcFuncion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
+                            .addComponent(jTextField1)
+                            .addComponent(jtDni)
+                            .addComponent(jcMedioPago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,7 +138,15 @@ public class VistasTicket extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jcMedioPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(btnComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
         );
@@ -118,16 +155,149 @@ public class VistasTicket extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
+
+
         
+  if(jtDni.getText().trim().isEmpty()){
+  
+  JOptionPane.showMessageDialog(this, "Debe ingresar el DNI del comprador");
+  return;
+  
+  }      
+        
+        
+        
+int dni=Integer.parseInt(jtDni.getText().trim());
+
+        
+        
+Comprador comprador=compradordata.buscarComprador(dni);
+
+
+
+if(comprador==null){
     
+    JOptionPane.showMessageDialog(this, "No se encontro el comprador ");
+    return;
+    }
+
+
+
+Funcion funcion=null;
+
+
+     if(jcFuncion.getSelectedIndex()>=0){
+ funcion=(Funcion) jcFuncion.getSelectedItem();
         
+     }else{
+     
+     JOptionPane.showMessageDialog(null, "Debe elegir una Funcion");
+     return;
+     }
+    
+     
+     if(butacaarreglo==null){
+     
+     JOptionPane.showMessageDialog(this, "Debe seleccionar butacas");
+     return;
+     }
+     
+     
+     List<Lugar>seleccionadas=butacaarreglo.getSeleccionadas();
+     
+     
+     
+     
+     String medioPago=(String) jcMedioPago.getSelectedItem();
+     
+     if(medioPago==null|| medioPago.isEmpty()){
+     
+     JOptionPane.showMessageDialog(this, "No se selecciono ninguna butaca");
+     }
+     
+     
+     
+     if((seleccionadas==null) || seleccionadas.isEmpty()){
+    
+    JOptionPane.showMessageDialog(this, "No se selecciono ninguna butaca");
+    return;
+     }
+     
+     
+     
+     
+         double precio;
+         if( funcion.isEs3D()){
+             
+          precio = 12000;
+         
+         }else{
+         precio = 9000;
+         }
+     
+         
+      int cantidad=seleccionadas.size();   
+         
+     double total=precio*seleccionadas.size();
+     
+     
+     
+     int respuesta=JOptionPane.showConfirmDialog(this, "Confirma la compra de " + cantidad + " entradas por un total de " + total, 
+             
+             "Confirmar compra", JOptionPane.YES_NO_OPTION );
+     
+     if(respuesta!=JOptionPane.YES_OPTION){
+     
+     return;
+     }
+     
+     
+     
+     // TICKET X BUTACA
+     
+     
+     /// saco del for un solo lugarrr 
+     for (Lugar lugar1:seleccionadas){
+     
+         
+         
+         
+     
+     TicketCompra ticket=new TicketCompra(LocalDate.now(),(int) precio,comprador, funcion,lugar1, medioPago);
+    
+     
+     
+             ticketData.comprarTicket(ticket);
+             lugar1.setEstado(false);
+             lugardata.actualizarEstado(lugar1.getCodLugar(),false);
+             
+             
+             
+            
+     }
+     
+     
+     
+     
+     
+     
+     
+     
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void jcFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcFuncionActionPerformed
      
      
          
-       
+      
+        
+        
+        
+        
+        
+        
+        
+        
         
      if(jcFuncion.getSelectedIndex()>=0){
           
@@ -135,22 +305,22 @@ public class VistasTicket extends javax.swing.JInternalFrame {
      LugarData lugardata = new LugarData();
      
      
-     ButacaArreglo frameButacas=new ButacaArreglo(fun,lugardata);
+     butacaarreglo=new ButacaArreglo(fun,lugardata);
       
       
       if(this.getDesktopPane()!=null){
       
           
  
-      this.getDesktopPane().add(frameButacas);
+      this.getDesktopPane().add(butacaarreglo);
       
-      frameButacas.setVisible(true);
+      butacaarreglo.setVisible(true);
       
       
         
          
          try {
-             frameButacas.setSelected(true);
+             butacaarreglo.setSelected(true);
          } catch (PropertyVetoException ex) {
              java.util.logging.Logger.getLogger(VistasTicket.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -160,17 +330,8 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         
         
         
-         double precio;
-         if( fun.isEs3D()){
-             
-          precio = 12000;
          
-         }else{
-         precio = 9500;
-         }
-         
-        // double total = precio * seleccionadas.size();
-      }
+     }
     
         
     }//GEN-LAST:event_jcFuncionActionPerformed
@@ -181,8 +342,12 @@ public class VistasTicket extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<Funcion> jcFuncion;
+    private javax.swing.JComboBox<String> jcMedioPago;
+    private javax.swing.JTextField jtDni;
     // End of variables declaration//GEN-END:variables
 
     public void llenarCombo(){

@@ -190,9 +190,11 @@ public class LugarData {
                ps.setInt(1, idFuncion);
                
            ResultSet rs = ps.executeQuery();
-           Lugar lugar = new Lugar();
+           
            
            while(rs.next()){
+               
+            Lugar lugar = new Lugar();
                
            lugar.setCodLugar(rs.getInt("codLugar")); 
            lugar.setFila(rs.getInt("fila"));
@@ -204,10 +206,10 @@ public class LugarData {
            
            lugar.setFuncion(f);
            
+              lista.add(lugar); 
+           }
            
-           };
-           
-            lista.add(lugar); 
+         ps.close();
            
            
      } catch (SQLException ex) {

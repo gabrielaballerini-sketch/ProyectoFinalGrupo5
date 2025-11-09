@@ -27,6 +27,12 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     private JButton[][] botones;
     private Lugar[][] lugares;
     private LugarData lugardata;
+
+    public ButacaArreglo() {
+    }
+    
+    
+    
     
     public ButacaArreglo(Funcion funcion,LugarData lugardata){
         
@@ -49,6 +55,8 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
    
     
     }
+
+    
     
     
     
@@ -101,34 +109,33 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     private List<Lugar> seleccionadas = new ArrayList();               
     
     
-    private void seleccionarButaca(int fila,int col){
    
-     
-    Lugar lugar=lugares[fila][col];
-    
-    JButton boton=botones[fila][col];
-    
-    
-    if(lugar.isEstado()){
-        
-   
-    
-        boton.setBackground(Color.RED);
-        seleccionadas.add(lugar);
-        
-        boton.setEnabled(false);
+    private void seleccionarButaca(int f, int c) {
+    JButton btn = botones[f][c];
+    Lugar lugar = lugares[f][c];
 
-        lugar.setEstado(false);
-        lugardata.actualizarEstado(lugar.getCodLugar(),false);
-    
-    
-    } else{
-    
-        JOptionPane.showMessageDialog(this,"Butaca no disponible");
-        }
-    
-    
+    // Si el lugar está disponible (verde)
+    if (lugar.isEstado()) {
+        btn.setBackground(Color.YELLOW); // seleccionado
+        lugar.setEstado(false); // marcarlo como reservado temporalmente
+        seleccionadas.add(lugar);
+    } else {
+        // Si ya estaba seleccionado o ocupado
+        btn.setBackground(Color.GREEN);
+        lugar.setEstado(true);
+        seleccionadas.remove(lugar);
     }
+}
+    
+       
+    
+    
+    
+    
+    
+    
+    
+    
 
     public List<Lugar> getSeleccionadas() {
         return seleccionadas;

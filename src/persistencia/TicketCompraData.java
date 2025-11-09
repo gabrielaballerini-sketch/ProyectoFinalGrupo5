@@ -36,8 +36,8 @@ public class TicketCompraData {
 
     public void comprarTicket(TicketCompra ticket) {
 
-        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`, `idFuncion`, `codLugar`) VALUES "
-                + "(?,?,?,?,?)";
+        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`,`horaDelInicio`, `idFuncion`, `codLugar`) VALUES "
+                + "(?,?,?,?,?,?)";
 
         try {
 
@@ -46,8 +46,9 @@ public class TicketCompraData {
             ps.setDate(1, Date.valueOf(ticket.getFechaCompra()));
             ps.setInt(2, ticket.getPrecio());
             ps.setInt(3, ticket.getComprador1().getDni());
-            ps.setInt(4, ticket.getFuncion1().getIdFuncion());
-            ps.setInt(5, ticket.getLugar1().getCodLugar());
+            ps.setTimestamp(4, java.sql.Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio()));
+            ps.setInt(5, ticket.getFuncion1().getIdFuncion());
+            ps.setInt(6, ticket.getLugar1().getCodLugar());
 
             ps.executeUpdate();
 
@@ -115,7 +116,7 @@ public class TicketCompraData {
 
                 ticketCompra.setId_ticket(id_ticket);
                 ticketCompra.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
-                ticketCompra.setPrecio(rs.getInt("monto"));
+                ticketCompra.setPrecio(rs.getInt("precio"));
                 ticketCompra.getComprador1().setDni(rs.getInt("dni"));
                 ticketCompra.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
                 ticketCompra.getLugar1().setCodLugar(rs.getInt("codLugar"));

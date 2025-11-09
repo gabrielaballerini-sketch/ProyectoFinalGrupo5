@@ -288,15 +288,7 @@ Funcion funcion=null;
     private void jcFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcFuncionActionPerformed
      
      
-         
-      
-        
-        
-        
-        
-        
-        
-        
+                
         
         
      if(jcFuncion.getSelectedIndex()>=0){

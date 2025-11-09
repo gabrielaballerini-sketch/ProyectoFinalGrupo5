@@ -242,7 +242,33 @@ public class LugarData {
      
      
      }
+    
+    public void generarLugaresBatch(Funcion funcion, int filas, int columnas) {
+    
+    String sql = "INSERT INTO lugardeasiento (idFuncion, fila, numero, estado) VALUES (?, ?, ?, ?)";
+    
+    try (PreparedStatement ps = con.prepareStatement(sql)) { 
+        
+        for (int f = 1; f <= filas; f++) {
+            for (int c = 1; c <= columnas; c++) {
+                
+                ps.setInt(1, funcion.getIdFuncion());
+                ps.setInt(2, f);
+                ps.setInt(3, c);
+                ps.setBoolean(4, true); // <--- ESTADO INICIAL DISPONIBLE (VERDE)
+                
+                ps.addBatch();
+            }
+        }
+        
+        ps.executeBatch(); // Ejecuta los 40 INSERTs a la vez
+        JOptionPane.showMessageDialog(null, "Se crearon 40 butacas disponibles.");
+        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al generar butacas con Batch: " + ex.getMessage());
+    }
+}
+    
+   
 
-    
-    
 }

@@ -21,6 +21,7 @@ import persistencia.LugarData;
 public class ButacaArreglo extends javax.swing.JInternalFrame {
 
     
+    
     private static final int FILAS=5;
     private static final int COLUMNAS=8;
     private Funcion funcion;
@@ -29,6 +30,11 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     private LugarData lugardata;
 
     public ButacaArreglo() {
+        
+        
+        
+        
+        
     }
     
     
@@ -61,7 +67,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     
     
     private void crearGrillaButacas(){
-    JPanel panel=new JPanel(new GridLayout(FILAS,COLUMNAS,5,5));
+    JPanel panel=new JPanel(new GridLayout(FILAS,COLUMNAS,5,8));
     
     panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
     
@@ -72,30 +78,65 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     List <Lugar> listaLugares = lugardata.lugaresXfuncion(funcion.getIdFuncion());
     
     
+    
+    
+    
          for (Lugar aux: listaLugares) {
-             
-             int fila =aux.getFila()-1;
+              int fila =aux.getFila()-1;
              int columna= aux.getNumero()-1;
-             
+                      
              lugares[fila][columna] = aux;
              
-            JButton btn=new JButton("F" + aux.getFila() + "C" + aux.getNumero());
+         }
             
-            if(aux.isEstado()){
-            btn.setBackground(Color.GREEN);
-            
-            
-            }else {
+             // CREAMOS 40 BOTONES 
+             for (int f=0;f<FILAS;f++){
+             for (int c=0; c<COLUMNAS;c++){
+               
+                 
+                 Lugar lugar=lugares[f][c];
+                 
+                 String etiqueta="F" + (f+1) + "C" + (c+1);
+                 
+                 JButton btn=new JButton(etiqueta);
+                 
+                 btn.setFocusPainted(false);
+                 
+                 
+                 
+                 
+                 if(lugar!=null){
+                 
+                 if(lugar.isEstado()){
+                 btn.setBackground(Color.GREEN);
+                 btn.setEnabled(true);
+                 
+                 
+                 } else{
+                 
+                 btn.setBackground(Color.RED);
+                 btn.setEnabled(false);
+                 
+                 }
                 
-            btn.setBackground(Color.RED);
-            btn.setEnabled(aux.isEstado());
-            btn.setFocusPainted(false);
-            }
-            int f = fila;
-            int c = columna;
+                                                 
+                 
+                 }
+                 
+                 else{
+                 
+                 btn.setBackground(Color.LIGHT_GRAY);
+                 btn.setEnabled(false);
+                 
+                 
+                 }
+             
+
+            int fila = f;
+            int columna=c;
             
-            btn.addActionListener(e -> seleccionarButaca(f,c)); 
-            botones[fila][columna]=btn;
+            btn.addActionListener(e -> seleccionarButaca(fila,columna)); 
+            botones[f][c]=btn;
             
             panel.add(btn);
          }
@@ -105,7 +146,8 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
             repaint();
             
             }
-           
+
+    }
     private List<Lugar> seleccionadas = new ArrayList();               
     
     

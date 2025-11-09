@@ -7,6 +7,7 @@ import modelo.Funcion;
 import modelo.Pelicula;
 import modelo.Sala;
 import persistencia.FuncionData;
+import persistencia.LugarData;
 import persistencia.PeliculaData;
 import persistencia.SalaData;
 
@@ -21,6 +22,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
   private Pelicula peli;
   private PeliculaData peliData;
   private SalaData salaData;
+  private LugarData lugardata;
   
     public vistaFuncion() {
         initComponents();
@@ -31,6 +33,8 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         salaData= new SalaData();
         cargarComboPelicula();
         cargarComboSala();
+        lugardata=new LugarData();
+        
     }
 
     /**
@@ -199,6 +203,10 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         
         Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin,sala);
        funData.GuardarProyeccion(funcion);
+       
+       
+       //AGREGADOOOO 
+       lugardata.generarLugaresBatch(funcion,5,8);
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed

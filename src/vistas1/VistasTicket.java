@@ -96,8 +96,6 @@ public class VistasTicket extends javax.swing.JInternalFrame {
 
         jLabel4.setText("DNI");
 
-        jtDni.setEnabled(false);
-
         jLabel5.setText("Medio de pago");
 
         jcMedioPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Debito", "Credito" }));
@@ -172,7 +170,7 @@ int dni=Integer.parseInt(jtDni.getText().trim());
         
         
 Comprador comprador=compradordata.buscarComprador(dni);
-
+        System.out.println(comprador.getDni());
 
 
 if(comprador==null){
@@ -201,6 +199,7 @@ Funcion funcion=null;
      JOptionPane.showMessageDialog(this, "Debe seleccionar butacas");
      return;
      }
+     
      
      
      List<Lugar>seleccionadas=butacaarreglo.getSeleccionadas();
@@ -235,7 +234,7 @@ Funcion funcion=null;
          precio = 9000;
          }
      
-         
+       
       int cantidad=seleccionadas.size();   
          
      double total=precio*seleccionadas.size();
@@ -260,8 +259,10 @@ Funcion funcion=null;
      for (Lugar lugar1:seleccionadas){
      
          
-         
-         
+  //  public TicketCompra(LocalDate fechaCompra, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago)      
+     //  String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`,`horaDelInicio`, `idFuncion`, `codLugar`) VALUES "
+     
+     
      
      TicketCompra ticket=new TicketCompra(LocalDate.now(),(int) precio,comprador, funcion,lugar1, medioPago);
     
@@ -271,7 +272,7 @@ Funcion funcion=null;
              lugar1.setEstado(false);
              lugardata.actualizarEstado(lugar1.getCodLugar(),false);
              
-             
+             JOptionPane.showMessageDialog(this,"Ticket generado , TOTAL A PAGAR " + total);
              
             
      }

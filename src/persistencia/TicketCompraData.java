@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
@@ -36,9 +38,15 @@ public class TicketCompraData {
 
     public void comprarTicket(TicketCompra ticket) {
 
-        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`,`horaDelInicio`, `idFuncion`, `codLugar`) VALUES "
-                + "(?,?,?,?,?,?)";
+        String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`,`horaDeInicio`, `codLugar`,`medioPago`,idFuncion ) VALUES "
+                + "(?,?,?,?,?,?,?)";
 
+   
+           
+         // INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar`, `medioPago`, `id_ticket`, `idFuncion`) 
+         // VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+         
+        
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -46,9 +54,16 @@ public class TicketCompraData {
             ps.setDate(1, Date.valueOf(ticket.getFechaCompra()));
             ps.setInt(2, ticket.getPrecio());
             ps.setInt(3, ticket.getComprador1().getDni());
-            ps.setTimestamp(4, java.sql.Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio()));
-            ps.setInt(5, ticket.getFuncion1().getIdFuncion());
-            ps.setInt(6, ticket.getLugar1().getCodLugar());
+            
+                   
+            ps.setTimestamp(4, java.sql.Timestamp.valueOf(ticket.getFuncion1().getHoraDeInicio())); // horaDelInicio
+             ps.setInt(5, ticket.getLugar1().getCodLugar());                       
+             ps.setString(6,ticket.getMedioDePago() );      
+               
+               
+            ps.setInt(7, ticket.getFuncion1().getIdFuncion());
+        
+       
 
             ps.executeUpdate();
 
@@ -57,7 +72,7 @@ public class TicketCompraData {
             if (rs.next()) {
                 ticket.setId_ticket(rs.getInt(1));
 
-                JOptionPane.showMessageDialog(null, "Ticket reservado con exito ");
+                System.out.println("Ticket reservado con exito ");
 
             }
 

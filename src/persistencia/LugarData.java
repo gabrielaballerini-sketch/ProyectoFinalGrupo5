@@ -255,13 +255,13 @@ public class LugarData {
                 ps.setInt(1, funcion.getIdFuncion());
                 ps.setInt(2, f);
                 ps.setInt(3, c);
-                ps.setBoolean(4, true); // <--- ESTADO INICIAL DISPONIBLE (VERDE)
+                ps.setBoolean(4, true); 
                 
                 ps.addBatch();
             }
         }
         
-        ps.executeBatch(); // Ejecuta los 40 INSERTs a la vez
+        ps.executeBatch(); 
         JOptionPane.showMessageDialog(null, "Se crearon 40 butacas disponibles.");
         
     } catch (SQLException ex) {

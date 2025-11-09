@@ -261,6 +261,11 @@ public class LugarData {
             }
         }
         
+        
+           /* ps.setInt(3, c);*/
+        
+        
+        
         ps.executeBatch(); 
         JOptionPane.showMessageDialog(null, "Se crearon 40 butacas disponibles.");
         

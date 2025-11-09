@@ -170,6 +170,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
         comprado.setVisible(true);
         Escritorio.moveToFront(comprado);
 
+        
+        
+        
     }//GEN-LAST:event_VistaComprador1ActionPerformed
 
     private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed

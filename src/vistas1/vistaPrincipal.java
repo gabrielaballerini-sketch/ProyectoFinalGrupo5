@@ -46,6 +46,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        ListarFunciones = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -106,6 +107,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu5.setText("Ticket");
 
         ticket.setText("Gestion De Ticket");
+        ticket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticketActionPerformed(evt);
+            }
+        });
         jMenu5.add(ticket);
 
         jMenuBar1.add(jMenu5);
@@ -127,6 +133,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         menuFuncion.add(jMenuItem2);
+
+        ListarFunciones.setText("Funciones Disponibles");
+        ListarFunciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarFuncionesActionPerformed(evt);
+            }
+        });
+        menuFuncion.add(ListarFunciones);
 
         jMenuBar1.add(menuFuncion);
 
@@ -257,6 +271,15 @@ public class vistaPrincipal extends javax.swing.JFrame {
         Escritorio.moveToFront(funcion);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void ListarFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarFuncionesActionPerformed
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       ListaDeFunciones lis = new ListaDeFunciones();
+       Escritorio.add(lis);
+       lis.setVisible(true);
+       Escritorio.moveToFront(lis);
+    }//GEN-LAST:event_ListarFuncionesActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -291,7 +314,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JMenuItem ListaFunciones;
+    private javax.swing.JMenuItem ListarFunciones;
     private javax.swing.JMenuItem VistaComprador1;
     private javax.swing.JMenuItem gestionPelicula;
     private javax.swing.JMenu jMenu1;

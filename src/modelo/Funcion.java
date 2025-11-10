@@ -137,7 +137,10 @@ public class Funcion {
      }
 
    
-
+    public String toString2(){
+    
+        return  "N° de sala " + sala.getNroSala();
+    }
    
    
 

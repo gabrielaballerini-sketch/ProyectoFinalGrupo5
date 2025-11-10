@@ -15,6 +15,7 @@ import persistencia.FuncionData;
 import persistencia.LugarData;
 import persistencia.PeliculaData;
 import persistencia.SalaData;
+import persistencia.TicketCompraData;
 
 
 public class ProyectoFinalGrupo5 {
@@ -24,11 +25,13 @@ public class ProyectoFinalGrupo5 {
     public static void main(String[] args) {
 
         
-        //LocalDateTime horaInicio= LocalDateTime.of(2025, 10, 21, 20, 30,0);
-        //LocalDateTime horaFin= LocalDateTime.of(2025, 10, 21, 22, 30,0);
+       LocalDateTime horaInicio= LocalDateTime.of(2025, 10, 21, 20, 30,0);
+       LocalDateTime horaFin= LocalDateTime.of(2025, 10, 21, 22, 30,0);
        
-        /*        
-        Funcion nueva= new Funcion(7,"Tron", "Esp", true, true, horaInicio,horaFin,20,5, 9000.00 );
+              Sala sal = new Sala(4,true,40,true); 
+        Funcion nueva= new Funcion("Tron", "Esp", true, true, horaInicio,horaFin,sal);
+        
+        /*
         Funcion nue = new Funcion("Huye","ingles",true,true,horaInicio,horaFin,12,5,10000.9);
         Funcion nue1 = new Funcion("Alien 3","ingles",true,true,horaInicio,horaFin,12,5,10000.9);
         Funcion nue2 = new Funcion("Depredador","ingles",true,true,horaInicio,horaFin,12,5,10000.9);
@@ -47,15 +50,14 @@ public class ProyectoFinalGrupo5 {
         //funData.EliminarFuncion(5);
         
         
-        //LocalDate fechaNac = LocalDate.of(2001, 4, 15);
+        LocalDate fechaNac = LocalDate.of(2001, 4, 15);
         //LocalDate fechaNac1 = LocalDate.of(1999, 3, 12);
-       // CompradorData comdata = new CompradorData();
-                /*
+       CompradorData comdata = new CompradorData();
+             /*
         Comprador com= new Comprador(23541841,"Ramon",fechaNac1,"root","Debito",true);
         Comprador com1= new Comprador(13321841,"Franco",fechaNac,"42cj","Debito",false);
         Comprador com2= new Comprador(22321841,"Ezequiel",fechaNac,"4332cj","Debito",true);
-        Comprador com3= new Comprador(51321841,"Rob",fechaNac1,"432cj","Debito",true);
-      */
+        
         
         //for (Comprador lis : comdata.listarCompradores()) {
                 //System.out.println(lis);
@@ -70,7 +72,7 @@ public class ProyectoFinalGrupo5 {
         Conexion.buscarConexion();
  
 
-        Lugar lugar=new Lugar(6, 45, 21, true);
+        
         LugarData lugardata=new LugarData();
         //lugardata.guardarLugar(lugar);
         //lugardata.actualizarLugar(lugar);
@@ -97,7 +99,7 @@ public class ProyectoFinalGrupo5 {
         //pelidata.borrarPelicula("Jhon wick 4");
        
        
-        Sala sal = new Sala(4,true,40,true);
+       
         Sala sal1 = new Sala(2,false,50,true);
         Sala sal2 = new Sala(6,false,50,true);
         Sala sal3 = new Sala(7,true,50,true);
@@ -106,7 +108,17 @@ public class ProyectoFinalGrupo5 {
         //sadata.guardarSala(sal);
         //sadata.modificarSala(sal4);
         
+        Lugar lugar=new Lugar(6, 45, 21, true);
+        LocalDate fecha= LocalDate.now();
         
+        Comprador com3= new Comprador(51321841,"Rob",fechaNac,"432cj",true);
+         //comdata.guardarComprador(com3);  
+        
+       
+        TicketCompra ticket= new TicketCompra(fecha,9000, com3, nueva, lugar, "debito" );
+        TicketCompraData ticketData= new TicketCompraData();
+        //ticketData.comprarTicket(ticket);
+        TicketCompra tick= ticketData.buscarTicket(15);
         
  }
 }

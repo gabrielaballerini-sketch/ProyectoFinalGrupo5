@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
@@ -135,6 +136,8 @@ public class TicketCompraData {
                 ticketCompra.getComprador1().setDni(rs.getInt("dni"));
                 ticketCompra.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
                 ticketCompra.getLugar1().setCodLugar(rs.getInt("codLugar"));
+                ticketCompra.setMedioDePago(rs.getString("medioPago"));
+                ticketCompra.getFuncion1().setIdFuncion(rs.getInt("idFuncion"));
 
             } else {
 
@@ -153,7 +156,42 @@ public class TicketCompraData {
 
     }
     
-   
+    public ArrayList<TicketCompra> listaTicketsPorPelicula(String titulo){
+       
+        String query= "SELECT * FROM ticketcompra JOIN funcion  ON ticketcompra.idFuncion= funcion.idFuncion JOIN pelicula ON funcion.titulo= pelicula.titulo WHERE pelicula.titulo= ?";
+        ArrayList <TicketCompra> tickets= new ArrayList();
+        
+        try{
+        
+        PreparedStatement ps = con.prepareStatement(query);
+            ps.setString (1,titulo);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            
+            TicketCompra ticket = new TicketCompra();
+                ticket.setId_ticket(rs.getInt("id_ticket"));
+                ticket.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
+                ticket.setPrecio(rs.getInt("precio"));
+                ticket.getComprador1().setDni(rs.getInt("dni"));
+                ticket.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
+                ticket.getLugar1().setCodLugar(rs.getInt("codLugar"));
+                ticket.setMedioDePago(rs.getNString("medioPago"));
+                ticket.getFuncion1().setIdFuncion(rs.getInt("idFuncion"));
+                
+                tickets.add(ticket);
+            
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
+        }
+            
+            return tickets;
+    }
+    
+         
+            
+
+
          
 
 }

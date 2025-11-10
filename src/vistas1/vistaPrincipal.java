@@ -43,6 +43,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         ticket = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -51,6 +52,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Escritorio.setLayout(null);
 
         jMenu1.setText("Pelicula");
 
@@ -113,6 +116,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu5.add(ticket);
+
+        jMenuItem5.setText("Estadisticas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem5);
 
         jMenuBar1.add(jMenu5);
 
@@ -280,6 +291,18 @@ public class vistaPrincipal extends javax.swing.JFrame {
        Escritorio.moveToFront(lis);
     }//GEN-LAST:event_ListarFuncionesActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       informeTickets informe = new informeTickets();
+       Escritorio.add(informe);
+       informe.setVisible(true);
+       Escritorio.moveToFront(informe);
+        
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -327,6 +350,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem listaPeliculas;
     private javax.swing.JMenu menuFuncion;
     private javax.swing.JMenuItem ticket;

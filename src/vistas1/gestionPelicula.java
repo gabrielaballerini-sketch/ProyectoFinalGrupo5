@@ -312,9 +312,9 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
        LocalDate estreno= calendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean cartelera= rbCartelera.isSelected();
         
-       if(director.matches("[a-zA-Z ]+")&& 
-               actores.matches("[a-zA-Z ]+")&& origen.matches("[a-zA-Z]+")&&
-                 genero.matches("[a-zA-Z]+")&& estreno!=null ){
+       if(director.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s ]+")&& 
+               actores.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s ]+")&& origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")&&
+                 genero.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")&& estreno!=null ){
         
             Pelicula peli= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
          peliData.guardarPelicula(peli);
@@ -352,8 +352,8 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
        String genero = jtGenero.getText();
        LocalDate estreno= calendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
        boolean cartelera= rbCartelera.isSelected();
-         if(director.matches("[a-zA-Z ]+")&& actores.matches("[a-zA-Z ]+")&& origen.matches("[a-zA-Z ]+")&&
-                 genero.matches("[a-zA-Z ]+")&& estreno!=null ){
+         if(director.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s ]+")&& actores.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s ]+")&& origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")&&
+                 genero.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")&& estreno!=null ){
         Pelicula peli2= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
               peliData.actualizarPelicula(peli2);
          }else{

@@ -86,7 +86,7 @@ public class FuncionData {
     public void modificarFuncion(Funcion funcion){
 
         
-        String sql="UPDATE funcion SET titulo=? ,idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,nroSala=? WHERE idFuncion=?";
+        String sql="UPDATE funcion SET  idioma=?,es3D=?,subtitulada=?,horaInicio=?,horaFin=?,nroSala=? WHERE idFuncion=?";
                 
                      
         
@@ -97,19 +97,19 @@ public class FuncionData {
                 
         
     PreparedStatement ps=con.prepareStatement(sql);
-    ps.setString(1, funcion.getTitulo());
-    ps.setString(2,funcion.getIdioma());
-    ps.setBoolean(3, funcion.isEs3D());
-    ps.setBoolean(4, funcion.isSubtitulada());
+    ;
+    ps.setString(1,funcion.getIdioma());
+    ps.setBoolean(2, funcion.isEs3D());
+    ps.setBoolean(3, funcion.isSubtitulada());
     
     
-    ps.setTimestamp(5,Timestamp.valueOf(funcion.getHoraDeInicio()));
+    ps.setTimestamp(4,Timestamp.valueOf(funcion.getHoraDeInicio()));
    
-    ps.setTimestamp(6, Timestamp.valueOf(funcion.getHoraDeFin()));
+    ps.setTimestamp(5, Timestamp.valueOf(funcion.getHoraDeFin()));
     
     
-   ps.setInt(7, funcion.getSala().getNroSala());
-    ps.setInt(8, funcion.getIdFuncion());
+   ps.setInt(6, funcion.getSala().getNroSala());
+    ps.setInt(7, funcion.getIdFuncion());
     
     int fila = ps.executeUpdate();
     

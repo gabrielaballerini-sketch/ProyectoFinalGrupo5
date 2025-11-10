@@ -48,7 +48,7 @@ public class PeliculaData {
             ps.setBoolean(7, peli.isEnCartelera());
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se gurado la pelicula correctamente");
+            JOptionPane.showMessageDialog(null, "Se guardo la pelicula correctamente");
             
         }catch(SQLException ex){
         JOptionPane.showMessageDialog(null,"ERROR al guardar una pelicula");

@@ -4,12 +4,15 @@
  */
 package vistas1;
 
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Funcion;
 import modelo.Sala;
 import persistencia.FuncionData;
+import persistencia.SalaData;
 
 /**
  *
@@ -20,13 +23,31 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
      private  FuncionData funcionData;
       private Funcion funcion1;
+      private Sala sala1;
+      private SalaData salaData;
+   
     
     public ActualizarFunciones() {
-        initComponents();
-        modelo= new DefaultTableModel();
-      funcion1 = new Funcion();
+            modelo= new DefaultTableModel(){
+                   public boolean isCellEditable(int row, int column) {
+                return false; // Ninguna celda editable
+            }
+            
+             };
+             
+     
       funcionData = new FuncionData();
+      sala1= new Sala();
+      salaData = new SalaData();
+        
+        initComponents();
+    
+   
         armarTabla();
+        cargarTabla();
+        cargarSalas();
+       
+      
     
     }
 
@@ -45,21 +66,39 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
         jnEliminar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jrbEs3D = new javax.swing.JRadioButton();
+        jrbSubtitulada = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        jComboHora = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jComboSalas = new javax.swing.JComboBox<>();
+        jComboIdiomas = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("actualizar funcioones");
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id_funcion", "Titulo", "Idioma", "es3D", "Subtitulada", "HoraInicio", "HoraFin", "numSala"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtTabla);
 
         jnEliminar.setText("Eliminar");
@@ -83,6 +122,24 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setText("Idioma");
+
+        jLabel3.setText("Es3D");
+
+        jLabel4.setText("Subtitulada");
+
+        jrbEs3D.setText("Si");
+
+        jrbSubtitulada.setText("Si");
+
+        jLabel5.setText("Hora de inico");
+
+        jComboHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
+
+        jLabel6.setText("Salas");
+
+        jComboIdiomas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles", "Portugues" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,40 +147,116 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(66, 66, 66)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jrbEs3D, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                                            .addComponent(jrbSubtitulada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jComboIdiomas, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboHora, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboSalas, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboIdiomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jrbEs3D))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jComboSalas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jrbSubtitulada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jnEliminar)
                     .addComponent(jbActualizar)
                     .addComponent(jbSalir))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        // TODO add your handling code here:
+        int fila = jtTabla.getSelectedRow();
+      if(fila!=-1){ 
+           int idFuncion = (int) jtTabla.getValueAt(fila, 0);
+           String titulo = (String) jtTabla.getValueAt(fila, 1);
+           String idioma = (String) jComboIdiomas.getSelectedItem();
+           boolean es3D = jrbEs3D.isSelected();
+           boolean subtitulada = jrbSubtitulada.isSelected();
+           String horaInicio1 = (String) jComboHora.getSelectedItem();
+           DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+           
+           LocalDateTime horaInicio = LocalDateTime.parse( horaInicio1, formato);
+             LocalDateTime horaFin = horaInicio.plusMinutes(105);
+           
+            sala1 = (Sala) jComboSalas.getSelectedItem();
+            
+            
+             funcion1 = new Funcion(idFuncion,titulo,idioma,es3D,subtitulada,horaInicio,horaFin,sala1);
+             
+             funcionData.modificarFuncion(funcion1);
+           
+ 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+         
+          
+
+      }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -158,11 +291,21 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboHora;
+    private javax.swing.JComboBox<String> jComboIdiomas;
+    private javax.swing.JComboBox<Sala> jComboSalas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JButton jnEliminar;
+    private javax.swing.JRadioButton jrbEs3D;
+    private javax.swing.JRadioButton jrbSubtitulada;
     private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
 
@@ -202,4 +345,16 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
     
     
     }
+    public void cargarSalas(){
+        
+        for (Sala sala : salaData.listarSalas()) {
+            
+           jComboSalas.addItem(sala);
+            
+        }
+    
+    }
+    
+         
 }
+

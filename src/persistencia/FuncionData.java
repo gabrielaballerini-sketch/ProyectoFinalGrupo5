@@ -97,7 +97,7 @@ public class FuncionData {
                 
         
     PreparedStatement ps=con.prepareStatement(sql);
-    ;
+    
     ps.setString(1,funcion.getIdioma());
     ps.setBoolean(2, funcion.isEs3D());
     ps.setBoolean(3, funcion.isSubtitulada());
@@ -217,6 +217,8 @@ public class FuncionData {
             funcion.setTitulo(rs.getString("titulo"));
             
             funcion.setIdioma(rs.getString("idioma"));
+           
+            funcion.setEs3D(rs.getBoolean("es3D"));
             
             funcion.setSubtitulada(rs.getBoolean("subtitulada"));
             

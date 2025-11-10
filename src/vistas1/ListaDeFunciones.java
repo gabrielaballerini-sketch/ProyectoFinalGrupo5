@@ -12,6 +12,7 @@ import modelo.Funcion;
 import modelo.Pelicula;
 import modelo.Sala;
 import persistencia.FuncionData;
+import persistencia.PeliculaData;
 import persistencia.SalaData;
 
 /**
@@ -20,16 +21,22 @@ import persistencia.SalaData;
  */
 public class ListaDeFunciones extends javax.swing.JInternalFrame {
     private DefaultListModel<Funcion> lista;
+    private PeliculaData pelidata ;
    private FuncionData fundata;
    private SalaData salaData;
     public ListaDeFunciones() {
-         initComponents();
+         
+    lista = new DefaultListModel();
+    salaData = new SalaData();
+    fundata = new FuncionData();
+    pelidata = new PeliculaData();
         
-        cargarComboSala();
+    initComponents();
         
-        lista = new DefaultListModel();
-        salaData = new SalaData();
-        fundata = new FuncionData();
+    cargarComboSala();
+   cargarComboFunciones();
+        
+ 
     }
 
     /**
@@ -49,6 +56,9 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaFunciones = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        jcfunciones = new javax.swing.JComboBox<>();
+        btnBuscarSala = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Funciones Disponibles");
@@ -68,6 +78,15 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(listaFunciones);
 
+        jLabel4.setText("Pelicula:");
+
+        btnBuscarSala.setText("Buscar sala");
+        btnBuscarSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarSalaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,20 +104,29 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcfunciones, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(187, 187, 187))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -110,8 +138,15 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(jcfunciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,7 +164,7 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
         
         for (Funcion fun : fundata.listarFunciones()) {
             
-      if(fun.getHoraDeInicio()==horaInicio && nRsala.getNroSala() == fun.getSala().getNroSala()  ){
+      if(fun.getHoraDeInicio().equals(horaInicio) && nRsala.getNroSala() == fun.getSala().getNroSala()  ){
             
                 lista.addElement(fun);
                 
@@ -138,20 +173,38 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
         listaFunciones.setModel(lista);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnBuscarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSalaActionPerformed
+      
+        Funcion fun1 = (Funcion) jcfunciones.getSelectedItem();
+        
+        for (Funcion fun : fundata.listarFunciones()) {
+            if(fun.getTitulo()==fun1.getTitulo()){
+                lista.addElement(fun);
+                
+                
+            }
+            
+        }
+         listaFunciones.setModel(lista);
+    }//GEN-LAST:event_btnBuscarSalaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarSala;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jcHorario;
     private javax.swing.JComboBox<Sala> jcSala;
+    private javax.swing.JComboBox<Funcion> jcfunciones;
     private javax.swing.JList<Funcion> listaFunciones;
     // End of variables declaration//GEN-END:variables
 
 
-private void cargarComboSala(){
+public void cargarComboSala(){
     
     for (Sala sala : salaData.listarSalas()) {
         jcSala.addItem(sala);
@@ -159,5 +212,14 @@ private void cargarComboSala(){
     }
 
 }
+public void cargarComboFunciones(){
+
+    for (Funcion funcion : fundata.listarFunciones()) {
+        jcfunciones.addItem(funcion);
+    }
+   
+
+}
+
 
 }

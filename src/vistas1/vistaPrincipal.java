@@ -45,6 +45,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         ticket = new javax.swing.JMenuItem();
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        ListaFunciones = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -105,11 +106,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu5.setText("Ticket");
 
         ticket.setText("Gestion De Ticket");
-        ticket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ticketActionPerformed(evt);
-            }
-        });
         jMenu5.add(ticket);
 
         jMenuBar1.add(jMenu5);
@@ -123,6 +119,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         menuFuncion.add(jMenuItem1);
+
+        ListaFunciones.setText("Funciones disponibles");
+        ListaFunciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListaFuncionesActionPerformed(evt);
+            }
+        });
+        menuFuncion.add(ListaFunciones);
 
         jMenuBar1.add(menuFuncion);
 
@@ -240,6 +244,10 @@ public class vistaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ticketActionPerformed
 
+    private void ListaFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaFuncionesActionPerformed
+
+    }//GEN-LAST:event_ListaFuncionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +285,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenuItem ListaFunciones;
     private javax.swing.JMenuItem VistaComprador1;
     private javax.swing.JMenuItem gestionPelicula;
     private javax.swing.JMenu jMenu1;

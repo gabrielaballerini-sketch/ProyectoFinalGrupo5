@@ -128,19 +128,16 @@ public class Funcion {
 
     @Override
     public String toString() {
-        
+          
         DateTimeFormatter f=DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+      
         
         
-        
-        return  titulo + " - " +horaDeInicio.format(f) + " - Sala " + sala.getNroSala();
+        return  titulo + " - " +horaDeInicio.format(f) + " - Sala " + sala.getNroSala() ;
      }
 
    
-    public String toString2(){
-    
-        return  "N° de sala " + sala.getNroSala();
-    }
+
    
    
 

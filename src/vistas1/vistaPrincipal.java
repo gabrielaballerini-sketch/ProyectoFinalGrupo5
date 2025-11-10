@@ -45,7 +45,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         ticket = new javax.swing.JMenuItem();
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        ListaFunciones = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -120,13 +120,13 @@ public class vistaPrincipal extends javax.swing.JFrame {
         });
         menuFuncion.add(jMenuItem1);
 
-        ListaFunciones.setText("Funciones disponibles");
-        ListaFunciones.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Actualizar Funciones");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListaFuncionesActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        menuFuncion.add(ListaFunciones);
+        menuFuncion.add(jMenuItem2);
 
         jMenuBar1.add(menuFuncion);
 
@@ -174,6 +174,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
         comprado.setVisible(true);
         Escritorio.moveToFront(comprado);
 
+        
+        
+        
     }//GEN-LAST:event_VistaComprador1ActionPerformed
 
     private void listaPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPeliculasActionPerformed
@@ -244,13 +247,16 @@ public class vistaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ticketActionPerformed
 
-    private void ListaFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaFuncionesActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+              
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ActualizarFunciones funcion = new ActualizarFunciones();
+        Escritorio.add(funcion);
+        funcion.setVisible(true);
+        Escritorio.moveToFront(funcion);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    }//GEN-LAST:event_ListaFuncionesActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -295,6 +301,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem listaPeliculas;

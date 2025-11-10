@@ -71,6 +71,7 @@ public class CompradorData {
                  compr.setFechaNac(resultado.getDate("fechaDeNacimiento").toLocalDate());
                  compr.setPassword(resultado.getString("contraseña"));
                  compr.setEstado(resultado.getBoolean("estado"));
+                 compr.setDni(dni);
              }
             ps.close();
        

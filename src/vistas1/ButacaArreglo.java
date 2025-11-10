@@ -102,8 +102,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
                  
                  btn.setFocusPainted(false);
                  
-                 
-                 
+                             
                  
                  if(lugar!=null){
                  
@@ -119,7 +118,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
                  
                  }
                 
-                                                 
+                                               
                  
                  }
                  
@@ -140,12 +139,13 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
             
             panel.add(btn);
          }
-            
-           add(panel,BorderLayout.CENTER);
+           
+         
+            }
+             
+             add(panel,BorderLayout.CENTER);
             
             repaint();
-            
-            }
 
     }
     private List<Lugar> seleccionadas = new ArrayList();               
@@ -156,13 +156,12 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
     JButton btn = botones[f][c];
     Lugar lugar = lugares[f][c];
 
-    // Si el lugar está disponible (verde)
     if (lugar.isEstado()) {
-        btn.setBackground(Color.YELLOW); // seleccionado
-        lugar.setEstado(false); // marcarlo como reservado temporalmente
+        btn.setBackground(Color.YELLOW); 
+        lugar.setEstado(false); 
         seleccionadas.add(lugar);
     } else {
-        // Si ya estaba seleccionado o ocupado
+   
         btn.setBackground(Color.GREEN);
         lugar.setEstado(true);
         seleccionadas.remove(lugar);

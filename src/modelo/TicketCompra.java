@@ -22,6 +22,16 @@ public class TicketCompra {
    private Funcion funcion1;
    private Lugar lugar1  ;
     private String medioDePago;
+    
+    
+    
+    
+      // INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar`, `medioPago`, `id_ticket`, `idFuncion`) 
+      // VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+    
+    
+    
+    
 
     public TicketCompra(int id_ticket, LocalDate fechaCompra, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
         this.id_ticket = id_ticket;
@@ -34,6 +44,10 @@ public class TicketCompra {
         this.medioDePago = medioDePago;
     }
 
+    
+    
+    
+    
     public TicketCompra(LocalDate fechaCompra, int precio, Comprador comprador1, Funcion funcion1, Lugar lugar1, String medioDePago) {
         this.fechaCompra = fechaCompra;
  

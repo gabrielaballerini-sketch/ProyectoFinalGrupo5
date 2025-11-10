@@ -5,7 +5,6 @@
  */
 package vistas1;
 
-import com.sun.istack.internal.logging.Logger;
 import java.awt.GridLayout;
 import java.beans.PropertyVetoException;
 import java.time.LocalDate;

@@ -80,7 +80,9 @@ public class SalaData {
   
   
   
-  String sql="UPDATE `salas` SET apta3D=?,capacidad=? where nroSala=?";
+  String sql="UPDATE `salas` SET apta3D=?, estado=? where nroSala=? ";
+  
+  
   
   
   try{
@@ -88,7 +90,7 @@ public class SalaData {
   PreparedStatement ps=con.prepareStatement(sql);
   
   ps.setBoolean(1, sala.isApta3D());
-  ps.setInt(2, sala.getCapacidad());
+  ps.setBoolean(2, sala.isEstado());
   ps.setInt(3, sala.getNroSala());
   
   int exito=ps.executeUpdate();
@@ -97,7 +99,9 @@ public class SalaData {
   
   JOptionPane.showMessageDialog(null, "Sala modificada");
   
-    }
+    }else{
+       JOptionPane.showMessageDialog(null, "no existe  la sala seleccionada");
+  }
   
             
       
@@ -233,7 +237,8 @@ public class SalaData {
    
    public void eliminarSala(int nroSala){
    
-   String sql="UPDATE salas SET estado=0 WHERE nroSala=?";
+   String sql="UPDATE salas SET estado=0 WHERE nroSala=? and estado=1";
+   
    
    try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -242,7 +247,7 @@ public class SalaData {
         if (exito == 1) {
             JOptionPane.showMessageDialog(null, "Sala dada de baja correctamente");
         } else {
-            JOptionPane.showMessageDialog(null, "No existe una sala con ese número");
+            JOptionPane.showMessageDialog(null, "No se pudo hacer la baja revice el numero de sala ");
         }
         ps.close();
     } catch (SQLException ex) {

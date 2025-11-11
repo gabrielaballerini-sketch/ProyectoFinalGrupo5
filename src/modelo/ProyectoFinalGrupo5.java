@@ -119,8 +119,8 @@ public class ProyectoFinalGrupo5 {
         //TicketCompra ticket= new TicketCompra(fecha,9000, com3, nueva, lugar, "debito" );
         TicketCompraData ticketData= new TicketCompraData();
         //ticketData.comprarTicket(ticket);
-        TicketCompra tick1= ticketData.buscarTicket(12);
-        System.out.println(tick1.getComprador1().getDni());
+        //TicketCompra tick1= ticketData.buscarTicket(12);
+       // System.out.println(tick1.getComprador1().getDni());
 
  }
 }

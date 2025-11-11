@@ -176,6 +176,10 @@ public class TicketCompraData {
                 ticket.setId_ticket(rs.getInt("id_ticket"));
                 ticket.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
                 ticket.setPrecio(rs.getInt("precio"));
+                ticket.setComprador1(new Comprador());
+                ticket.setFuncion1(new Funcion());
+                ticket.setLugar1(new Lugar());
+                
                 ticket.getComprador1().setDni(rs.getInt("dni"));
                 ticket.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
                 ticket.getLugar1().setCodLugar(rs.getInt("codLugar"));

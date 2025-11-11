@@ -285,12 +285,12 @@ Funcion funcion=null;
              lugar1.setEstado(false);
              lugardata.actualizarEstado(lugar1.getCodLugar(),false);
              
-             JOptionPane.showMessageDialog(this,"Ticket generado , TOTAL A PAGAR " + total);
-             
             
+             
+      
      }
      
-     
+      JOptionPane.showMessageDialog(this,"Ticket generado , TOTAL A PAGAR " + total);
      
      
      
@@ -346,7 +346,7 @@ Funcion funcion=null;
     }//GEN-LAST:event_jcFuncionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

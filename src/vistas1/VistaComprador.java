@@ -42,13 +42,13 @@ public class VistaComprador extends javax.swing.JInternalFrame {
         jrEstado = new javax.swing.JRadioButton();
         jtNombre = new javax.swing.JTextField();
         jtDNI = new javax.swing.JTextField();
-        jtPassword = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jtPassword = new javax.swing.JPasswordField();
 
         DNI.setText("DNI:");
 
@@ -116,7 +116,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jrEstado))))
-                .addGap(0, 181, Short.MAX_VALUE))
+                .addGap(0, 202, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(DNI)
@@ -163,7 +163,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jrEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -341,7 +341,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrEstado;
     private javax.swing.JTextField jtDNI;
     private javax.swing.JTextField jtNombre;
-    private javax.swing.JTextField jtPassword;
+    private javax.swing.JPasswordField jtPassword;
     // End of variables declaration//GEN-END:variables
 
 

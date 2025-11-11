@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -196,7 +197,42 @@ public class TicketCompraData {
             return tickets;
     }
     
-         
+        public ArrayList<TicketCompra> listaTicketsPorFecha(LocalDate fecha){
+            Date fecha1 = Date.valueOf(fecha);
+            
+        String query= "SELECT * FROM ticketcompra JOIN funcion  ON ticketcompra.idFuncion= funcion.idFuncion JOIN pelicula ON funcion.titulo= pelicula.titulo WHERE fechaCompra = ?";
+        ArrayList <TicketCompra> tickets= new ArrayList();
+        
+        try{
+        
+        PreparedStatement ps = con.prepareStatement(query);
+            ps.setDate(1,fecha1);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            
+            TicketCompra ticket = new TicketCompra();
+                ticket.setId_ticket(rs.getInt("id_ticket"));
+                ticket.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
+                ticket.setPrecio(rs.getInt("precio"));
+                ticket.setComprador1(new Comprador());
+                ticket.setFuncion1(new Funcion());
+                ticket.setLugar1(new Lugar());
+                
+                ticket.getComprador1().setDni(rs.getInt("dni"));
+                ticket.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
+                ticket.getLugar1().setCodLugar(rs.getInt("codLugar"));
+                ticket.setMedioDePago(rs.getNString("medioPago"));
+                ticket.getFuncion1().setIdFuncion(rs.getInt("idFuncion"));
+                
+                tickets.add(ticket);
+            
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
+        }
+            
+            return tickets;
+    }  
             
 
 

@@ -47,7 +47,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="181" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="202" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
@@ -106,7 +106,7 @@
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <Component id="jrEstado" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnRegistrar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btnActualizar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
@@ -149,8 +149,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtDNI">
     </Component>
-    <Component class="javax.swing.JTextField" name="jtPassword">
-    </Component>
     <Component class="javax.swing.JButton" name="btnRegistrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
@@ -192,6 +190,8 @@
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jtPassword">
     </Component>
   </SubComponents>
 </Form>

@@ -232,7 +232,66 @@ public class TicketCompraData {
         }
             
             return tickets;
-    }  
+    }
+        
+        
+        
+        
+        
+         public ArrayList<TicketCompra> compradorPorFecha(LocalDate fecha){
+        
+       String query = "SELECT ticketcompra.fechaCompra, ticketcompra.codLugar, ticketcompra.id_ticket, "  
+       + " ticketcompra.dni, comprador.nombre  FROM ticketcompra join comprador ON ticketcompra.dni= comprador.dni WHERE ticketcompra.fechaCompra= ?";
+       
+       
+     
+       ArrayList <TicketCompra> tickets = new ArrayList();
+        try {
+             PreparedStatement ps = con.prepareStatement(query);
+             
+               ps.setDate(1,Date.valueOf(fecha));
+             
+             
+             ResultSet resultado= ps.executeQuery();
+             
+                        
+             while (resultado.next()){
+                
+           
+            TicketCompra ticket=new TicketCompra();
+                              
+             ticket.setFechaCompra(resultado.getDate("fechaCompra").toLocalDate());
+                   
+              ticket.setComprador1(new Comprador());
+               
+              ticket.setLugar1(new Lugar());
+              
+              
+               
+               ticket.getLugar1().setCodLugar(resultado.getInt("codLugar"));
+               ticket.setId_ticket(resultado.getInt("id_ticket"));
+               
+              ticket.getComprador1().setDni(resultado.getInt("dni"));
+              ticket.getComprador1().setNombre(resultado.getString("nombre"));
+                
+                     
+              
+              
+              tickets.add(ticket);
+             }   
+             ps.close();
+            
+        } catch (SQLException ex){
+         JOptionPane.showMessageDialog(null, "Error de conexion"+ ex.getMessage() );
+        
+        }
+        return tickets;
+ 
+  }
+    
+        
+        
+        
             
 
 

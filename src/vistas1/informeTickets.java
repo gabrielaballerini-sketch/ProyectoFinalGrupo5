@@ -232,6 +232,7 @@ public class informeTickets extends javax.swing.JInternalFrame {
                 aux.getId_ticket(),
                 aux.getFechaCompra(),
                 aux.getComprador1().getDni(),
+                aux.getComprador1().getNombre(),
                 aux.getLugar1().getCodLugar()
                
                });

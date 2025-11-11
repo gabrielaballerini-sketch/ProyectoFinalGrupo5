@@ -36,14 +36,17 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         listaPeliculas = new javax.swing.JMenuItem();
         gestionPelicula = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         ticket = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -71,6 +74,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(gestionPelicula);
 
+        jMenuItem8.setText("Proximos Estrenos");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Compradores");
@@ -82,6 +93,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(VistaComprador1);
+
+        jMenuItem6.setText("Lista de Compradores");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
@@ -122,6 +141,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu5.add(jMenuItem5);
+
+        jMenuItem7.setText("Lugares Disponibles");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem7);
 
         jMenuBar1.add(jMenu5);
 
@@ -300,6 +327,68 @@ public class vistaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       
+          
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       ListadeCompradores lista = new ListadeCompradores();
+       Escritorio.add(lista);
+       lista.setVisible(true);
+       Escritorio.moveToFront(lista);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       
+        
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       LugaresDisponibles lugares = new LugaresDisponibles();
+       Escritorio.add(lugares);
+       lugares.setVisible(true);
+       Escritorio.moveToFront(lugares);
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        
+        
+        
+         
+        Escritorio.removeAll();
+       Escritorio.repaint();
+       ProximosEstrenos estrenos = new ProximosEstrenos();
+       Escritorio.add(estrenos);
+       estrenos.setVisible(true);
+       Escritorio.moveToFront(estrenos);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -348,6 +437,9 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem listaPeliculas;
     private javax.swing.JMenu menuFuncion;
     private javax.swing.JMenuItem ticket;

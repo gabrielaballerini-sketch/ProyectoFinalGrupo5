@@ -14,15 +14,18 @@ import persistencia.PeliculaData;
  *
  * @author fatimaalcaraz
  */
-public class proximosEstrenos extends javax.swing.JInternalFrame {
+public class ProximosEstrenos extends javax.swing.JInternalFrame {
 
     private DefaultListModel listaEstrenos;
     private Pelicula peli;
     private PeliculaData  peliData;
     
-    public proximosEstrenos() {
-        initComponents();
-        listaEstrenos= new DefaultListModel();
+    public ProximosEstrenos() {
+        
+         listaEstrenos= new DefaultListModel();
+        
+         initComponents();
+       
         peli= new Pelicula();
         peliData= new PeliculaData();
         llenarListEstrenos();
@@ -129,7 +132,9 @@ private void llenarListEstrenos(){
         
         if(pelicula.getEstreno().isAfter(hoy)){
             
-         listaEstrenos.addElement(pelicula);
+         listaEstrenos.addElement(pelicula.toString());
+         jList1.setModel(listaEstrenos);
+         
         
         }
     }

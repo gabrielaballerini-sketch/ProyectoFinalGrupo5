@@ -275,5 +275,73 @@ public class LugarData {
 }
     
    
+    
+    
+     public int lugaresDisponibles(int idFuncion){
+         
+         
+         
+        int cantidad = 0;
+        
+        
+            String sql = "SELECT COUNT(codLugar) AS totalAsientos FROM lugardeasiento WHERE estado = 1 AND idfuncion = ? ";
+     try {
+         PreparedStatement ps = con.prepareStatement(sql);
+         
+               ps.setInt(1, idFuncion);
+               
+           ResultSet rs = ps.executeQuery();
+           
+           
+           if(rs.next()){
+               
+          
+               
+           cantidad= rs.getInt("totalAsientos"); 
+                 
+          
+                   
+         
+           
+              
+           }
+           
+         ps.close();
+           
+           
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "ERROR AL OBTENER LUGARES");
+     }
+            
+            
+
+     return cantidad;
+     }
+
+    
+    
+    
+    
+        
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

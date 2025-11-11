@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Conexion;
+import modelo.Lugar;
+import modelo.TicketCompra;
 
 /**
  *
@@ -110,6 +112,17 @@ public class CompradorData {
         return compradores;
  
   }
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
     public void actualizarComprador(Comprador compr){
     
     String query= "UPDATE `comprador` SET`nombre`= ? ,`fechaDeNacimiento`= ? ,`contraseña`= ? WHERE dni= ? ";

@@ -17,7 +17,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import modelo.Comprador;
 import modelo.Conexion;
+import modelo.Funcion;
 import modelo.Lugar;
 import modelo.TicketCompra;
 
@@ -28,13 +30,15 @@ import modelo.TicketCompra;
 public class TicketCompraData {
     
  
-    
-    
-
+    private LugarData lugdata = new LugarData(); 
+    private FuncionData fundata = new FuncionData();
+    private CompradorData comdata = new CompradorData();
     private Connection con = null;
 
     public TicketCompraData() {
         con = Conexion.buscarConexion();
+        
+        
     }
 
     public void comprarTicket(TicketCompra ticket) {
@@ -115,9 +119,9 @@ public class TicketCompraData {
     public TicketCompra buscarTicket(int id_ticket) {
 
         TicketCompra ticketCompra = null;
-
-        String sql = "SELECT `id_ticket`, `fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar` FROM `ticketcompra` WHERE id_ticket=?";
-
+   
+        String sql = "SELECT `fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar`, `medioPago`, `id_ticket`, `idFuncion` FROM `ticketcompra` WHERE `id_ticket`=?";
+            
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -129,22 +133,23 @@ public class TicketCompraData {
             if (rs.next()) {
 
                 ticketCompra = new TicketCompra();
-
-                ticketCompra.setId_ticket(id_ticket);
                 ticketCompra.setFechaCompra(rs.getDate("fechaCompra").toLocalDate());
                 ticketCompra.setPrecio(rs.getInt("precio"));
+                ticketCompra.setLugar1(new Lugar());
+                ticketCompra.setFuncion1(new Funcion());
+                ticketCompra.setComprador1(new Comprador());
                 ticketCompra.getComprador1().setDni(rs.getInt("dni"));
+                
                 ticketCompra.getFuncion1().setHoraDeInicio(rs.getTimestamp("horaDeInicio").toLocalDateTime());
                 ticketCompra.getLugar1().setCodLugar(rs.getInt("codLugar"));
                 ticketCompra.setMedioDePago(rs.getString("medioPago"));
+                ticketCompra.setId_ticket(id_ticket);
                 ticketCompra.getFuncion1().setIdFuncion(rs.getInt("idFuncion"));
-
             } else {
 
                 JOptionPane.showMessageDialog(null, "No existe el ticket");
-
             }
-
+            
             ps.close();
 
         } catch (SQLException ex) {
@@ -153,7 +158,6 @@ public class TicketCompraData {
 
         }
         return ticketCompra;
-
     }
     
     public ArrayList<TicketCompra> listaTicketsPorPelicula(String titulo){

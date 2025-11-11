@@ -112,13 +112,15 @@ public class ProyectoFinalGrupo5 {
         LocalDate fecha= LocalDate.now();
         
         Comprador com3= new Comprador(51321841,"Rob",fechaNac,"432cj",true);
-         //comdata.guardarComprador(com3);  
-        
+       // comdata.guardarComprador(com3);
+       //Comprador aux = comdata.buscarComprador(51321841);
+      // System.out.println(aux.toString());
        
-        TicketCompra ticket= new TicketCompra(fecha,9000, com3, nueva, lugar, "debito" );
+        //TicketCompra ticket= new TicketCompra(fecha,9000, com3, nueva, lugar, "debito" );
         TicketCompraData ticketData= new TicketCompraData();
         //ticketData.comprarTicket(ticket);
-        TicketCompra tick= ticketData.buscarTicket(15);
-        
+        TicketCompra tick1= ticketData.buscarTicket(12);
+        System.out.println(tick1.getComprador1().getDni());
+
  }
 }

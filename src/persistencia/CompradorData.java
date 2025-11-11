@@ -57,7 +57,7 @@ public class CompradorData {
    public Comprador buscarComprador(int dni){
        
        String query= "SELECT * FROM `comprador` WHERE dni = ?";
-       Comprador compr= null;
+      Comprador compr= null;
        try{
          PreparedStatement ps= conn.prepareStatement(query);
        
@@ -66,12 +66,13 @@ public class CompradorData {
 
              if (resultado.next()){
 
-                 compr= new Comprador();
+                compr= new Comprador();
+                 compr.setDni(dni);
                  compr.setNombre(resultado.getString("nombre"));
                  compr.setFechaNac(resultado.getDate("fechaDeNacimiento").toLocalDate());
                  compr.setPassword(resultado.getString("contraseña"));
                  compr.setEstado(resultado.getBoolean("estado"));
-                 compr.setDni(dni);
+                 
              }
             ps.close();
        

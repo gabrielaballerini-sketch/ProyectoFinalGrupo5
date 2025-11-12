@@ -17,7 +17,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     public vistaPrincipal() {
        
         initComponents();
-         setSize(800, 900);
+         //setSize(800, 900);
+         Escritorio.setSize(800, 900);
         
     }
 
@@ -55,6 +56,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Escritorio.setLayout(null);
 
         jMenu1.setText("Pelicula");
 
@@ -188,14 +191,15 @@ public class vistaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE))
+                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

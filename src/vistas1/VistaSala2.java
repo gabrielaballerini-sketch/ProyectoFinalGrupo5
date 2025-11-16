@@ -47,7 +47,7 @@ public class VistaSala2 extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nro de Sala");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Eliminar Sala");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -56,7 +56,7 @@ public class VistaSala2 extends javax.swing.JInternalFrame {
         rbEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbEstado.setText("Activo");
 
-        btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +64,7 @@ public class VistaSala2 extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +72,7 @@ public class VistaSala2 extends javax.swing.JInternalFrame {
             }
         });
 
+        jbActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

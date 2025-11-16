@@ -72,7 +72,7 @@ public class VistasTicket extends javax.swing.JInternalFrame {
         jcMedioPago = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ticket De Compra");
 
@@ -90,6 +90,7 @@ public class VistasTicket extends javax.swing.JInternalFrame {
 
         txt3D.setEnabled(false);
 
+        btnComprar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnComprar.setText("Comprar");
         btnComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +106,7 @@ public class VistasTicket extends javax.swing.JInternalFrame {
 
         jcMedioPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Debito", "Credito" }));
 
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

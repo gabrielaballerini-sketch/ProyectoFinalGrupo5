@@ -77,9 +77,9 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
         jComboSalas = new javax.swing.JComboBox<>();
         jComboIdiomas = new javax.swing.JComboBox<>();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Actualizar funciones");
+        jLabel1.setText("Actualizar Funciones");
 
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,6 +102,7 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtTabla);
 
+        jnEliminar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jnEliminar.setText("Eliminar");
         jnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,7 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jbActualizar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jbActualizar.setText("Actualizar");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +118,7 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

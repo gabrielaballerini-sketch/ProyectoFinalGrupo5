@@ -77,6 +77,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
 
         cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
 
+        btnGuardar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +85,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,10 +97,6 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -130,6 +128,10 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(98, 98, 98))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

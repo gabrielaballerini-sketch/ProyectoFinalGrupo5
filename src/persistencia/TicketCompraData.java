@@ -13,15 +13,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import javax.swing.JButton;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import modelo.Comprador;
 import modelo.Conexion;
 import modelo.Funcion;
 import modelo.Lugar;
+import modelo.Pelicula;
 import modelo.TicketCompra;
 
 /**
@@ -47,12 +47,6 @@ public class TicketCompraData {
         String sql = "INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`,`horaDeInicio`, `codLugar`,`medioPago`,idFuncion ) VALUES "
                 + "(?,?,?,?,?,?,?)";
 
-   
-           
-         // INSERT INTO `ticketcompra`(`fechaCompra`, `precio`, `dni`, `horaDeInicio`, `codLugar`, `medioPago`, `id_ticket`, `idFuncion`) 
-         // VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
-         
-        
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -290,7 +284,27 @@ public class TicketCompraData {
   }
     
         
-        
+   public LinkedHashMap<String, Integer>peliMasVista(){
+    String query= "SELECT f.titulo AS Pelicula, COUNT(t.id_ticket) AS Total_Tickets_Vendidos "
+            + "FROM ticketcompra t JOIN funcion f ON t.idFuncion = f.idFuncion GROUP BY f.titulo "
+            + "ORDER BY Total_Tickets_Vendidos DESC";
+    LinkedHashMap<String, Integer> ranking = new LinkedHashMap<>();
+        try {
+            PreparedStatement ps= con.prepareStatement(query);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                String titulo= rs.getString("Pelicula");
+                int total = rs.getInt("Total_Tickets_Vendidos");
+                ranking.put(titulo, total);
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion"+ ex.getMessage() );
+        }
+   
+   return ranking;
+   }
+   
         
             
 

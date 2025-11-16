@@ -5,30 +5,24 @@
  */
 package vistas1;
 
-import java.time.LocalDate;
-import javax.swing.DefaultListModel;
-import modelo.Pelicula;
-import persistencia.PeliculaData;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
+import persistencia.TicketCompraData;
 
 /**
  *
  * @author fatimaalcaraz
  */
-public class ProximosEstrenos extends javax.swing.JInternalFrame {
-
-    private DefaultListModel listaEstrenos;
-    private Pelicula peli;
-    private PeliculaData  peliData;
-    
-    public ProximosEstrenos() {
-        
-         listaEstrenos= new DefaultListModel();
-        
-         initComponents();
-       
-        peli= new Pelicula();
-        peliData= new PeliculaData();
-        llenarListEstrenos();
+public class Estadisticas extends javax.swing.JInternalFrame {
+    private DefaultTableModel modelo;
+    private TicketCompraData ticketData;
+    public Estadisticas() {
+        initComponents();
+        modelo= new DefaultTableModel();
+        ticketData= new TicketCompraData();
+        armarCabecera();
+        cargarTabla();
     }
 
     /**
@@ -43,18 +37,25 @@ public class ProximosEstrenos extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Proximos Estrenos");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Peliculas Mas Vistas");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jButton1.setText("Salir");
@@ -69,28 +70,28 @@ public class ProximosEstrenos extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel1)
+                .addGap(78, 78, 78)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(jButton1)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,36 +115,38 @@ public class ProximosEstrenos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       dispose();
+     
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-private void llenarListEstrenos(){
-    LocalDate hoy= LocalDate.now();
+private void armarCabecera(){
 
-    for (Pelicula pelicula : peliData.listarPeliculas() ) {
+    modelo.addColumn("Pelicula");
+    modelo.addColumn("Tickets Vendidos");
+    jTable1.setModel(modelo);
+
+
+}
+
+private void cargarTabla(){
+    for (Map.Entry<String, Integer> entry : ticketData.peliMasVista().entrySet()) {
+        modelo.addRow(new Object []{
+            entry.getKey(),
+            entry.getValue()
+        });
         
-        if(pelicula.getEstreno().isAfter(hoy)){
-            
-         listaEstrenos.addElement(pelicula.toString()+" "+ pelicula.getEstreno());
-         jList1.setModel(listaEstrenos);
-         
-        
-        }
     }
 
-}   
-            
-
-
+}
 
 
 

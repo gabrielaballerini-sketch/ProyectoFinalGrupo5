@@ -76,6 +76,7 @@ public class informeTickets extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

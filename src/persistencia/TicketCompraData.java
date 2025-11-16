@@ -305,6 +305,27 @@ public class TicketCompraData {
    return ranking;
    }
    
+   
+   public void liberarAsiento(int idTicket){
+        String query= "DELETE FROM ticketcompra WHERE id_ticket = ?";
+     try {
+         PreparedStatement ps = con.prepareStatement(query);
+         ps.setInt(1, idTicket);
+         ps.executeQuery();
+         
+         
+     } catch (SQLException ex) {
+     
+     JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+     }
+     
+     
+    }
+   
+   
+   
+   
+   
         
             
 

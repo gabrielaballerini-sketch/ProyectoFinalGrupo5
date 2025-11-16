@@ -49,6 +49,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        Anular = new javax.swing.JMenuItem();
         menuFuncion = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -57,8 +58,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Escritorio.setLayout(null);
 
         jMenu1.setText("Pelicula");
 
@@ -161,6 +160,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu5.add(jMenuItem9);
+
+        Anular.setText("Anular Ticket");
+        Anular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnularActionPerformed(evt);
+            }
+        });
+        jMenu5.add(Anular);
 
         jMenuBar1.add(jMenu5);
 
@@ -400,6 +407,25 @@ public class vistaPrincipal extends javax.swing.JFrame {
        Escritorio.moveToFront(estadistica);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void AnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnularActionPerformed
+     
+        
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       Anular anular = new Anular();
+       Escritorio.add(anular);
+       anular.setVisible(true);
+       Escritorio.moveToFront(anular);
+        
+        
+              
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_AnularActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -433,6 +459,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Anular;
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenuItem ListarFunciones;
     private javax.swing.JMenuItem VistaComprador1;

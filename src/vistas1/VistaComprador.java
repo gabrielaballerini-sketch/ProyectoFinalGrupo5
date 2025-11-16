@@ -301,18 +301,23 @@ public class VistaComprador extends javax.swing.JInternalFrame {
           if(jtDNI.getText().isEmpty()){
           
             JOptionPane.showMessageDialog(null,"POR FAVOR INGRESE UN DNI");
-          
+             return;
           }
+          
+          
           
         try {
             int dni = Integer.parseInt(jtDNI.getText().trim());
+            
+            
         
+            
             
             for (Comprador aux : compradorData.listarCompradores()){
                 
             
                 if(aux.getDni()==dni){
-                   
+                               
 
                 jtNombre.setText(aux.getNombre());
 
@@ -326,15 +331,24 @@ public class VistaComprador extends javax.swing.JInternalFrame {
 
                 jrEstado.setSelected(aux.isEstado());
                 
+                     btnActualizar.setEnabled(true);
+                     btnRegistrar.setEnabled(false);
+                
+                }
+                else{
+                 JOptionPane.showMessageDialog(null,"Debe registrarse, no existe el comprador");
+                  return;
                 
                 }
             }
+            
+            
+            
          }catch(NumberFormatException ex){
                 System.out.println("Datos ingresados no validos, del TXT.DNI ");
             
         }
-          btnActualizar.setEnabled(true);
-          btnRegistrar.setEnabled(false);
+     
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

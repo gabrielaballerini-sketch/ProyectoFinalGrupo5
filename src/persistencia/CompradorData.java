@@ -102,8 +102,14 @@ public class CompradorData {
               
               
               compradores.add(compr);
+              
              }   
+             
+              //JOptionPane.showMessageDialog(null, "Debe registrarse, no se encuentra el DNI" );
              ps.close();
+             
+             
+             
             
         } catch (SQLException ex){
          JOptionPane.showMessageDialog(null, "Error de conexion"+ ex.getMessage() );

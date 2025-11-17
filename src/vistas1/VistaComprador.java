@@ -309,15 +309,13 @@ public class VistaComprador extends javax.swing.JInternalFrame {
         try {
             int dni = Integer.parseInt(jtDNI.getText().trim());
             
+                       
             
-        
             
+           Comprador aux= compradorData.buscarComprador(dni);
             
-            for (Comprador aux : compradorData.listarCompradores()){
-                
-            
-                if(aux.getDni()==dni){
-                               
+                if (aux!=null) {
+                         
 
                 jtNombre.setText(aux.getNombre());
 
@@ -334,13 +332,13 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                      btnActualizar.setEnabled(true);
                      btnRegistrar.setEnabled(false);
                 
-                }
-                else{
-                 JOptionPane.showMessageDialog(null,"Debe registrarse, no existe el comprador");
-                  return;
                 
+                }else{
+                
+                 JOptionPane.showMessageDialog(this,"Debe registrarse ");
                 }
-            }
+                
+            
             
             
             

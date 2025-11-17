@@ -236,15 +236,7 @@ public class FuncionData {
             
             
             
-            /* ACA TENEMOS UN PROBLEMA XQ CUANDO ELIJO UNA FUNCION SI BIEN ELIJO TB EL
-            NUMERO DE SALA NO TENGO EL OBJETO SALA EN SI CREADO ACA... 
-            ENTONCES ME TIRA NULL POINTER EXCEPTION
-            QUE PUEDO HACER?? CREAR UNA SALA Y BUSCAR EL NUMERO QUE EN REALIDAD TENGO YA
-            xq si lo tengo GUARDADO EN LA BASE
-            
-            
-            */
-                        
+        
             int nroSala=rs.getInt("nroSala");
             
             Sala sala=saladata.buscarSala(nroSala);

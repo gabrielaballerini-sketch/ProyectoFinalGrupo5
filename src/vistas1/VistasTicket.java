@@ -199,10 +199,10 @@ int dni=Integer.parseInt(jtDni.getText().trim());
         
         
 Comprador comprador=compradordata.buscarComprador(dni);
-        System.out.println(comprador.getDni());
 
 
-if(comprador==null){
+
+if(comprador==null ){
     
     JOptionPane.showMessageDialog(this, "No se encontro el comprador ");
     return;

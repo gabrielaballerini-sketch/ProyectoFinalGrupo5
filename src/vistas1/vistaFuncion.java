@@ -3,6 +3,7 @@ package vistas1;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import modelo.Funcion;
 import modelo.Pelicula;
 import modelo.Sala;
@@ -75,7 +76,7 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Numero de Sala");
 
-        cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
+        cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "18/11/2025 20:10", "18/11/2025 22:40", "18/11/2025 00:20", "19/11/2025 16:30", "19/11/2025 18:50", "19/11/2025 20:10", "19/11/2025 22:40", "19/11/2025 00:20", "20/11/2025 16:30", "20/11/2025 18:50", "20/11/2025 20:10", "20/11/2025 22:40", "20/11/2025 00:20", "21/11/2025 16:30", "21/11/2025 18:50", "21/11/2025 20:10", "21/11/2025 22:40", "21/11/2025 00:20", "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
 
         btnGuardar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -192,12 +193,50 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
         
         Sala sala= (Sala) cbSala.getSelectedItem();
         
-        Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin,sala);
-       funData.GuardarProyeccion(funcion);
+        
+       
+        boolean ocupada=false;
+        
+        for (Funcion aux : funData.listarFunciones()) {
+            
+            if (aux.getSala().getNroSala()==sala.getNroSala() && aux.getHoraDeInicio().isEqual(horaInicio )){
+            
+                ocupada=true;
+                
+              
+                
+                break;
+                
+            
+            }
+        }
+        
+        if(ocupada){
+        
+          JOptionPane.showInternalMessageDialog(this, "Sala ocupada");
+        }
+        else{
+                
+                               
+                Funcion funcion = new Funcion(peli.getTitulo(),idioma,es3D,subtitulada,horaInicio,horaFin,sala);
+            
+               funData.GuardarProyeccion(funcion);
        
        
-       //AGREGADOOOO 
-       lugardata.generarLugaresBatch(funcion,5,8);
+                 //AGREGADOOOO 
+                lugardata.generarLugaresBatch(funcion,5,8);
+                
+                        
+                
+            }
+                        
+            
+        
+
+        
+        
+        
+     
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed

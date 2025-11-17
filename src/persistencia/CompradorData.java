@@ -76,6 +76,7 @@ public class CompradorData {
                  compr.setEstado(resultado.getBoolean("estado"));
                  
              }
+            
             ps.close();
        
         } catch (SQLException e){

@@ -138,7 +138,7 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Hora de inico");
 
-        jComboHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
+        jComboHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "18/11/2025 20:10", "18/11/2025 22:40", "18/11/2025 00:20", "19/11/2025 16:30", "19/11/2025 18:50", "19/11/2025 20:10", "19/11/2025 22:40", "19/11/2025 00:20", "20/11/2025 16:30", "20/11/2025 18:50", "20/11/2025 20:10", "20/11/2025 22:40", "20/11/2025 00:20", "21/11/2025 16:30", "21/11/2025 18:50", "21/11/2025 20:10", "21/11/2025 22:40", "21/11/2025 00:20", "24/11/2025 16:30", "24/11/2025 18:50", "24/11/2025 20:10", "24/11/2025 22:40", "24/11/2025 00:20", "25/11/2025 16:30", "25/11/2025 18:50", "25/11/2025 20:10", "25/11/2025 22:40", "25/11/2025 00:20", "26/11/2025 16:30", "26/11/2025 18:50", "26/11/2025 20:10", "26/11/2025 22:40", "26/11/2025 00:20" }));
 
         jLabel6.setText("Salas");
 
@@ -183,7 +183,7 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, Short.MAX_VALUE))))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboHora, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -335,7 +335,7 @@ public class VistaComprador extends javax.swing.JInternalFrame {
                 
                 }else{
                 
-                 JOptionPane.showMessageDialog(this,"Debe registrarse ");
+                 JOptionPane.showMessageDialog(this,"El dni no existe,Debe registrarse ");
                 }
                 
             

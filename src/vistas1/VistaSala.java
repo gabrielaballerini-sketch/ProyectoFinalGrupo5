@@ -123,14 +123,14 @@ public class VistaSala extends javax.swing.JInternalFrame {
         
       Boolean apta=jrApta.isSelected();
       
+      
+      
       int capacidad= 40;
         
         
-       Boolean estado=rbEstado.isSelected();  
-       
-       
-
-       
+       Boolean estado=rbEstado.isSelected(); 
+      if(estado==true){
+           
        Sala sala1=new Sala(apta,capacidad,estado);
        
        saladata.guardarSala(sala1);
@@ -139,8 +139,17 @@ public class VistaSala extends javax.swing.JInternalFrame {
       
       
       
-      JOptionPane.showMessageDialog(null, "Se agrego nueva sala N " +numeroGenerado);
+      JOptionPane.showMessageDialog(this, "Se agrego nueva sala N " +numeroGenerado);
         
+      }else{
+       JOptionPane.showMessageDialog(this, "La sala debe estar activa");
+        
+      }
+      
+       
+       
+
+      
      
         
         

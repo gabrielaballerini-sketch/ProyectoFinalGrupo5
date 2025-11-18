@@ -44,16 +44,20 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+<<<<<<< Updated upstream
         jMenu5 = new javax.swing.JMenu();
+=======
+        menuFuncion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        ListarFunciones = new javax.swing.JMenuItem();
+        menuTikets = new javax.swing.JMenu();
+>>>>>>> Stashed changes
         ticket = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         Anular = new javax.swing.JMenuItem();
-        menuFuncion = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        ListarFunciones = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -127,7 +131,39 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+<<<<<<< Updated upstream
         jMenu5.setText("Ticket");
+=======
+        menuFuncion.setText("Funcion");
+
+        jMenuItem1.setText("Gestion de Funcion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuFuncion.add(jMenuItem1);
+
+        jMenuItem2.setText("Actualizar Funciones");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuFuncion.add(jMenuItem2);
+
+        ListarFunciones.setText("Funciones Disponibles");
+        ListarFunciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarFuncionesActionPerformed(evt);
+            }
+        });
+        menuFuncion.add(ListarFunciones);
+
+        jMenuBar1.add(menuFuncion);
+
+        menuTikets.setText("Ticket");
+>>>>>>> Stashed changes
 
         ticket.setText("Gestion De Ticket");
         ticket.addActionListener(new java.awt.event.ActionListener() {
@@ -171,34 +207,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        menuFuncion.setText("Funcion");
-
-        jMenuItem1.setText("Gestion de Funcion");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        menuFuncion.add(jMenuItem1);
-
-        jMenuItem2.setText("Actualizar Funciones");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        menuFuncion.add(jMenuItem2);
-
-        ListarFunciones.setText("Funciones Disponibles");
-        ListarFunciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListarFuncionesActionPerformed(evt);
-            }
-        });
-        menuFuncion.add(ListarFunciones);
-
-        jMenuBar1.add(menuFuncion);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,7 +223,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

@@ -1,6 +1,7 @@
 
 package vistas1;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -265,10 +266,22 @@ public class vistaFuncion extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 private void cargarComboPelicula(){
+    
+    
+    
+           LocalDate hoy= LocalDate.now();
+           
+         
+    
 
     for (Pelicula lista : peliData.listarPeliculas()) {
         
+        if (!lista.getEstreno().isAfter(hoy)){
+        
         comboPelicula.addItem(lista);
+        }
+  
+        
         
     }
     

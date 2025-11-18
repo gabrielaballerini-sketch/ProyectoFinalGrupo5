@@ -243,27 +243,46 @@ public class ActualizarFunciones extends javax.swing.JInternalFrame {
            
            LocalDateTime horaInicio = LocalDateTime.parse( horaInicio1, formato);
              LocalDateTime horaFin = horaInicio.plusMinutes(105);
-           
-            sala1 = (Sala) jComboSalas.getSelectedItem();
             
+             sala1 = (Sala) jComboSalas.getSelectedItem();
+             
+              boolean ocupada=false;
+        
+        for (Funcion aux :     funcionData.listarFunciones()) {
             
+            if (aux.getSala().getNroSala()==sala1.getNroSala() && aux.getHoraDeInicio().isEqual(horaInicio )){
+            
+                ocupada=true;
+                
+              
+                
+                break;
+                
+            
+            }
+        }
+        
+        if(ocupada){
+        
+          JOptionPane.showInternalMessageDialog(this, "Sala ocupada");
+        }
+        else{
+                
+              
              funcion1 = new Funcion(idFuncion,titulo,idioma,es3D,subtitulada,horaInicio,horaFin,sala1);
              
              funcionData.modificarFuncion(funcion1);
            
- 
-           
-           
-           
-           
-           
-           
-           
-           
-           
-         
-          
-
+                
+                        
+                
+            }
+                        
+            
+            
+        
+        }else{
+         JOptionPane.showMessageDialog(this,"Debe seleccionar una fila");
       }
     }//GEN-LAST:event_jbActualizarActionPerformed
 

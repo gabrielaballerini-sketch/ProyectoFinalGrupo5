@@ -247,7 +247,7 @@ public class SalaData {
         if (exito == 1) {
             JOptionPane.showMessageDialog(null, "Sala dada de baja correctamente");
         } else {
-            JOptionPane.showMessageDialog(null, "No se pudo hacer la baja revice el numero de sala ");
+            JOptionPane.showMessageDialog(null, "No se pudo hacer la baja, la sala debe estar activa ");
         }
         ps.close();
     } catch (SQLException ex) {

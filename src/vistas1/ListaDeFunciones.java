@@ -8,6 +8,7 @@ package vistas1;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import modelo.Funcion;
 import modelo.Pelicula;
 import modelo.Sala;
@@ -175,36 +176,51 @@ public class ListaDeFunciones extends javax.swing.JInternalFrame {
         Sala nRsala = (Sala) jcSala.getSelectedItem();
         
         String hora= (String)jcHorario.getSelectedItem();
-       
+      
+        
+        
         DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");  
         LocalDateTime horaInicio= LocalDateTime.parse(hora, formato);         
         LocalDateTime horaFin = horaInicio.plusMinutes(105);
-        
+        boolean estado = false;
         for (Funcion fun : fundata.listarFunciones()) {
             
       if(fun.getHoraDeInicio().isEqual(horaInicio) && nRsala.getNroSala() == fun.getSala().getNroSala()  ){
             
                 lista.addElement(fun);
+                estado= true;
                 
          }
+      
         }
+        if(estado==false){
+        JOptionPane.showMessageDialog(this, "no hay funciones para este sala y horario");
+        }
+       
+        
         listaFunciones.setModel(lista);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+       
     private void btnBuscarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSalaActionPerformed
             lista2.removeAllElements();
       
         Pelicula pelicula = (Pelicula) jcfunciones.getSelectedItem();
         
        // int fun2= fun1.getSala().getNroSala();
+       boolean estado= false;
+       
             for (Funcion aux : fundata.listarFunciones()) {
                 if(aux.getTitulo().equals(pelicula.getTitulo())){
                 
                 lista2.addElement("N°Sala: "+aux.getSala().getNroSala());
+                estado= true;
                 
                 }
                          
             }
+            if(estado==false){
+            JOptionPane.showMessageDialog(this, "no hay salas disponibles para esta pelicula ");}
                     
 
                 liSTA.setModel(lista2);

@@ -6,6 +6,7 @@ package vistas1;
 
 import java.time.LocalDate;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pelicula;
 import persistencia.PeliculaData;
@@ -192,7 +193,8 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
              Pelicula peli = new Pelicula(titulo,director,actores,origen,genero,estreno,enCartelera);
              peliData.bajaLogicaPelicula(peli);
              
-        }
+        }else{
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una pelicula para la baja");}
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

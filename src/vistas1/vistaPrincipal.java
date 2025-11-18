@@ -5,6 +5,10 @@
  */
 package vistas1;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author fatimaalcaraz
@@ -19,7 +23,38 @@ public class vistaPrincipal extends javax.swing.JFrame {
         initComponents();
          //setSize(800, 900);
          Escritorio.setSize(800, 900);
-        
+          this.setLocationRelativeTo(null);
+         
+         
+           ImageIcon iconoOriginal = new ImageIcon(getClass().getResource("/imagenes/pelicula.png"));
+    Image img = iconoOriginal.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+    menuPelicula.setIcon(new ImageIcon(img));
+    
+    
+       
+           ImageIcon iconoOriginal1 = new ImageIcon(getClass().getResource("/imagenes/comprador.png"));
+    Image img1 = iconoOriginal1.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+    menuCompradores.setIcon(new ImageIcon(img1));
+    
+    
+           ImageIcon iconoOriginal12 = new ImageIcon(getClass().getResource("/imagenes/salas.png"));
+    Image img2 = iconoOriginal12.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+    menuSala.setIcon(new ImageIcon(img2));
+    
+     ImageIcon iconoOriginal13 = new ImageIcon(getClass().getResource("/imagenes/tiket.png"));
+    Image img3 = iconoOriginal13.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+   menuTikets.setIcon(new ImageIcon(img3));
+   
+   ImageIcon iconoOriginal14 = new ImageIcon(getClass().getResource("/imagenes/Funcion.png"));
+    Image img4 = iconoOriginal14.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+   menuFuncion.setIcon(new ImageIcon(img4));
+         
+         
+         
+         
+         
+         
+         
     }
 
     /**
@@ -32,38 +67,41 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
-        Escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono = new ImageIcon(getClass().getResource("/imagenes/cine4.jpg"));
+        Image miImagen = icono.getImage();
+        Escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuPelicula = new javax.swing.JMenu();
         listaPeliculas = new javax.swing.JMenuItem();
         gestionPelicula = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuCompradores = new javax.swing.JMenu();
         VistaComprador1 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuSala = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-<<<<<<< Updated upstream
-        jMenu5 = new javax.swing.JMenu();
-=======
-        menuFuncion = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        ListarFunciones = new javax.swing.JMenuItem();
         menuTikets = new javax.swing.JMenu();
->>>>>>> Stashed changes
         ticket = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         Anular = new javax.swing.JMenuItem();
+        menuFuncion = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        ListarFunciones = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Pelicula");
+        menuPelicula.setText("Pelicula");
 
         listaPeliculas.setText("Lista de Peliculas");
         listaPeliculas.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +109,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 listaPeliculasActionPerformed(evt);
             }
         });
-        jMenu1.add(listaPeliculas);
+        menuPelicula.add(listaPeliculas);
 
         gestionPelicula.setText("Gestion De Pelicula");
         gestionPelicula.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +117,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 gestionPeliculaActionPerformed(evt);
             }
         });
-        jMenu1.add(gestionPelicula);
+        menuPelicula.add(gestionPelicula);
 
         jMenuItem8.setText("Proximos Estrenos");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +125,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
+        menuPelicula.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuPelicula);
 
-        jMenu2.setText("Compradores");
+        menuCompradores.setText("Compradores");
 
         VistaComprador1.setText("Gestion de Compradores");
         VistaComprador1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +137,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 VistaComprador1ActionPerformed(evt);
             }
         });
-        jMenu2.add(VistaComprador1);
+        menuCompradores.add(VistaComprador1);
 
         jMenuItem6.setText("Lista de Compradores");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -107,11 +145,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        menuCompradores.add(jMenuItem6);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuCompradores);
 
-        jMenu4.setText("Sala");
+        menuSala.setText("Sala");
 
         jMenuItem3.setText("Agregar Sala");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +157,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        menuSala.add(jMenuItem3);
 
         jMenuItem4.setText("Eliminar Sala");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -127,13 +165,54 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        menuSala.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuSala);
 
-<<<<<<< Updated upstream
-        jMenu5.setText("Ticket");
-=======
+        menuTikets.setText("Ticket");
+
+        ticket.setText("Gestion De Ticket");
+        ticket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticketActionPerformed(evt);
+            }
+        });
+        menuTikets.add(ticket);
+
+        jMenuItem5.setText("Informes De Tickets");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        menuTikets.add(jMenuItem5);
+
+        jMenuItem7.setText("Lugares Disponibles");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        menuTikets.add(jMenuItem7);
+
+        jMenuItem9.setText("Estadisticas");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        menuTikets.add(jMenuItem9);
+
+        Anular.setText("Anular Ticket");
+        Anular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnularActionPerformed(evt);
+            }
+        });
+        menuTikets.add(Anular);
+
+        jMenuBar1.add(menuTikets);
+
         menuFuncion.setText("Funcion");
 
         jMenuItem1.setText("Gestion de Funcion");
@@ -162,51 +241,6 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuFuncion);
 
-        menuTikets.setText("Ticket");
->>>>>>> Stashed changes
-
-        ticket.setText("Gestion De Ticket");
-        ticket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ticketActionPerformed(evt);
-            }
-        });
-        jMenu5.add(ticket);
-
-        jMenuItem5.setText("Informes De Tickets");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem5);
-
-        jMenuItem7.setText("Lugares Disponibles");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem7);
-
-        jMenuItem9.setText("Estadisticas");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem9);
-
-        Anular.setText("Anular Ticket");
-        Anular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnularActionPerformed(evt);
-            }
-        });
-        jMenu5.add(Anular);
-
-        jMenuBar1.add(jMenu5);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,7 +257,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -472,11 +506,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ListarFunciones;
     private javax.swing.JMenuItem VistaComprador1;
     private javax.swing.JMenuItem gestionPelicula;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -488,7 +518,11 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem listaPeliculas;
+    private javax.swing.JMenu menuCompradores;
     private javax.swing.JMenu menuFuncion;
+    private javax.swing.JMenu menuPelicula;
+    private javax.swing.JMenu menuSala;
+    private javax.swing.JMenu menuTikets;
     private javax.swing.JMenuItem ticket;
     // End of variables declaration//GEN-END:variables
 }

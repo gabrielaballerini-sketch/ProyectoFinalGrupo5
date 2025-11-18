@@ -111,16 +111,11 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
                  btn.setEnabled(true);
                  
                  
-                 } else{
-                 
-                 btn.setBackground(Color.RED);
-                 btn.setEnabled(false);
-                 
-                 }
+                 } 
                 
                                                
                  
-                 }
+                 
                  
                  else{
                  
@@ -129,7 +124,7 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
                  
                  
                  }
-             
+                 }
 
             int fila = f;
             int columna=c;

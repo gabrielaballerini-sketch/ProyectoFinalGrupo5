@@ -298,7 +298,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
                 jtGenero.getText().isEmpty()||calendario.getDate()== null){
-           JOptionPane.showMessageDialog(null, "complete todos los campos");
+           JOptionPane.showMessageDialog(null, "Complete todos los campos");
            return;
        }
         
@@ -322,7 +322,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
          }else{
            
       
-        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        JOptionPane.showMessageDialog(null, "Revise, datos incorrectos ");
         
         
        }
@@ -339,8 +339,8 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
-                jtGenero.getText().isEmpty()||calendario.getDate()== null ||!rbCartelera.isSelected()){
-           JOptionPane.showMessageDialog(null, "complete todos los campos");
+                jtGenero.getText().isEmpty()||calendario.getDate()== null ){
+           JOptionPane.showMessageDialog(null, "Complete todos los campos");
            return;
        }
        
@@ -357,7 +357,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         Pelicula peli2= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
               peliData.actualizarPelicula(peli2);
          }else{
-        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        JOptionPane.showMessageDialog(null, "Revise, datos incorrectos ");
         jtDirector.requestFocus();
         
         

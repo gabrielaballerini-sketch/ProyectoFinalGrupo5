@@ -162,23 +162,23 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel5)))))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbCartelera)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jLabel1)))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(calendario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtGenero, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtOrigen, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtActores, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtDirector, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtTitulo))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbCartelera)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jLabel1)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(btnBuscar)))))
                 .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
@@ -298,7 +298,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
                 jtGenero.getText().isEmpty()||calendario.getDate()== null){
-           JOptionPane.showMessageDialog(null, "complete todos los campos");
+           JOptionPane.showMessageDialog(null, "Complete todos los campos");
            return;
        }
         
@@ -322,7 +322,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
          }else{
            
       
-        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        JOptionPane.showMessageDialog(null, "Revise, datos incorrectos ");
         
         
        }
@@ -339,8 +339,8 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        if(jtTitulo.getText().isEmpty()|| jtDirector.getText().isEmpty()|| jtActores.getText().isEmpty()|| jtOrigen.getText().isEmpty()||
-                jtGenero.getText().isEmpty()||calendario.getDate()== null ||!rbCartelera.isSelected()){
-           JOptionPane.showMessageDialog(null, "complete todos los campos");
+                jtGenero.getText().isEmpty()||calendario.getDate()== null ){
+           JOptionPane.showMessageDialog(null, "Complete todos los campos");
            return;
        }
        
@@ -357,7 +357,7 @@ public class gestionPelicula extends javax.swing.JInternalFrame {
         Pelicula peli2= new Pelicula(titulo, director, actores, origen, genero, estreno, cartelera);
               peliData.actualizarPelicula(peli2);
          }else{
-        JOptionPane.showMessageDialog(null, "revise, datos incorrectos ");
+        JOptionPane.showMessageDialog(null, "Revise, datos incorrectos ");
         jtDirector.requestFocus();
         
         

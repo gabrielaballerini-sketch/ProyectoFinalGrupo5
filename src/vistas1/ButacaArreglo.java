@@ -111,10 +111,11 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
                  btn.setEnabled(true);
                  
                  
-                               
+                 } 
+                
                                                
                  
-                 }
+                 
                  
                  else{
                  
@@ -163,7 +164,9 @@ public class ButacaArreglo extends javax.swing.JInternalFrame {
 }
     
        
-        
+    
+    
+    
     
     
     

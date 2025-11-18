@@ -256,10 +256,11 @@ public class informeTickets extends javax.swing.JInternalFrame {
     private javax.swing.JTable tablaPeliculas;
     // End of variables declaration//GEN-END:variables
 private void llenarComboPeliculas(){
-
+    LocalDate hoy= LocalDate.now();
     for (Pelicula peli :peliData.listarPeliculas()) {
+        if(!peli.getEstreno().isAfter(hoy)){
         cbPelicula.addItem(peli);
-       
+        }
     }
 
 }

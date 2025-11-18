@@ -179,7 +179,13 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbPeliculasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+          
+        
+       String combo= (String) cbPeliculas.getSelectedItem();
+       
+       if(combo.equalsIgnoreCase("En Cartelera")){
+        
+        
         int fila = jTable1.getSelectedRow();
             if(fila!=-1){
              String titulo = (String) jTable1.getValueAt(fila,0);
@@ -194,11 +200,18 @@ public class listaPeliculas extends javax.swing.JInternalFrame {
              peliData.bajaLogicaPelicula(peli);
              
         }else{
-                JOptionPane.showMessageDialog(this, "Debe seleccionar una pelicula para la baja");}
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una pelicula para la baja");
+            
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    }else{
+    
+     JOptionPane.showMessageDialog(this, "La pelicula ya estaba dada de baja");
 
+}
+    }     
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbPeliculas;
     private javax.swing.JButton jButton1;
